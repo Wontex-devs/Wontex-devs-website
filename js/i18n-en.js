@@ -710,6 +710,7 @@ window.FW_EN = {
 "Colores, fotos y textos pensados para tu negocio.": "Colors, photos and copy made for your business.",
 "Seguro y en línea": "Secure and online",
 "Publicado con certificado de seguridad en un hosting confiable.": "Published with a security certificate on reliable hosting.",
+"Frame Works. Todos los derechos reservados.": "Frame Works. All rights reserved.",
 "Lead de prueba": "Test lead",
 "Quiere cotizar": "Wants a quote",
 "Solo pregunta": "Just asking",

@@ -2098,3 +2098,7 @@ html { scroll-padding-top: 0; }
 .cx__step.is-brand { background: var(--cobre); }
 .cx__nav { margin-top: clamp(14px, 2.5vh, 28px); }
 .why li { grid-template-columns: 1fr; }
+
+/* ---------- Barra final de derechos ---------- */
+.legal-bar { background: #0c121b; border-top: 1px solid rgba(244, 240, 232, .14); }
+.legal-bar p { margin: 0; padding-block: 18px 20px; font-family: var(--font-display); font-size: 15px; color: rgba(244, 240, 232, .85); }
