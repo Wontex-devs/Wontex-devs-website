@@ -711,6 +711,7 @@ window.FW_EN = {
 "Seguro y en línea": "Secure and online",
 "Publicado con certificado de seguridad en un hosting confiable.": "Published with a security certificate on reliable hosting.",
 "Frame Works. Todos los derechos reservados.": "Frame Works. All rights reserved.",
+"- Frame Works - Todos los derechos reservados - Diseñado por": "- Frame Works - All rights reserved - Designed by",
 "Lead de prueba": "Test lead",
 "Quiere cotizar": "Wants a quote",
 "Solo pregunta": "Just asking",
