@@ -14,7 +14,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400..800&family=Source+Serif+4:ital,opsz,wght@0,8..60,300..600;1,8..60,300..500&display=swap">
-  <link rel="stylesheet" href="css/styles.css?v=20261018g">
+  <link rel="stylesheet" href="css/styles.css?v=20261018h">
   <script>
     // Activa la animación de entrada del logo (se omite si el visitante prefiere menos movimiento)
     // Al recargar, empezar siempre desde arriba (sin restaurar scroll ni saltar a #secciones)
@@ -224,234 +224,98 @@
   </div>
 </section>
 
-<!-- CASOS -->
-<section class="section" id="casos">
-  <div class="container grid cases-top">
-    <p class="eyebrow col-label" data-reveal>Casos</p>
-    <div class="col-main" data-reveal>
-      <h2 data-split data-reveal class="h-lg">Así se ve en un negocio real.</h2>
-      <p class="lead muted section-intro">Situaciones habituales en las que trabajamos. El problema casi nunca es la falta de tecnología.</p>
-    </div>
-  </div>
-  <div class="container case-studio">
-    <div class="case-studio__list" role="tablist" aria-label="Casos animados">
-      <button type="button" class="case-studio__tab is-on" data-case="0" role="tab" aria-selected="true"><span class="case-studio__n">01</span><span class="case-studio__t"><b>CRM y WhatsApp automatizados</b><small>Cada mensaje se convierte en un lead registrado, calificado y respondido en segundos.</small></span><i class="case-studio__bar"></i></button>
-      <button type="button" class="case-studio__tab" data-case="1" role="tab" aria-selected="false"><span class="case-studio__n">02</span><span class="case-studio__t"><b>Videos de marketing de contenido</b><small>Anuncios de alto impacto para redes, con estilos de cámara distintos para cada marca.</small></span><i class="case-studio__bar"></i></button>
-      <button type="button" class="case-studio__tab" data-case="2" role="tab" aria-selected="false"><span class="case-studio__n">03</span><span class="case-studio__t"><b>Creación de páginas web</b><small>Del código a la página publicada: un sitio para un estudio de arquitectura.</small></span><i class="case-studio__bar"></i></button>
-    </div>
-    <figure class="mac mac--case" id="caseMac" aria-label="Demostración animada de los casos">
-      <div class="mac__float">
-      <div class="mac__lid">
-        <span class="mac__cam" aria-hidden="true"></span>
-        <div class="mac__screen">
-          <div class="demo" id="demo" aria-hidden="true">
-            <div class="demo__cam" id="demoCam">
-              <div class="demo__grid"></div>
-
-              <svg class="demo__links" viewBox="0 0 100 62.5" preserveAspectRatio="none">
-                <path class="demo__l" id="dl1" pathLength="1" d="M33 30 L38.5 30"/>
-                <path class="demo__l" id="dl2" pathLength="1" d="M61.5 30 L65 30"/>
-                <path class="demo__l demo__l--back" id="dl3" pathLength="1" d="M81.5 51 C81.5 60 18 60 18 51"/>
-                <circle class="demo__pulse" id="dPulse" r=".75" cx="-10" cy="-10"/>
-              </svg>
-              <span class="demo__port" style="left:33cqw;top:30cqw"></span>
-              <span class="demo__port" style="left:38.5cqw;top:30cqw"></span>
-              <span class="demo__port" style="left:61.5cqw;top:30cqw"></span>
-              <span class="demo__port" style="left:65cqw;top:30cqw"></span>
-              <span class="demo__backtag" id="dBackTag">Respuesta automática</span>
-
-              <!-- WhatsApp Business -->
-              <div class="wa" id="dWa">
-                <div class="wa__head">
-                  <img class="wa__av" src="assets/img/demo-santiago.jpg" alt="" width="80" height="80">
-                  <span class="wa__who"><b>Santiago Montenegro</b><small id="dWaSub">en línea</small></span>
-                  <span class="wa__logo"><svg viewBox="0 0 24 24"><path d="M4.5 20 5.7 16.3A8.2 8.2 0 1 1 8.2 18.8Z"/><path d="M9.3 8.6c-.2 2.6 3 6.1 5.9 6.2l1.1-1.4-1.9-1-1 .8c-1-.4-2.2-1.6-2.6-2.6l.8-1-1-1.9Z"/></svg></span>
+<!-- CASOS: galería a pantalla completa (desliza a los lados) -->
+<section class="cx" id="casos" aria-label="Casos">
+  <div class="cx__track" id="cxTrack" tabindex="0" aria-label="Casos, desplazamiento horizontal">
+    <article class="cx__slide is-active" id="caso-crm" aria-label="CRM">
+      <div class="container cx__in">
+        <header class="cx__head"><p class="eyebrow cx__eyebrow">Caso 01 · CRM para tu negocio</p><h2 class="cx__title">Cada cliente y cada venta, en orden<i class="dot">.</i></h2></header>
+        <div class="cx__body">
+          <ul class="cx__pts cx__pts--l"><li><span class="cx__ico" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20c.8-3.6 3.4-5.5 6.5-5.5s5.7 1.9 6.5 5.5"/><path d="M16 4.6a3.5 3.5 0 0 1 0 6.8M18 14.8c1.9.7 3.1 2.4 3.5 5.2"/></svg></span><span class="cx__pt"><b>Todos tus clientes en un lugar</b><span>Datos de contacto, compras y conversaciones en una sola ficha.</span></span></li><li><span class="cx__ico" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="5" height="16" rx="1.5"/><rect x="10" y="4" width="5" height="11" rx="1.5"/><rect x="17" y="4" width="4" height="7" rx="1.5"/></svg></span><span class="cx__pt"><b>Etapas de venta claras</b><span>Ves qué oportunidades están en contacto, cotización o cierre.</span></span></li><li><span class="cx__ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M6 16v-5a6 6 0 0 1 12 0v5l1.5 2h-15z"/><path d="M10 20.5a2 2 0 0 0 4 0"/></svg></span><span class="cx__pt"><b>Seguimientos sin olvidos</b><span>Tareas y recordatorios para cada cliente, con fecha y responsable.</span></span></li></ul>
+          <div class="cx__stage"><svg class="cx__blob" viewBox="0 0 400 440" aria-hidden="true"><path d="M214 18c62 6 128 40 156 104 30 70 4 150-22 206-28 60-82 104-150 108-70 4-138-34-170-96C-4 280 8 190 40 124 74 56 150 12 214 18z"/></svg><div class="cx__phone" aria-hidden="true"><div class="cx__screen">
+              <div class="ui ui--crm"><div class="ui-status"><span>9:41</span><span class="ui-sig"><i></i><i></i><i></i><b></b></span></div>
+                <div class="crm-top"><div><small>Hola, Daniela</small><b>Tus ventas</b></div><span class="crm-av">DG</span></div>
+                <div class="crm-stages"><span class="is-on">Nuevos <em>12</em></span><span>Cotización <em>5</em></span><span>Cierre <em>3</em></span></div>
+                <div class="crm-cards">
+                  <div class="crm-card"><div class="crm-row"><b>Laura Gómez</b><span class="crm-pill">Nuevo</span></div><small>Café Origen · WhatsApp</small><div class="crm-row"><span class="crm-val">$ 1.850.000</span><span class="crm-task">Llamar hoy</span></div></div>
+                  <div class="crm-card"><div class="crm-row"><b>Andrés Ruiz</b><span class="crm-pill crm-pill--q">Cotización</span></div><small>Distribuidora Sur · Sitio web</small><div class="crm-row"><span class="crm-val">$ 4.200.000</span><span class="crm-task">Enviar propuesta</span></div></div>
+                  <div class="crm-card"><div class="crm-row"><b>Marta Díaz</b><span class="crm-pill crm-pill--c">Cierre</span></div><small>Clínica Vida · Instagram</small><div class="crm-row"><span class="crm-val">$ 2.600.000</span><span class="crm-task">Firmar mañana</span></div></div>
+                  <div class="crm-card"><div class="crm-row"><b>Julián Ortiz</b><span class="crm-pill">Nuevo</span></div><small>Taller Norte · Referido</small><div class="crm-row"><span class="crm-val">$ 980.000</span><span class="crm-task">Primer contacto</span></div></div>
                 </div>
-                <div class="wa__body">
-                  <div class="wa__msgs" id="dMsgs">
-                    <span class="wa__day">Hoy</span>
-                    <span class="wa__unread" id="dUnread">1 mensaje no leído</span>
-                    <div class="wa__b wa__b--in" id="dIn">Hola, quisiera cotizar unas ventanas para mi proyecto.<i class="wa__t">10:24</i></div>
-                    <div class="wa__auto" id="dAutoTag"><span class="demo__bolt"></span>Respuesta automática</div>
-                    <div class="wa__typing" id="dTyping"><i></i><i></i><i></i></div>
-                    <div class="wa__b wa__b--out" id="dOut">¡Hola, Santiago! 👋 Claro, podemos ayudarte con la cotización. Cuéntanos las medidas aproximadas de tu proyecto y te ayudamos a continuar.<i class="wa__t">10:24 <span class="wa__ticks" id="dTicks">✓✓</span></i></div>
-                  </div>
-                </div>
-                <div class="wa__input"><span>Escribe un mensaje</span><i></i></div>
+                <div class="ui-toast"><span class="ui-toast__dot"></span><span><b>Nuevo prospecto</b><small>Registrado desde tu sitio web</small></span></div>
+                <div class="ui-tabbar"><i class="is-on"></i><i></i><i></i><i></i></div>
               </div>
-
-              <!-- Captura del lead -->
-              <div class="cap" id="dCap">
-                <div class="cap__head"><span class="demo__bolt demo__bolt--lg"></span><span><b>Captura de lead</b><small>Automático</small></span></div>
-                <dl class="cap__rows">
-                  <div><dt>Nombre</dt><dd data-v="Santiago Montenegro"></dd></div>
-                  <div><dt>Canal</dt><dd data-v="WhatsApp"></dd></div>
-                  <div><dt>Interés</dt><dd data-v="Ventanas"></dd></div>
-                  <div><dt>Estado</dt><dd data-v="Nuevo" data-badge></dd></div>
-                </dl>
-              </div>
-
-              <!-- CRM -->
-              <div class="crm" id="dCrm">
-                <div class="crm__top"><img class="crm__brand" src="assets/img/logo/logo-una-linea.png" alt="Frame Works." width="846" height="114"><span class="crm__search"></span><span class="crm__me">FW</span></div>
-                <div class="crm__title"><b>Leads</b><span class="crm__count" id="dCount">24</span></div>
-                <div class="crm__head"><span>Contacto</span><span>Canal</span><span>Estado</span></div>
-                <div class="crm__rows">
-                  <div class="crm__new" id="dRow">
-                    <div class="crm__row crm__row--new">
-                      <span class="crm__c"><img class="crm__av" src="assets/img/demo-santiago.jpg" alt="" width="80" height="80"><span><b>Santiago Montenegro</b><small><em class="crm__tag">Ventanas</em><span class="crm__when">Ahora</span></small></span></span>
-                      <span class="crm__ch"><span class="crm__wa"><svg viewBox="0 0 24 24"><path d="M4.5 20 5.7 16.3A8.2 8.2 0 1 1 8.2 18.8Z"/><path d="M9.3 8.6c-.2 2.6 3 6.1 5.9 6.2l1.1-1.4-1.9-1-1 .8c-1-.4-2.2-1.6-2.6-2.6l.8-1-1-1.9Z"/></svg></span>WhatsApp</span>
-                      <span class="crm__st"><span class="crm__badge" id="dBadge" data-s="new">Nuevo</span><em class="crm__tag crm__tag--hot" id="dPrio">Prioridad alta</em></span>
-                      <span class="crm__prog" id="dProg"></span>
-                    </div>
-                  </div>
-                  <div class="crm__row"><span class="crm__c"><span class="crm__av">AT</span><span><b>Ana Torres</b><small><em class="crm__tag">Cocina</em><span class="crm__when">Hace 2 h</span></small></span></span><span class="crm__ch">Sitio web</span><span class="crm__st"><span class="crm__badge" data-s="ok">Calificado</span></span></div>
-                  <div class="crm__row"><span class="crm__c"><img class="crm__av" src="assets/img/demo-ryan.jpg" alt="" width="80" height="80"><span><b>Ryan Mitchell</b><small><em class="crm__tag">Puertas</em><span class="crm__when">Ayer</span></small></span></span><span class="crm__ch">Instagram</span><span class="crm__st"><span class="crm__badge" data-s="follow">En seguimiento</span></span></div>
-                  <div class="crm__row"><span class="crm__c"><span class="crm__av">MR</span><span><b>Marta Ríos</b><small><em class="crm__tag">Ventanas</em><span class="crm__when">Ayer</span></small></span></span><span class="crm__ch">Formulario</span><span class="crm__st"><span class="crm__badge" data-s="done">Cotizado</span></span></div>
-                </div>
-              </div>
-            </div>
-
-            <!-- Marketing: 3 anuncios de marcas ficticias (NOIR: imagen creada con IA FLUX; VOLT y AURA: fotos Unsplash), animados con CSS -->
-            <div class="mkt" id="dMkt">
-              <div class="mkt__head"><span class="mkt__kicker">Marketing de contenido</span><b>Contenido que detiene el scroll</b></div>
-              <div class="mkt__reels">
-                <figure class="reel reel--noir">
-                  <div class="reel__frame">
-                    <div class="reel__media"><img src="assets/img/ads/noir.jpg" alt="" width="576" height="1024" loading="lazy"></div>
-                    <span class="reel__sweep"></span>
-                    <span class="cin__top cin__gold">Eau de parfum</span>
-                    <span class="cin__claim cin__claim--noir"><b>La noche</b><b>te pertenece.</b></span>
-                    <span class="cin__grain"></span>
-                    <span class="reel__bar"><i></i></span>
-                  </div>
-                  <figcaption>Comercial de lujo</figcaption>
-                </figure>
-                <figure class="reel reel--volt">
-                  <div class="reel__frame">
-                    <div class="reel__media"><img src="assets/img/ads/volt.jpg" alt="" width="576" height="1024" loading="lazy"></div>
-                    <span class="cin__speed"></span>
-                    <span class="cin__volt">VOLT</span>
-                    <span class="cin__claim"><b>Ligero. Rápido. Tuyo.</b><span class="cin__chip">Nuevo drop · 11.11</span></span>
-                    <span class="cin__grain"></span>
-                    <span class="reel__bar"><i></i></span>
-                  </div>
-                  <figcaption>Lanzamiento de producto</figcaption>
-                </figure>
-                <figure class="reel reel--aura">
-                  <div class="reel__frame">
-                    <div class="reel__media"><img src="assets/img/ads/aura.jpg" alt="" width="576" height="1024" loading="lazy"></div>
-                    <span class="cin__ring"></span>
-                    <span class="cin__top cin__dark">AURA · Sérum</span>
-                    <span class="cin__claim cin__claim--aura"><b>Hidratación</b><b>que se nota.</b></span>
-                    <span class="cin__grain"></span>
-                    <span class="reel__bar"><i></i></span>
-                  </div>
-                  <figcaption>Belleza y cuidado</figcaption>
-                </figure>
-              </div>
-            </div>
-
-            <!-- Desarrollo web: código que se escribe y la página que resulta (estudio ficticio ARCA) -->
-            <div class="dev" id="dDev">
-              <div class="dev__ide" id="dIde">
-                <div class="dev__bar"><span class="dev__dots"><i></i><i></i><i></i></span><span class="dev__tab is-on" id="dTabHtml">index.html</span><span class="dev__tab" id="dTabJs">main.js</span><span class="dev__run" id="dRun">▶ Publicar</span></div>
-                <pre class="dev__code dev__code--html"><span class="ln" style="--n:34;--d:300ms"><em>1</em><span class="ln__t"><span class="c-com">&lt;!-- ARCA Arquitectos · inicio --&gt;</span></span></span>
-<span class="ln" style="--n:20;--d:666ms"><em>2</em><span class="ln__t">&lt;<span class="c-tag">header</span> <span class="c-att">class</span>=<span class="c-str">&quot;nav&quot;</span>&gt;</span></span>
-<span class="ln" style="--n:35;--d:906ms"><em>3</em><span class="ln__t">  &lt;<span class="c-tag">a</span> <span class="c-att">class</span>=<span class="c-str">&quot;logo&quot;</span> <span class="c-att">href</span>=<span class="c-str">&quot;/&quot;</span>&gt;ARCA&lt;<span class="c-tag">/a</span>&gt;</span></span>
-<span class="ln" style="--n:43;--d:1281ms"><em>4</em><span class="ln__t">  &lt;<span class="c-tag">nav</span>&gt;Proyectos · Estudio · Contacto&lt;<span class="c-tag">/nav</span>&gt;</span></span>
-<span class="ln" style="--n:9;--d:1728ms"><em>5</em><span class="ln__t">&lt;<span class="c-tag">/header</span>&gt;</span></span>
-<span class="ln" style="--n:22;--d:1869ms"><em>6</em><span class="ln__t">&lt;<span class="c-tag">section</span> <span class="c-att">class</span>=<span class="c-str">&quot;hero&quot;</span>&gt;</span></span>
-<span class="ln" style="--n:49;--d:2127ms"><em>7</em><span class="ln__t">  &lt;<span class="c-tag">img</span> <span class="c-att">src</span>=<span class="c-str">&quot;casa-mirador.jpg&quot;</span> <span class="c-att">alt</span>=<span class="c-str">&quot;Casa Mirador&quot;</span>&gt;</span></span>
-<span class="ln" style="--n:33;--d:2628ms"><em>8</em><span class="ln__t">  &lt;<span class="c-tag">h1</span>&gt;Espacios que respiran.&lt;<span class="c-tag">/h1</span>&gt;</span></span>
-<span class="ln" style="--n:52;--d:2985ms"><em>9</em><span class="ln__t">  &lt;<span class="c-tag">a</span> <span class="c-att">class</span>=<span class="c-str">&quot;btn&quot;</span> <span class="c-att">href</span>=<span class="c-str">&quot;#proyectos&quot;</span>&gt;Ver proyectos&lt;<span class="c-tag">/a</span>&gt;</span></span>
-<span class="ln" style="--n:10;--d:3513ms"><em>10</em><span class="ln__t">&lt;<span class="c-tag">/section</span>&gt;</span></span></pre>
-                <pre class="dev__code dev__code--js"><span class="ln" style="--n:31;--d:200ms"><em>1</em><span class="ln__t"><span class="c-com">// Parallax suave en la portada</span></span></span>
-<span class="ln" style="--n:45;--d:539ms"><em>2</em><span class="ln__t"><span class="c-key">const</span> hero = <span class="c-key">document</span>.<span class="c-fn">querySelector</span>(<span class="c-str">&#x27;.hero&#x27;</span>);</span></span>
-<span class="ln" style="--n:41;--d:1004ms"><em>3</em><span class="ln__t"><span class="c-key">window</span>.<span class="c-fn">addEventListener</span>(<span class="c-str">&#x27;scroll&#x27;</span>, () =&gt; {</span></span>
-<span class="ln" style="--n:57;--d:1433ms"><em>4</em><span class="ln__t">  hero.style.transform = <span class="c-str">`translateY(${scrollY * .3}px)`</span>;</span></span>
-<span class="ln" style="--n:3;--d:2006ms"><em>5</em><span class="ln__t">});</span></span>
-<span class="ln" style="--n:38;--d:2093ms"><em>6</em><span class="ln__t"><span class="c-fn">reveal</span>(<span class="c-str">&#x27;.proyecto&#x27;</span>, { stagger: 120 });</span></span></pre>
-              </div>
-              <div class="dev__browser" id="dBrowser">
-                <div class="dev__url"><span class="dev__dots"><i></i><i></i><i></i></span><span class="dev__addr">arca-arquitectos.com</span><span class="dev__load" id="dLoad"></span></div>
-                <div class="dev__view">
-                  <div class="site" id="dSite">
-                    <div class="site__nav"><b>ARCA</b><span>Proyectos</span><span>Estudio</span><span>Contacto</span></div>
-                    <div class="site__hero"><img src="assets/img/arca/arca-hero.jpg" alt="" width="1100" height="620" loading="lazy"><div class="site__copy"><small>Arquitectura residencial</small><b>Espacios que respiran.</b><span class="site__btn">Ver proyectos</span></div></div>
-                    <div class="site__sec"><small>Proyectos recientes</small>
-                      <div class="site__grid">
-                        <figure><img src="assets/img/arca/arca-1.jpg" alt="" width="420" height="300" loading="lazy"><figcaption>Casa Espejo</figcaption></figure>
-                        <figure><img src="assets/img/arca/arca-2.jpg" alt="" width="420" height="300" loading="lazy"><figcaption>Casa Duna</figcaption></figure>
-                        <figure><img src="assets/img/arca/arca-3.jpg" alt="" width="420" height="300" loading="lazy"><figcaption>Interior Alba</figcaption></figure>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="mac__brand" aria-hidden="true">
-              <div class="mb mb--img"><span class="mb__line"><img class="mb__frame" src="assets/img/logo/logo-frame.png" alt="" width="748" height="198"></span><span class="mb__line mb__line--w"><img class="mb__works" src="assets/img/logo/logo-works.png" alt="" width="748" height="202"><img class="mb__dot" src="assets/img/logo/logo-dot.png" alt="" width="748" height="202"></span></div>
-            </div>
-            <div class="demo__hud" id="dHud">
-              <span class="demo__live"><i></i><span id="dStep">Mensaje recibido</span></span>
-              <span class="demo__steps"><i></i><i></i><i></i><i></i><i></i></span>
-            </div>
-          </div>
+            </div></div></div>
+          <ul class="cx__pts cx__pts--r"><li><span class="cx__ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 13h5l1.5 3h5l1.5-3h5"/><path d="M5 13 7 5h10l2 8v6H5z"/></svg></span><span class="cx__pt"><b>Prospectos registrados</b><span>Los contactos que llegan por tu web y tus formularios quedan guardados.</span></span></li><li><span class="cx__ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 4v16h16"/><path d="M8 16v-5M12 16V8M16 16v-3"/></svg></span><span class="cx__pt"><b>Reportes de ventas</b><span>Cuántos prospectos llegan, cuántos avanzan y dónde se detienen.</span></span></li><li><span class="cx__ico" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="5" y="10.5" width="14" height="10" rx="2"/><path d="M8 10.5v-3a4 4 0 0 1 8 0v3"/></svg></span><span class="cx__pt"><b>Acceso por roles</b><span>Cada vendedor ve su cartera y la gerencia ve el panorama completo.</span></span></li></ul>
         </div>
       </div>
-      <div class="mac__base" aria-hidden="true"></div>
+    </article>
+    <article class="cx__slide" id="caso-reel" aria-label="Marketing">
+      <div class="container cx__in">
+        <header class="cx__head"><p class="eyebrow cx__eyebrow">Caso 02 · Marketing de contenido</p><h2 class="cx__title">Contenido que detiene el scroll<i class="dot">.</i></h2></header>
+        <div class="cx__body">
+          <ul class="cx__pts cx__pts--l"><li><span class="cx__ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3a9 9 0 1 0 0 18c1.2 0 1.8-.8 1.8-1.7 0-1.3-1.1-1.7-1.1-2.8 0-1 .8-1.5 1.8-1.5H17a4 4 0 0 0 4-4c0-4.4-4-8-9-8z"/><circle cx="7.5" cy="11" r="1"/><circle cx="10" cy="7" r="1"/><circle cx="15" cy="7.5" r="1"/></svg></span><span class="cx__pt"><b>Identidad en cada pieza</b><span>Colores, tipografía y tono iguales en todas tus redes.</span></span></li><li><span class="cx__ico" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="6" width="9" height="12" rx="1.5"/><rect x="14" y="3" width="7" height="18" rx="1.5"/></svg></span><span class="cx__pt"><b>Formatos para cada red</b><span>Reels, historias, carruseles y publicaciones en la medida correcta.</span></span></li><li><span class="cx__ico" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="6" width="13" height="12" rx="2"/><path d="m16 10.5 5-3v9l-5-3"/></svg></span><span class="cx__pt"><b>Videos de producto con IA</b><span>Escenas y anuncios creados a partir de tu producto real.</span></span></li></ul>
+          <div class="cx__stage"><svg class="cx__blob" viewBox="0 0 400 440" aria-hidden="true"><path d="M214 18c62 6 128 40 156 104 30 70 4 150-22 206-28 60-82 104-150 108-70 4-138-34-170-96C-4 280 8 190 40 124 74 56 150 12 214 18z"/></svg><div class="cx__phone" aria-hidden="true"><div class="cx__screen">
+              <div class="ui ui--reel">
+                <div class="reel-imgs"><img src="assets/img/ads/noir.jpg" alt="" loading="lazy"><img src="assets/img/ads/volt.jpg" alt="" loading="lazy"><img src="assets/img/ads/aura.jpg" alt="" loading="lazy"></div>
+                <div class="ui-status"><span>9:41</span><span class="ui-sig"><i></i><i></i><i></i><b></b></span></div>
+                <div class="reel-bars"><i></i><i></i><i></i></div>
+                <div class="reel-side"><span><svg viewBox="0 0 24 24"><path d="M12 20s-7.5-4.4-7.5-10A4.3 4.3 0 0 1 12 7.4 4.3 4.3 0 0 1 19.5 10c0 5.6-7.5 10-7.5 10z"/></svg></span><span><svg viewBox="0 0 24 24"><path d="M4 5h16v11H9l-5 4z"/></svg></span><span><svg viewBox="0 0 24 24"><path d="m4 12 16-8-6 16-2.5-6.5z"/></svg></span></div>
+                <div class="reel-cap"><span class="reel-user"><i></i>tu.marca</span><p>Nueva colección, disponible esta semana.</p><span class="reel-cta">Comprar ahora</span></div>
+              </div>
+            </div></div></div>
+          <ul class="cx__pts cx__pts--r"><li><span class="cx__ico" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3.5" y="5" width="17" height="15" rx="2"/><path d="M3.5 10h17M8 3v4M16 3v4"/></svg></span><span class="cx__pt"><b>Calendario de publicaciones</b><span>Un plan mensual para publicar con constancia.</span></span></li><li><span class="cx__ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 10v4h3l7 4V6l-7 4z"/><path d="M17 9a4 4 0 0 1 0 6"/></svg></span><span class="cx__pt"><b>Piezas para campañas</b><span>Todo lo de una promoción: publicaciones, historias y anuncios.</span></span></li><li><span class="cx__ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 20h4L19 9l-4-4L4 16z"/><path d="m13.5 6.5 4 4"/></svg></span><span class="cx__pt"><b>Textos que venden</b><span>Mensajes claros y una invitación a actuar en cada publicación.</span></span></li></ul>
+        </div>
       </div>
-    </figure>
+    </article>
+    <article class="cx__slide" id="caso-web" aria-label="Páginas web">
+      <div class="container cx__in">
+        <header class="cx__head"><p class="eyebrow cx__eyebrow">Caso 03 · Páginas web</p><h2 class="cx__title">Un sitio web que trabaja por ti<i class="dot">.</i></h2></header>
+        <div class="cx__body">
+          <ul class="cx__pts cx__pts--l"><li><span class="cx__ico" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="7" y="2.5" width="10" height="19" rx="2.5"/><path d="M11 18.5h2"/></svg></span><span class="cx__pt"><b>Pensado para el celular</b><span>Se ve y funciona bien en cualquier pantalla.</span></span></li><li><span class="cx__ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M13 2 4 14h7l-1 8 9-12h-7z"/></svg></span><span class="cx__pt"><b>Carga rápida</b><span>Imágenes optimizadas y código liviano.</span></span></li><li><span class="cx__ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 5h16v11H9l-5 4z"/></svg></span><span class="cx__pt"><b>Contacto a un clic</b><span>Botón de WhatsApp y formularios visibles en todo el sitio.</span></span></li></ul>
+          <div class="cx__stage"><svg class="cx__blob" viewBox="0 0 400 440" aria-hidden="true"><path d="M214 18c62 6 128 40 156 104 30 70 4 150-22 206-28 60-82 104-150 108-70 4-138-34-170-96C-4 280 8 190 40 124 74 56 150 12 214 18z"/></svg><div class="cx__phone" aria-hidden="true"><div class="cx__screen">
+              <div class="ui ui--web"><div class="ui-status"><span>9:41</span><span class="ui-sig"><i></i><i></i><i></i><b></b></span></div>
+                <div class="web-view"><div class="web-scroll">
+                  <div class="web-nav"><b>ARCA<i>.</i></b><span class="web-burger"><i></i><i></i></span></div>
+                  <div class="web-hero"><img src="assets/img/arca/arca-hero.jpg" alt="" loading="lazy"><div><small>Estudio de arquitectura</small><b>Espacios que se habitan con calma.</b><span class="web-btn">Agenda una visita</span></div></div>
+                  <p class="web-h">Proyectos</p>
+                  <div class="web-grid"><img src="assets/img/arca/arca-1.jpg" alt="" loading="lazy"><img src="assets/img/arca/arca-2.jpg" alt="" loading="lazy"><img src="assets/img/arca/arca-3.jpg" alt="" loading="lazy"><img src="assets/img/arca/arca-hero.jpg" alt="" loading="lazy"></div>
+                  <div class="web-form"><b>Hablemos de tu proyecto</b><i></i><i></i><span class="web-btn">Enviar</span></div>
+                </div></div>
+                <span class="web-wa"><svg viewBox="0 0 24 24"><path d="M4 5h16v11H9l-5 4z"/></svg></span>
+              </div>
+            </div></div></div>
+          <ul class="cx__pts cx__pts--r"><li><span class="cx__ico" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="6.5"/><path d="m16 16 4.5 4.5"/></svg></span><span class="cx__pt"><b>Listo para Google</b><span>Títulos, descripciones y estructura con SEO básico.</span></span></li><li><span class="cx__ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 7h10M18 7h2M4 17h4M12 17h8"/><circle cx="16" cy="7" r="2"/><circle cx="10" cy="17" r="2"/></svg></span><span class="cx__pt"><b>Fácil de actualizar</b><span>Cambias textos y fotos sin depender de nadie.</span></span></li><li><span class="cx__ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M2.5 12S6 5.5 12 5.5 21.5 12 21.5 12 18 18.5 12 18.5 2.5 12 2.5 12z"/><circle cx="12" cy="12" r="3"/></svg></span><span class="cx__pt"><b>Medición de visitas</b><span>Sabes cuántas personas entran y qué páginas ven.</span></span></li></ul>
+        </div>
+      </div>
+    </article>
+    <article class="cx__slide" id="caso-quote" aria-label="Cotizador">
+      <div class="container cx__in">
+        <header class="cx__head"><p class="eyebrow cx__eyebrow">Caso 04 · Cotizador para una empresa industrial</p><h2 class="cx__title">Cotizaciones que llegan completas<i class="dot">.</i></h2></header>
+        <div class="cx__body">
+          <ul class="cx__pts cx__pts--l"><li><span class="cx__ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M10 6h10M10 12h10M10 18h10"/><path d="m3.5 6 1.2 1.2L7 5M3.5 12l1.2 1.2L7 11M3.5 18l1.2 1.2L7 17"/></svg></span><span class="cx__pt"><b>Formulario guiado</b><span>El cliente elige el servicio y el formulario pide solo lo necesario.</span></span></li><li><span class="cx__ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m20 11.5-8.2 8.2a5 5 0 0 1-7.1-7.1l8.5-8.5a3.4 3.4 0 0 1 4.8 4.8l-8.4 8.4a1.7 1.7 0 0 1-2.4-2.4l7.7-7.7"/></svg></span><span class="cx__pt"><b>Planos adjuntos</b><span>Acepta archivos PDF, DWG, DXF o STEP junto con la solicitud.</span></span></li><li><span class="cx__ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 17 17 3l4 4L7 21z"/><path d="m7 13 2 2M10 10l2 2M13 7l2 2"/></svg></span><span class="cx__pt"><b>Datos técnicos completos</b><span>Material, espesor, cantidades, ciudad y fecha requerida.</span></span></li></ul>
+          <div class="cx__stage"><svg class="cx__blob" viewBox="0 0 400 440" aria-hidden="true"><path d="M214 18c62 6 128 40 156 104 30 70 4 150-22 206-28 60-82 104-150 108-70 4-138-34-170-96C-4 280 8 190 40 124 74 56 150 12 214 18z"/></svg><div class="cx__phone" aria-hidden="true"><div class="cx__screen">
+              <div class="ui ui--quote"><div class="ui-status"><span>9:41</span><span class="ui-sig"><i></i><i></i><i></i><b></b></span></div>
+                <div class="q-head"><small>Paso 2 de 3</small><b>Solicitar cotización</b><div class="q-steps"><i class="is-done"></i><i class="is-on"></i><i></i></div></div>
+                <div class="q-body">
+                  <div class="q-field"><small>Servicio</small><span>Corte láser</span></div>
+                  <div class="q-row"><div class="q-field"><small>Material</small><span>Acero inoxidable</span></div><div class="q-field"><small>Espesor</small><span>3 mm</span></div></div>
+                  <div class="q-row"><div class="q-field"><small>Cantidad</small><span>250 unidades</span></div><div class="q-field"><small>Ciudad</small><span>Medellín</span></div></div>
+                  <div class="q-file"><span class="q-file__ic">DXF</span><span><b>soporte-base.dxf</b><small>1,2 MB · cargado</small></span><span class="q-ok"><svg viewBox="0 0 24 24"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg></span></div>
+                  <span class="q-btn">Enviar solicitud</span>
+                </div>
+                <div class="ui-toast ui-toast--ok"><span class="ui-toast__dot"></span><span><b>Solicitud recibida</b><small>Un especialista la revisará</small></span></div>
+              </div>
+            </div></div></div>
+          <ul class="cx__pts cx__pts--r"><li><span class="cx__ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 13h5l1.5 3h5l1.5-3h5"/><path d="M5 13 7 5h10l2 8v6H5z"/></svg></span><span class="cx__pt"><b>Llega ordenada al equipo</b><span>Cada solicitud entra con todos sus datos, lista para revisar.</span></span></li><li><span class="cx__ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3 4.5 6v6c0 4.4 3.2 7.8 7.5 9 4.3-1.2 7.5-4.6 7.5-9V6z"/><path d="m8.8 12 2.2 2.2 4.3-4.4"/></svg></span><span class="cx__pt"><b>Revisión de un especialista</b><span>Una persona del equipo técnico valida la solicitud y prepara el precio.</span></span></li><li><span class="cx__ico" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="5" cy="12" r="2"/><circle cx="12" cy="12" r="2"/><circle cx="19" cy="12" r="2"/><path d="M7 12h3M14 12h3"/></svg></span><span class="cx__pt"><b>Seguimiento de cada solicitud</b><span>Sabes cuáles están pendientes, cotizadas o aprobadas.</span></span></li></ul>
+        </div>
+      </div>
+    </article>
   </div>
-  <div class="cases" id="cases" tabindex="0" aria-label="Casos, desplazamiento horizontal">
-    <article class="case">
-      <div class="photo ph-1 case__photo"><img src="assets/img/caso-panaderia.jpg" alt="Persona tomando fotos de comida con el celular para redes sociales" loading="lazy" onerror="this.remove()"></div>
-      <p class="case__tag">01 · Alimentación</p>
-      <h3 class="case__who">Panadería artesanal</h3>
-      <dl class="case__ba">
-        <dt>Antes</dt><dd>Pedidos por WhatsApp anotados a mano en un cuaderno.</dd>
-        <dt>Después</dt><dd>Los pedidos llegan a una sola lista, se confirman solos y producción ve el total del día.</dd>
-      </dl>
-      <ul class="case__tools" aria-label="Herramientas usadas"><li>WhatsApp</li><li>Automatización</li><li>Lista de pedidos</li></ul>
-    </article>
-    <article class="case">
-      <div class="photo ph-3 case__photo"><img src="assets/img/caso-distribuidora.jpg" alt="Laptop mostrando un panel de ventas con gráficas" loading="lazy" onerror="this.remove()"></div>
-      <p class="case__tag">02 · Distribución</p>
-      <h3 class="case__who">Distribuidora</h3>
-      <dl class="case__ba">
-        <dt>Antes</dt><dd>Facturas copiadas del correo a la hoja de cálculo, una a una.</dd>
-        <dt>Después</dt><dd>Las facturas se leen, se registran y se concilian. El equipo solo revisa las excepciones.</dd>
-      </dl>
-      <ul class="case__tools" aria-label="Herramientas usadas"><li>Lectura de facturas con IA</li><li>Dashboard</li><li>Correo</li></ul>
-    </article>
-    <article class="case">
-      <div class="photo ph-4 case__photo"><img src="assets/img/caso-clinica.jpg" alt="Mujer revisando mensajes y citas en su celular" loading="lazy" onerror="this.remove()"></div>
-      <p class="case__tag">03 · Salud</p>
-      <h3 class="case__who">Clínica</h3>
-      <dl class="case__ba">
-        <dt>Antes</dt><dd>Citas perdidas y recordatorios enviados manualmente.</dd>
-        <dt>Después</dt><dd>Agenda conectada, recordatorios automáticos y reprogramación con un solo mensaje.</dd>
-      </dl>
-      <ul class="case__tools" aria-label="Herramientas usadas"><li>Agenda en línea</li><li>Recordatorios automáticos</li><li>WhatsApp</li></ul>
-    </article>
-    <article class="case">
-      <div class="photo ph-2 case__photo"><img src="assets/img/caso-tienda-en-linea.jpg" alt="Emprendedora de moda gestionando su tienda en línea desde la laptop" loading="lazy" onerror="this.remove()"></div>
-      <p class="case__tag">04 · Comercio electrónico</p>
-      <h3 class="case__who">Tienda en línea</h3>
-      <dl class="case__ba">
-        <dt>Antes</dt><dd>Las mismas preguntas de clientes, veinte veces al día.</dd>
-        <dt>Después</dt><dd>Un asistente responde lo frecuente con tu tono y pasa lo importante a una persona.</dd>
-      </dl>
-      <ul class="case__tools" aria-label="Herramientas usadas"><li>Chatbot con IA</li><li>Instagram</li><li>WhatsApp</li></ul>
-    </article>
-  </div>
-  <div class="container cases-ui">
-    <div class="cases-ui__bar" aria-hidden="true"><span id="casesBar"></span></div>
-    <div class="cases-ui__btns">
-      <button type="button" class="circle-btn" id="casesPrev" aria-label="Caso anterior">←</button>
-      <button type="button" class="circle-btn" id="casesNext" aria-label="Caso siguiente">→</button>
-    </div>
+  <div class="container cx__nav">
+    <button type="button" class="circle-btn" id="cxPrev" aria-label="Caso anterior">←</button>
+    <div class="cx__tabs"><button type="button" class="cx__tab is-on" data-i="0" aria-current="true"><span>01</span>CRM</button><button type="button" class="cx__tab" data-i="1" aria-current="false"><span>02</span>Marketing</button><button type="button" class="cx__tab" data-i="2" aria-current="false"><span>03</span>Páginas web</button><button type="button" class="cx__tab" data-i="3" aria-current="false"><span>04</span>Cotizador</button></div>
+    <button type="button" class="circle-btn" id="cxNext" aria-label="Caso siguiente">→</button>
   </div>
 </section>
 
@@ -509,7 +373,7 @@
   </div>
   <div class="container grid manifesto-band__in">
     <p class="eyebrow col-label" data-reveal>Nosotros</p>
-    <h2 data-split class="manifesto col-main" data-reveal>La tecnología va detrás. <em>La solución, al frente.</em></h2>
+    <h2 data-split class="manifesto col-main" data-reveal>Soluciones inteligentes. <em>Resultados reales.</em></h2>
   </div>
 </section>
 
@@ -639,8 +503,8 @@
   </div>
 </footer>
 
-<script src="js/i18n-en.js?v=20261018g" defer></script>
-<script src="js/i18n.js?v=20261018g" defer></script>
-<script src="js/main.js?v=20261018g" defer></script>
+<script src="js/i18n-en.js?v=20261018h" defer></script>
+<script src="js/i18n.js?v=20261018h" defer></script>
+<script src="js/main.js?v=20261018h" defer></script>
 </body>
 </html>

@@ -411,6 +411,64 @@
     updateCases();
   }
 
+  /* ---------- Casos a pantalla completa: se desliza a los lados (flechas, pestañas, teclado y arrastre) ---------- */
+  var cxTrack = document.getElementById('cxTrack');
+  if (cxTrack) {
+    var cxSlides = Array.prototype.slice.call(cxTrack.querySelectorAll('.cx__slide'));
+    var cxTabs = Array.prototype.slice.call(document.querySelectorAll('.cx__tab'));
+    var cxIndex = 0;
+    var cxSet = function (i) {
+      if (i === cxIndex && cxSlides[i].classList.contains('is-active')) return;
+      cxIndex = i;
+      cxSlides.forEach(function (sl, k) { sl.classList.toggle('is-active', k === i); });
+      cxTabs.forEach(function (t, k) { t.classList.toggle('is-on', k === i); t.setAttribute('aria-current', String(k === i)); });
+    };
+    var cxGo = function (i) {
+      i = (i + cxSlides.length) % cxSlides.length;
+      cxTrack.scrollTo({ left: i * cxTrack.clientWidth, behavior: reduceMotion ? 'auto' : 'smooth' });
+      cxSet(i);
+    };
+    var cxTick = false;
+    cxTrack.addEventListener('scroll', function () {
+      if (cxTick) return;
+      cxTick = true;
+      requestAnimationFrame(function () {
+        cxTick = false;
+        var i = Math.round(cxTrack.scrollLeft / Math.max(1, cxTrack.clientWidth));
+        if (i !== cxIndex) cxSet(Math.max(0, Math.min(cxSlides.length - 1, i)));
+      });
+    }, { passive: true });
+    document.getElementById('cxPrev').addEventListener('click', function () { cxGo(cxIndex - 1); });
+    document.getElementById('cxNext').addEventListener('click', function () { cxGo(cxIndex + 1); });
+    cxTabs.forEach(function (t, k) { t.addEventListener('click', function () { cxGo(k); }); });
+    cxTrack.addEventListener('keydown', function (e) {
+      if (e.key === 'ArrowRight') { e.preventDefault(); cxGo(cxIndex + 1); }
+      if (e.key === 'ArrowLeft') { e.preventDefault(); cxGo(cxIndex - 1); }
+    });
+    // Arrastre con el mouse (en pantallas táctiles el deslizamiento es nativo)
+    var cxDown = false, cxX = 0, cxLeft = 0, cxMoved = false;
+    cxTrack.addEventListener('pointerdown', function (e) {
+      if (e.pointerType !== 'mouse' || e.button !== 0) return;
+      cxDown = true; cxMoved = false; cxX = e.clientX; cxLeft = cxTrack.scrollLeft;
+    });
+    window.addEventListener('pointermove', function (e) {
+      if (!cxDown) return;
+      var dx = e.clientX - cxX;
+      if (!cxMoved && Math.abs(dx) > 6) { cxMoved = true; cxTrack.classList.add('is-dragging'); }
+      if (cxMoved) cxTrack.scrollLeft = cxLeft - dx;
+    });
+    window.addEventListener('pointerup', function (e) {
+      if (!cxDown) return;
+      cxDown = false;
+      if (!cxMoved) return;
+      cxTrack.classList.remove('is-dragging');
+      var dx = e.clientX - cxX, w = cxTrack.clientWidth;
+      var start = Math.round(cxLeft / w);
+      cxGo(Math.abs(dx) > w * 0.12 ? start + (dx < 0 ? 1 : -1) : start);
+    });
+    window.addEventListener('resize', function () { cxTrack.scrollLeft = cxIndex * cxTrack.clientWidth; });
+  }
+
   /* ---------- Conversación de ejemplo: se reproduce al entrar en pantalla ---------- */
   var showcase = document.querySelector('.showcase');
   if (showcase && 'IntersectionObserver' in window) {
