@@ -1935,3 +1935,12 @@ html { scroll-padding-top: 0; }
 @media (max-width: 640px) { .cx__blob { width: calc(min(58svh, 470px) * .85); } }
 .cx__slide { overflow: hidden; }
 @media (max-width: 640px) { .cx__blob { width: calc(min(58svh, 470px) * .66); } }
+
+/* ---------- Contacto: texto a la izquierda y formulario arriba a la derecha ---------- */
+@media (min-width: 901px) {
+  .contact .grid { row-gap: 0; align-items: start; }
+  .contact .col-label { grid-column: 1 / span 6; grid-row: 1; padding-top: 0; margin-bottom: 22px; }
+  .contact h2.col-main { grid-column: 1 / span 6; grid-row: 2; }
+  .contact__info { grid-column: 1 / span 5; grid-row: 3; margin-top: clamp(28px, 3vw, 44px); }
+  .contact .form { grid-column: 8 / -1; grid-row: 1 / span 3; align-self: start; }
+}
