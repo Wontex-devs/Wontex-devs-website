@@ -14,7 +14,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400..800&family=Source+Serif+4:ital,opsz,wght@0,8..60,300..600;1,8..60,300..500&display=swap">
-  <link rel="stylesheet" href="css/styles.css?v=20261018h">
+  <link rel="stylesheet" href="css/styles.css?v=20261018j">
   <script>
     // Activa la animación de entrada del logo (se omite si el visitante prefiere menos movimiento)
     // Al recargar, empezar siempre desde arriba (sin restaurar scroll ni saltar a #secciones)
@@ -229,21 +229,41 @@
   <div class="cx__track" id="cxTrack" tabindex="0" aria-label="Casos, desplazamiento horizontal">
     <article class="cx__slide is-active" id="caso-crm" aria-label="CRM">
       <div class="container cx__in">
-        <header class="cx__head"><p class="eyebrow cx__eyebrow">Caso 01 · CRM para tu negocio</p><h2 class="cx__title">Cada cliente y cada venta, en orden<i class="dot">.</i></h2></header>
+        <header class="cx__head"><p class="eyebrow cx__eyebrow">CRM para tu negocio</p><h2 class="cx__title">Cada cliente y cada venta, en orden<i class="dot">.</i></h2></header>
         <div class="cx__body">
           <ul class="cx__pts cx__pts--l"><li><span class="cx__ico" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20c.8-3.6 3.4-5.5 6.5-5.5s5.7 1.9 6.5 5.5"/><path d="M16 4.6a3.5 3.5 0 0 1 0 6.8M18 14.8c1.9.7 3.1 2.4 3.5 5.2"/></svg></span><span class="cx__pt"><b>Todos tus clientes en un lugar</b><span>Datos de contacto, compras y conversaciones en una sola ficha.</span></span></li><li><span class="cx__ico" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="5" height="16" rx="1.5"/><rect x="10" y="4" width="5" height="11" rx="1.5"/><rect x="17" y="4" width="4" height="7" rx="1.5"/></svg></span><span class="cx__pt"><b>Etapas de venta claras</b><span>Ves qué oportunidades están en contacto, cotización o cierre.</span></span></li><li><span class="cx__ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M6 16v-5a6 6 0 0 1 12 0v5l1.5 2h-15z"/><path d="M10 20.5a2 2 0 0 0 4 0"/></svg></span><span class="cx__pt"><b>Seguimientos sin olvidos</b><span>Tareas y recordatorios para cada cliente, con fecha y responsable.</span></span></li></ul>
-          <div class="cx__stage"><svg class="cx__blob" viewBox="0 0 400 440" aria-hidden="true"><path d="M214 18c62 6 128 40 156 104 30 70 4 150-22 206-28 60-82 104-150 108-70 4-138-34-170-96C-4 280 8 190 40 124 74 56 150 12 214 18z"/></svg><div class="cx__phone" aria-hidden="true"><div class="cx__screen">
-              <div class="ui ui--crm"><div class="ui-status"><span>9:41</span><span class="ui-sig"><i></i><i></i><i></i><b></b></span></div>
-                <div class="crm-top"><div><small>Hola, Daniela</small><b>Tus ventas</b></div><span class="crm-av">DG</span></div>
-                <div class="crm-stages"><span class="is-on">Nuevos <em>12</em></span><span>Cotización <em>5</em></span><span>Cierre <em>3</em></span></div>
-                <div class="crm-cards">
-                  <div class="crm-card"><div class="crm-row"><b>Laura Gómez</b><span class="crm-pill">Nuevo</span></div><small>Café Origen · WhatsApp</small><div class="crm-row"><span class="crm-val">$ 1.850.000</span><span class="crm-task">Llamar hoy</span></div></div>
-                  <div class="crm-card"><div class="crm-row"><b>Andrés Ruiz</b><span class="crm-pill crm-pill--q">Cotización</span></div><small>Distribuidora Sur · Sitio web</small><div class="crm-row"><span class="crm-val">$ 4.200.000</span><span class="crm-task">Enviar propuesta</span></div></div>
-                  <div class="crm-card"><div class="crm-row"><b>Marta Díaz</b><span class="crm-pill crm-pill--c">Cierre</span></div><small>Clínica Vida · Instagram</small><div class="crm-row"><span class="crm-val">$ 2.600.000</span><span class="crm-task">Firmar mañana</span></div></div>
-                  <div class="crm-card"><div class="crm-row"><b>Julián Ortiz</b><span class="crm-pill">Nuevo</span></div><small>Taller Norte · Referido</small><div class="crm-row"><span class="crm-val">$ 980.000</span><span class="crm-task">Primer contacto</span></div></div>
+          <div class="cx__stage"><svg class="cx__blob" viewBox="0 0 400 440" aria-hidden="true"><path d="M214 18c62 6 128 40 156 104 30 70 4 150-22 206-28 60-82 104-150 108-70 4-138-34-170-96C-4 280 8 190 40 124 74 56 150 12 214 18z"/></svg><p class="cx__step"><b><span class="cx__step-n">1</span><span class="cx__step-of">/4</span></b><span class="cx__step-t">Llega un mensaje por WhatsApp</span></p><div class="cx__phone" aria-hidden="true"><div class="cx__screen">
+              <div class="ui ui--crm" data-flow="crm"><div class="ui-status"><span>9:41</span><span class="ui-sig"><i></i><i></i><i></i><b></b></span></div>
+                <div class="sc sc-chat">
+                  <div class="wa-top"><span class="wa-av">LG</span><span><b>Laura Gómez</b><small>en línea</small></span></div>
+                  <div class="wa-body">
+                    <span class="wa-day">Hoy</span>
+                    <div class="bub bub--in pop m1">Hola, ¿tienen disponibles 20 cajas de café para esta semana?<i>10:24</i></div>
+                    <div class="wa-typing pop t1"><i></i><i></i><i></i></div>
+                    <div class="bub bub--out pop m2"><span class="bub-tag">Respuesta automática</span>¡Hola, Laura! Gracias por escribirnos. Ya registramos tu solicitud y un asesor te confirma en unos minutos.<i>10:24</i></div>
+                  </div>
+                  <div class="wa-input"><span>Mensaje</span><b><svg viewBox="0 0 24 24"><path d="m4 12 16-8-6 16-2.5-6.5z"/></svg></b></div>
                 </div>
-                <div class="ui-toast"><span class="ui-toast__dot"></span><span><b>Nuevo prospecto</b><small>Registrado desde tu sitio web</small></span></div>
-                <div class="ui-tabbar"><i class="is-on"></i><i></i><i></i><i></i></div>
+                <div class="sc sc-new">
+                  <div class="crm-h"><small>CRM</small><b>Nuevo contacto</b><span class="crm-src pop f0">Desde WhatsApp</span></div>
+                  <div class="crm-form">
+                    <div class="crm-f pop f1"><small>Nombre</small><span>Laura Gómez</span></div>
+                    <div class="crm-f pop f2"><small>Teléfono</small><span>+57 300 482 1190</span></div>
+                    <div class="crm-f pop f3"><small>Interés</small><span>Café · 20 cajas</span></div>
+                    <div class="crm-f pop f4"><small>Etapa</small><span><em class="crm-pill">Nuevo</em></span></div>
+                  </div>
+                  <div class="crm-saved pop f5"><span class="q-ok"><svg viewBox="0 0 24 24"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg></span>Contacto guardado</div>
+                </div>
+                <div class="sc sc-pipe">
+                  <div class="crm-top"><div><small>Hola, Daniela</small><b>Tus ventas</b></div><span class="crm-av">DG</span></div>
+                  <div class="crm-stages"><span class="is-on">Nuevos</span><span>Cotización</span><span>Cierre</span></div>
+                  <div class="crm-cards">
+                    <div class="crm-card crm-card--new pop p1"><div class="crm-row"><b>Laura Gómez</b><span class="crm-pill">Nuevo</span></div><small>Café Origen · WhatsApp</small><div class="crm-row"><span class="crm-val">Café · 20 cajas</span><span class="crm-task">Llamar hoy · 11:00</span></div></div>
+                    <div class="crm-card"><div class="crm-row"><b>Andrés Ruiz</b><span class="crm-pill crm-pill--q">Cotización</span></div><small>Distribuidora Sur · Sitio web</small><div class="crm-row"><span class="crm-val">Pedido mensual</span><span class="crm-task">Enviar propuesta</span></div></div>
+                    <div class="crm-card"><div class="crm-row"><b>Marta Díaz</b><span class="crm-pill crm-pill--c">Cierre</span></div><small>Clínica Vida · Instagram</small><div class="crm-row"><span class="crm-val">Plan anual</span><span class="crm-task">Firmar mañana</span></div></div>
+                  </div>
+                  <div class="ui-note pop p2"><span class="ui-note__dot"></span><span><b>Seguimiento asignado</b><small>Daniela llama a Laura hoy a las 11:00</small></span></div>
+                </div>
               </div>
             </div></div></div>
           <ul class="cx__pts cx__pts--r"><li><span class="cx__ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 13h5l1.5 3h5l1.5-3h5"/><path d="M5 13 7 5h10l2 8v6H5z"/></svg></span><span class="cx__pt"><b>Prospectos registrados</b><span>Los contactos que llegan por tu web y tus formularios quedan guardados.</span></span></li><li><span class="cx__ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 4v16h16"/><path d="M8 16v-5M12 16V8M16 16v-3"/></svg></span><span class="cx__pt"><b>Reportes de ventas</b><span>Cuántos prospectos llegan, cuántos avanzan y dónde se detienen.</span></span></li><li><span class="cx__ico" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="5" y="10.5" width="14" height="10" rx="2"/><path d="M8 10.5v-3a4 4 0 0 1 8 0v3"/></svg></span><span class="cx__pt"><b>Acceso por roles</b><span>Cada vendedor ve su cartera y la gerencia ve el panorama completo.</span></span></li></ul>
@@ -252,16 +272,37 @@
     </article>
     <article class="cx__slide" id="caso-reel" aria-label="Marketing">
       <div class="container cx__in">
-        <header class="cx__head"><p class="eyebrow cx__eyebrow">Caso 02 · Marketing de contenido</p><h2 class="cx__title">Contenido que detiene el scroll<i class="dot">.</i></h2></header>
+        <header class="cx__head"><p class="eyebrow cx__eyebrow">Marketing de contenido</p><h2 class="cx__title">Contenido que detiene el scroll<i class="dot">.</i></h2></header>
         <div class="cx__body">
           <ul class="cx__pts cx__pts--l"><li><span class="cx__ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3a9 9 0 1 0 0 18c1.2 0 1.8-.8 1.8-1.7 0-1.3-1.1-1.7-1.1-2.8 0-1 .8-1.5 1.8-1.5H17a4 4 0 0 0 4-4c0-4.4-4-8-9-8z"/><circle cx="7.5" cy="11" r="1"/><circle cx="10" cy="7" r="1"/><circle cx="15" cy="7.5" r="1"/></svg></span><span class="cx__pt"><b>Identidad en cada pieza</b><span>Colores, tipografía y tono iguales en todas tus redes.</span></span></li><li><span class="cx__ico" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="6" width="9" height="12" rx="1.5"/><rect x="14" y="3" width="7" height="18" rx="1.5"/></svg></span><span class="cx__pt"><b>Formatos para cada red</b><span>Reels, historias, carruseles y publicaciones en la medida correcta.</span></span></li><li><span class="cx__ico" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="6" width="13" height="12" rx="2"/><path d="m16 10.5 5-3v9l-5-3"/></svg></span><span class="cx__pt"><b>Videos de producto con IA</b><span>Escenas y anuncios creados a partir de tu producto real.</span></span></li></ul>
-          <div class="cx__stage"><svg class="cx__blob" viewBox="0 0 400 440" aria-hidden="true"><path d="M214 18c62 6 128 40 156 104 30 70 4 150-22 206-28 60-82 104-150 108-70 4-138-34-170-96C-4 280 8 190 40 124 74 56 150 12 214 18z"/></svg><div class="cx__phone" aria-hidden="true"><div class="cx__screen">
-              <div class="ui ui--reel">
-                <div class="reel-imgs"><img src="assets/img/ads/noir.jpg" alt="" loading="lazy"><img src="assets/img/ads/volt.jpg" alt="" loading="lazy"><img src="assets/img/ads/aura.jpg" alt="" loading="lazy"></div>
-                <div class="ui-status"><span>9:41</span><span class="ui-sig"><i></i><i></i><i></i><b></b></span></div>
-                <div class="reel-bars"><i></i><i></i><i></i></div>
-                <div class="reel-side"><span><svg viewBox="0 0 24 24"><path d="M12 20s-7.5-4.4-7.5-10A4.3 4.3 0 0 1 12 7.4 4.3 4.3 0 0 1 19.5 10c0 5.6-7.5 10-7.5 10z"/></svg></span><span><svg viewBox="0 0 24 24"><path d="M4 5h16v11H9l-5 4z"/></svg></span><span><svg viewBox="0 0 24 24"><path d="m4 12 16-8-6 16-2.5-6.5z"/></svg></span></div>
-                <div class="reel-cap"><span class="reel-user"><i></i>tu.marca</span><p>Nueva colección, disponible esta semana.</p><span class="reel-cta">Comprar ahora</span></div>
+          <div class="cx__stage"><svg class="cx__blob" viewBox="0 0 400 440" aria-hidden="true"><path d="M214 18c62 6 128 40 156 104 30 70 4 150-22 206-28 60-82 104-150 108-70 4-138-34-170-96C-4 280 8 190 40 124 74 56 150 12 214 18z"/></svg><p class="cx__step"><b><span class="cx__step-n">1</span><span class="cx__step-of">/4</span></b><span class="cx__step-t">Planeamos el contenido</span></p><div class="cx__phone" aria-hidden="true"><div class="cx__screen">
+              <div class="ui ui--reel" data-flow="reel"><div class="ui-status"><span>9:41</span><span class="ui-sig"><i></i><i></i><i></i><b></b></span></div>
+                <div class="sc sc-plan">
+                  <div class="mk-h"><small>Calendario de contenido</small><b>Esta semana</b></div>
+                  <div class="mk-week"><span>13</span><span>14</span><span>15</span><span>16</span><span>17</span><span>18</span><span>19</span>
+                    <i></i><i><img class="pop k1" src="assets/img/ads/noir.jpg" alt="" loading="lazy"></i><i></i><i><img class="pop k2" src="assets/img/ads/volt.jpg" alt="" loading="lazy"></i><i></i><i><img class="pop k3" src="assets/img/ads/aura.jpg" alt="" loading="lazy"></i><i></i></div>
+                  <div class="mk-list">
+                    <div class="mk-item pop k1"><b>Martes</b><span>Reel · Lanzamiento</span></div>
+                    <div class="mk-item pop k2"><b>Jueves</b><span>Historia · Promoción</span></div>
+                    <div class="mk-item pop k3"><b>Sábado</b><span>Carrusel · Producto</span></div>
+                  </div>
+                </div>
+                <div class="sc sc-make">
+                  <div class="mk-h"><small>Pieza para Instagram · 9:16</small><b>Creando el reel</b></div>
+                  <div class="mk-canvas"><img class="mk-img" src="assets/img/ads/noir.jpg" alt="" loading="lazy"><span class="mk-scan"></span></div>
+                  <div class="mk-bar"><i></i></div>
+                  <div class="mk-done pop g2"><span class="q-ok"><svg viewBox="0 0 24 24"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg></span>Listo para publicar</div>
+                </div>
+                <div class="sc sc-post">
+                  <div class="reel-imgs"><img src="assets/img/ads/noir.jpg" alt="" loading="lazy"></div>
+                  <div class="reel-side"><span><svg viewBox="0 0 24 24"><path d="M12 20s-7.5-4.4-7.5-10A4.3 4.3 0 0 1 12 7.4 4.3 4.3 0 0 1 19.5 10c0 5.6-7.5 10-7.5 10z"/></svg></span><span><svg viewBox="0 0 24 24"><path d="M4 5h16v11H9l-5 4z"/></svg></span><span><svg viewBox="0 0 24 24"><path d="m4 12 16-8-6 16-2.5-6.5z"/></svg></span></div>
+                  <div class="reel-cap"><span class="reel-user"><i></i>tu.marca</span><p>Nueva colección, disponible esta semana.</p><span class="reel-cta">Comprar ahora</span></div>
+                  <div class="mk-notes">
+                    <div class="mk-note pop n1"><b>♥</b><span>A 248 personas les gusta</span></div>
+                    <div class="mk-note pop n2"><b>@</b><span>Nuevo mensaje: «¿Hacen envíos a Cali?»</span></div>
+                    <div class="mk-note pop n3"><b>+</b><span>36 nuevos seguidores</span></div>
+                  </div>
+                </div>
               </div>
             </div></div></div>
           <ul class="cx__pts cx__pts--r"><li><span class="cx__ico" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3.5" y="5" width="17" height="15" rx="2"/><path d="M3.5 10h17M8 3v4M16 3v4"/></svg></span><span class="cx__pt"><b>Calendario de publicaciones</b><span>Un plan mensual para publicar con constancia.</span></span></li><li><span class="cx__ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 10v4h3l7 4V6l-7 4z"/><path d="M17 9a4 4 0 0 1 0 6"/></svg></span><span class="cx__pt"><b>Piezas para campañas</b><span>Todo lo de una promoción: publicaciones, historias y anuncios.</span></span></li><li><span class="cx__ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 20h4L19 9l-4-4L4 16z"/><path d="m13.5 6.5 4 4"/></svg></span><span class="cx__pt"><b>Textos que venden</b><span>Mensajes claros y una invitación a actuar en cada publicación.</span></span></li></ul>
@@ -270,19 +311,39 @@
     </article>
     <article class="cx__slide" id="caso-web" aria-label="Páginas web">
       <div class="container cx__in">
-        <header class="cx__head"><p class="eyebrow cx__eyebrow">Caso 03 · Páginas web</p><h2 class="cx__title">Un sitio web que trabaja por ti<i class="dot">.</i></h2></header>
+        <header class="cx__head"><p class="eyebrow cx__eyebrow">Páginas web</p><h2 class="cx__title">Un sitio web que trabaja por ti<i class="dot">.</i></h2></header>
         <div class="cx__body">
           <ul class="cx__pts cx__pts--l"><li><span class="cx__ico" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="7" y="2.5" width="10" height="19" rx="2.5"/><path d="M11 18.5h2"/></svg></span><span class="cx__pt"><b>Pensado para el celular</b><span>Se ve y funciona bien en cualquier pantalla.</span></span></li><li><span class="cx__ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M13 2 4 14h7l-1 8 9-12h-7z"/></svg></span><span class="cx__pt"><b>Carga rápida</b><span>Imágenes optimizadas y código liviano.</span></span></li><li><span class="cx__ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 5h16v11H9l-5 4z"/></svg></span><span class="cx__pt"><b>Contacto a un clic</b><span>Botón de WhatsApp y formularios visibles en todo el sitio.</span></span></li></ul>
-          <div class="cx__stage"><svg class="cx__blob" viewBox="0 0 400 440" aria-hidden="true"><path d="M214 18c62 6 128 40 156 104 30 70 4 150-22 206-28 60-82 104-150 108-70 4-138-34-170-96C-4 280 8 190 40 124 74 56 150 12 214 18z"/></svg><div class="cx__phone" aria-hidden="true"><div class="cx__screen">
-              <div class="ui ui--web"><div class="ui-status"><span>9:41</span><span class="ui-sig"><i></i><i></i><i></i><b></b></span></div>
-                <div class="web-view"><div class="web-scroll">
-                  <div class="web-nav"><b>ARCA<i>.</i></b><span class="web-burger"><i></i><i></i></span></div>
-                  <div class="web-hero"><img src="assets/img/arca/arca-hero.jpg" alt="" loading="lazy"><div><small>Estudio de arquitectura</small><b>Espacios que se habitan con calma.</b><span class="web-btn">Agenda una visita</span></div></div>
-                  <p class="web-h">Proyectos</p>
-                  <div class="web-grid"><img src="assets/img/arca/arca-1.jpg" alt="" loading="lazy"><img src="assets/img/arca/arca-2.jpg" alt="" loading="lazy"><img src="assets/img/arca/arca-3.jpg" alt="" loading="lazy"><img src="assets/img/arca/arca-hero.jpg" alt="" loading="lazy"></div>
-                  <div class="web-form"><b>Hablemos de tu proyecto</b><i></i><i></i><span class="web-btn">Enviar</span></div>
-                </div></div>
-                <span class="web-wa"><svg viewBox="0 0 24 24"><path d="M4 5h16v11H9l-5 4z"/></svg></span>
+          <div class="cx__stage"><svg class="cx__blob" viewBox="0 0 400 440" aria-hidden="true"><path d="M214 18c62 6 128 40 156 104 30 70 4 150-22 206-28 60-82 104-150 108-70 4-138-34-170-96C-4 280 8 190 40 124 74 56 150 12 214 18z"/></svg><p class="cx__step"><b><span class="cx__step-n">1</span><span class="cx__step-of">/4</span></b><span class="cx__step-t">Un cliente te encuentra en internet</span></p><div class="cx__phone" aria-hidden="true"><div class="cx__screen">
+              <div class="ui ui--web" data-flow="web"><div class="ui-status"><span>9:41</span><span class="ui-sig"><i></i><i></i><i></i><b></b></span></div>
+                <div class="sc sc-search">
+                  <div class="se-bar"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="6.5"/><path d="m16 16 4.5 4.5"/></svg><span>estudio de arquitectura medellín</span></div>
+                  <div class="se-res se-res--top pop r1"><small>arcaestudio.co</small><b>Arca Estudio · Arquitectura en Medellín</b><span>Diseñamos casas y espacios que se habitan con calma. Agenda una visita.</span><i class="tap-dot"></i></div>
+                  <div class="se-res pop r2"><small>ejemplo.com</small><b class="se-ph"></b><span class="se-ph se-ph--s"></span></div>
+                  <div class="se-res pop r2"><small>ejemplo.org</small><b class="se-ph"></b><span class="se-ph se-ph--s"></span></div>
+                </div>
+                <div class="sc sc-site">
+                  <div class="web-view"><div class="web-scroll">
+                    <div class="web-nav"><b>ARCA<i>.</i></b><span class="web-burger"><i></i><i></i></span></div>
+                    <div class="web-hero"><img src="assets/img/arca/arca-hero.jpg" alt="" loading="lazy"><div><small>Estudio de arquitectura</small><b>Espacios que se habitan con calma.</b><span class="web-btn">Agenda una visita</span></div></div>
+                    <p class="web-h">Proyectos</p>
+                    <div class="web-grid"><img src="assets/img/arca/arca-1.jpg" alt="" loading="lazy"><img src="assets/img/arca/arca-2.jpg" alt="" loading="lazy"><img src="assets/img/arca/arca-3.jpg" alt="" loading="lazy"><img src="assets/img/arca/arca-hero.jpg" alt="" loading="lazy"></div>
+                    <div class="web-form"><b>Hablemos de tu proyecto</b><span class="web-in"><em class="pop w1">Camila Restrepo</em></span><span class="web-in web-in--tall"><em class="pop w2">Quiero diseñar mi casa en Envigado.</em></span><span class="web-btn web-send">Enviar</span></div>
+                    <p class="web-foot">Sitio web creado por <b>Frame Works</b></p>
+                  </div></div>
+                  <span class="web-wa"><svg viewBox="0 0 24 24"><path d="M4 5h16v11H9l-5 4z"/></svg></span>
+                </div>
+                <div class="sc sc-lead">
+                  <div class="mk-h"><small>Bandeja de entrada</small><b>Solicitudes</b></div>
+                  <div class="ld-item ld-item--new pop l1"><span class="ld-av">CR</span><span><b>Camila Restrepo</b><small>Quiero diseñar mi casa en Envigado.</small><em>Desde tu sitio web · ahora</em></span></div>
+                  <div class="ld-item"><span class="ld-av">JM</span><span><b>Juan Mejía</b><small>Remodelación de oficina</small><em>Desde tu sitio web · ayer</em></span></div>
+                  <div class="ui-note pop l2"><span class="ui-note__dot"></span><span><b>Nueva solicitud</b><small>Te llegó desde tu sitio web</small></span></div>
+                </div>
+                <div class="sc sc-brand">
+                  <img class="fw-logo" src="assets/img/logo/logo-una-linea.png" alt="Frame Works" loading="lazy">
+                  <p class="fw-made">Este sitio web lo creó<br><b>Frame Works</b></p>
+                  <span class="fw-tag">Diseño · Desarrollo · Publicación</span>
+                </div>
               </div>
             </div></div></div>
           <ul class="cx__pts cx__pts--r"><li><span class="cx__ico" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="6.5"/><path d="m16 16 4.5 4.5"/></svg></span><span class="cx__pt"><b>Listo para Google</b><span>Títulos, descripciones y estructura con SEO básico.</span></span></li><li><span class="cx__ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 7h10M18 7h2M4 17h4M12 17h8"/><circle cx="16" cy="7" r="2"/><circle cx="10" cy="17" r="2"/></svg></span><span class="cx__pt"><b>Fácil de actualizar</b><span>Cambias textos y fotos sin depender de nadie.</span></span></li><li><span class="cx__ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M2.5 12S6 5.5 12 5.5 21.5 12 21.5 12 18 18.5 12 18.5 2.5 12 2.5 12z"/><circle cx="12" cy="12" r="3"/></svg></span><span class="cx__pt"><b>Medición de visitas</b><span>Sabes cuántas personas entran y qué páginas ven.</span></span></li></ul>
@@ -291,31 +352,58 @@
     </article>
     <article class="cx__slide" id="caso-quote" aria-label="Cotizador">
       <div class="container cx__in">
-        <header class="cx__head"><p class="eyebrow cx__eyebrow">Caso 04 · Cotizador para una empresa industrial</p><h2 class="cx__title">Cotizaciones que llegan completas<i class="dot">.</i></h2></header>
+        <header class="cx__head"><p class="eyebrow cx__eyebrow">Cotizador para una empresa industrial</p><h2 class="cx__title">Cotizaciones profesionales en minutos<i class="dot">.</i></h2></header>
         <div class="cx__body">
-          <ul class="cx__pts cx__pts--l"><li><span class="cx__ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M10 6h10M10 12h10M10 18h10"/><path d="m3.5 6 1.2 1.2L7 5M3.5 12l1.2 1.2L7 11M3.5 18l1.2 1.2L7 17"/></svg></span><span class="cx__pt"><b>Formulario guiado</b><span>El cliente elige el servicio y el formulario pide solo lo necesario.</span></span></li><li><span class="cx__ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m20 11.5-8.2 8.2a5 5 0 0 1-7.1-7.1l8.5-8.5a3.4 3.4 0 0 1 4.8 4.8l-8.4 8.4a1.7 1.7 0 0 1-2.4-2.4l7.7-7.7"/></svg></span><span class="cx__pt"><b>Planos adjuntos</b><span>Acepta archivos PDF, DWG, DXF o STEP junto con la solicitud.</span></span></li><li><span class="cx__ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 17 17 3l4 4L7 21z"/><path d="m7 13 2 2M10 10l2 2M13 7l2 2"/></svg></span><span class="cx__pt"><b>Datos técnicos completos</b><span>Material, espesor, cantidades, ciudad y fecha requerida.</span></span></li></ul>
-          <div class="cx__stage"><svg class="cx__blob" viewBox="0 0 400 440" aria-hidden="true"><path d="M214 18c62 6 128 40 156 104 30 70 4 150-22 206-28 60-82 104-150 108-70 4-138-34-170-96C-4 280 8 190 40 124 74 56 150 12 214 18z"/></svg><div class="cx__phone" aria-hidden="true"><div class="cx__screen">
-              <div class="ui ui--quote"><div class="ui-status"><span>9:41</span><span class="ui-sig"><i></i><i></i><i></i><b></b></span></div>
-                <div class="q-head"><small>Paso 2 de 3</small><b>Solicitar cotización</b><div class="q-steps"><i class="is-done"></i><i class="is-on"></i><i></i></div></div>
-                <div class="q-body">
-                  <div class="q-field"><small>Servicio</small><span>Corte láser</span></div>
-                  <div class="q-row"><div class="q-field"><small>Material</small><span>Acero inoxidable</span></div><div class="q-field"><small>Espesor</small><span>3 mm</span></div></div>
-                  <div class="q-row"><div class="q-field"><small>Cantidad</small><span>250 unidades</span></div><div class="q-field"><small>Ciudad</small><span>Medellín</span></div></div>
-                  <div class="q-file"><span class="q-file__ic">DXF</span><span><b>soporte-base.dxf</b><small>1,2 MB · cargado</small></span><span class="q-ok"><svg viewBox="0 0 24 24"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg></span></div>
-                  <span class="q-btn">Enviar solicitud</span>
+          <ul class="cx__pts cx__pts--l"><li><span class="cx__ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M10 6h10M10 12h10M10 18h10"/><path d="m3.5 6 1.2 1.2L7 5M3.5 12l1.2 1.2L7 11M3.5 18l1.2 1.2L7 17"/></svg></span><span class="cx__pt"><b>Consecutivo automático</b><span>Cada cotización recibe su número y queda guardada.</span></span></li><li><span class="cx__ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 7h10M18 7h2M4 17h4M12 17h8"/><circle cx="16" cy="7" r="2"/><circle cx="10" cy="17" r="2"/></svg></span><span class="cx__pt"><b>Servicios e ítems listos</b><span>Eliges el servicio y agregas ítems con cantidad y costo.</span></span></li><li><span class="cx__ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 4v16h16"/><path d="M8 16v-5M12 16V8M16 16v-3"/></svg></span><span class="cx__pt"><b>Totales sin errores</b><span>Subtotal, IVA y total se calculan solos.</span></span></li></ul>
+          <div class="cx__stage"><svg class="cx__blob" viewBox="0 0 400 440" aria-hidden="true"><path d="M214 18c62 6 128 40 156 104 30 70 4 150-22 206-28 60-82 104-150 108-70 4-138-34-170-96C-4 280 8 190 40 124 74 56 150 12 214 18z"/></svg><p class="cx__step"><b><span class="cx__step-n">1</span><span class="cx__step-of">/4</span></b><span class="cx__step-t">Registras el cliente</span></p><div class="cx__phone" aria-hidden="true"><div class="cx__screen">
+              <div class="ui ui--quote" data-flow="quote"><div class="ui-status"><span>9:41</span><span class="ui-sig"><i></i><i></i><i></i><b></b></span></div>
+                <div class="sc sc-q1">
+                  <div class="q-head"><small>Cotización COT-2026-0482</small><b>Datos del cliente</b><div class="q-steps"><i class="is-on"></i><i></i><i></i><i></i></div></div>
+                  <div class="q-body">
+                    <div class="q-field pop c1"><small>Empresa</small><span>Constructora Andina S.A.S.</span></div>
+                    <div class="q-row pop c2"><div class="q-field"><small>Dirigida a</small><span>Ing. Paula Restrepo</span></div><div class="q-field"><small>Ciudad</small><span>Medellín</span></div></div>
+                    <div class="q-field pop c3"><small>Asunto</small><span>Piezas metálicas según plano</span></div>
+                    <div class="q-auto pop c4"><span class="q-ok"><svg viewBox="0 0 24 24"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg></span>Consecutivo asignado automáticamente</div>
+                  </div>
                 </div>
-                <div class="ui-toast ui-toast--ok"><span class="ui-toast__dot"></span><span><b>Solicitud recibida</b><small>Un especialista la revisará</small></span></div>
+                <div class="sc sc-q2">
+                  <div class="q-head"><small>Servicio · Corte láser</small><b>Ítems</b><div class="q-steps"><i class="is-done"></i><i class="is-on"></i><i></i><i></i></div></div>
+                  <div class="q-body">
+                    <div class="q-item pop i1"><b>Corte láser · acero inox. 3 mm</b><span><em>250 und × $ 18.500</em><strong>$ 4.625.000</strong></span></div>
+                    <div class="q-item pop i2"><b>Plegado de piezas</b><span><em>250 und × $ 4.200</em><strong>$ 1.050.000</strong></span></div>
+                    <div class="q-tot pop i3"><span><em>Subtotal</em><strong>$ 5.675.000</strong></span><span><em>IVA 19 %</em><strong>$ 1.078.250</strong></span><span class="q-tot__t"><em>Total</em><strong>$ 6.753.250</strong></span></div>
+                  </div>
+                </div>
+                <div class="sc sc-q3">
+                  <div class="q-head"><small>Biblioteca de textos</small><b>Condiciones</b><div class="q-steps"><i class="is-done"></i><i class="is-done"></i><i class="is-on"></i><i></i></div></div>
+                  <div class="q-body">
+                    <div class="q-chk pop h1"><span class="q-box"><svg viewBox="0 0 24 24"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg></span>Incluye transporte a obra</div>
+                    <div class="q-chk pop h2"><span class="q-box"><svg viewBox="0 0 24 24"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg></span>Garantía de 12 meses</div>
+                    <div class="q-chk pop h3"><span class="q-box"><svg viewBox="0 0 24 24"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg></span>Validez de la oferta: 30 días</div>
+                    <div class="q-chk pop h4"><span class="q-box"><svg viewBox="0 0 24 24"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg></span>Bloque de aceptación del cliente</div>
+                    <span class="q-btn">Generar cotización<i class="tap-dot"></i></span>
+                  </div>
+                </div>
+                <div class="sc sc-q4">
+                  <div class="pdf">
+                    <div class="pdf-top"><span class="pdf-logo">TU LOGO</span><span class="pdf-no"><small>Cotización</small><b>COT-2026-0482</b></span></div>
+                    <small class="pdf-k">Propuesta comercial</small>
+                    <b class="pdf-t">Piezas metálicas según plano</b>
+                    <div class="pdf-meta"><span><small>Cliente</small>Constructora Andina S.A.S.</span><span><small>Ciudad</small>Medellín</span></div>
+                    <div class="pdf-rows"><span><em>Corte láser</em><strong>$ 4.625.000</strong></span><span><em>Plegado</em><strong>$ 1.050.000</strong></span><span class="pdf-rows__t"><em>Total</em><strong>$ 6.753.250</strong></span></div>
+                    <div class="pdf-sign"><i></i><small>Firma del estimador</small></div>
+                  </div>
+                  <div class="pdf-actions pop o1"><span class="pdf-btn">Descargar PDF</span><span class="pdf-btn pdf-btn--alt">Enviar</span></div>
+                </div>
               </div>
             </div></div></div>
-          <ul class="cx__pts cx__pts--r"><li><span class="cx__ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 13h5l1.5 3h5l1.5-3h5"/><path d="M5 13 7 5h10l2 8v6H5z"/></svg></span><span class="cx__pt"><b>Llega ordenada al equipo</b><span>Cada solicitud entra con todos sus datos, lista para revisar.</span></span></li><li><span class="cx__ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3 4.5 6v6c0 4.4 3.2 7.8 7.5 9 4.3-1.2 7.5-4.6 7.5-9V6z"/><path d="m8.8 12 2.2 2.2 4.3-4.4"/></svg></span><span class="cx__pt"><b>Revisión de un especialista</b><span>Una persona del equipo técnico valida la solicitud y prepara el precio.</span></span></li><li><span class="cx__ico" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="5" cy="12" r="2"/><circle cx="12" cy="12" r="2"/><circle cx="19" cy="12" r="2"/><path d="M7 12h3M14 12h3"/></svg></span><span class="cx__pt"><b>Seguimiento de cada solicitud</b><span>Sabes cuáles están pendientes, cotizadas o aprobadas.</span></span></li></ul>
+          <ul class="cx__pts cx__pts--r"><li><span class="cx__ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 20h4L19 9l-4-4L4 16z"/><path d="m13.5 6.5 4 4"/></svg></span><span class="cx__pt"><b>Condiciones a un clic</b><span>Garantía, inclusiones y exclusiones desde una biblioteca de textos.</span></span></li><li><span class="cx__ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3 4.5 6v6c0 4.4 3.2 7.8 7.5 9 4.3-1.2 7.5-4.6 7.5-9V6z"/><path d="m8.8 12 2.2 2.2 4.3-4.4"/></svg></span><span class="cx__pt"><b>PDF con tu marca</b><span>La propuesta sale con logo, firma y un diseño profesional.</span></span></li><li><span class="cx__ico" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="5" cy="12" r="2"/><circle cx="12" cy="12" r="2"/><circle cx="19" cy="12" r="2"/><path d="M7 12h3M14 12h3"/></svg></span><span class="cx__pt"><b>Historial de cotizaciones</b><span>Buscas, duplicas o editas propuestas anteriores.</span></span></li></ul>
         </div>
       </div>
     </article>
   </div>
   <div class="container cx__nav">
-    <button type="button" class="circle-btn" id="cxPrev" aria-label="Caso anterior">←</button>
-    <div class="cx__tabs"><button type="button" class="cx__tab is-on" data-i="0" aria-current="true"><span>01</span>CRM</button><button type="button" class="cx__tab" data-i="1" aria-current="false"><span>02</span>Marketing</button><button type="button" class="cx__tab" data-i="2" aria-current="false"><span>03</span>Páginas web</button><button type="button" class="cx__tab" data-i="3" aria-current="false"><span>04</span>Cotizador</button></div>
-    <button type="button" class="circle-btn" id="cxNext" aria-label="Caso siguiente">→</button>
+    <div class="cx__tabs"><button type="button" class="cx__tab is-on" data-i="0" aria-current="true">CRM</button><button type="button" class="cx__tab" data-i="1" aria-current="false">Marketing</button><button type="button" class="cx__tab" data-i="2" aria-current="false">Páginas web</button><button type="button" class="cx__tab" data-i="3" aria-current="false">Cotizador</button></div>
   </div>
 </section>
 
@@ -503,8 +591,8 @@
   </div>
 </footer>
 
-<script src="js/i18n-en.js?v=20261018h" defer></script>
-<script src="js/i18n.js?v=20261018h" defer></script>
-<script src="js/main.js?v=20261018h" defer></script>
+<script src="js/i18n-en.js?v=20261018j" defer></script>
+<script src="js/i18n.js?v=20261018j" defer></script>
+<script src="js/main.js?v=20261018j" defer></script>
 </body>
 </html>

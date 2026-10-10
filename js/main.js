@@ -411,17 +411,95 @@
     updateCases();
   }
 
-  /* ---------- Casos a pantalla completa: se desliza a los lados (flechas, pestañas, teclado y arrastre) ---------- */
+  /* ---------- Casos a pantalla completa: se desliza a los lados (pestañas, teclado y arrastre) ----------
+     Cada celular reproduce un flujo paso a paso. Las escenas (.sc) y piezas (.pop) cambian de clase según
+     una línea de tiempo; la etiqueta bajo el celular dice en qué paso va. */
   var cxTrack = document.getElementById('cxTrack');
   if (cxTrack) {
     var cxSlides = Array.prototype.slice.call(cxTrack.querySelectorAll('.cx__slide'));
     var cxTabs = Array.prototype.slice.call(document.querySelectorAll('.cx__tab'));
-    var cxIndex = 0;
+    var cxIndex = 0, cxVisible = false;
+
+    // [ms, selector, clase, quitar?]  ·  steps: ms en que empieza cada paso
+    var FLOWS = {
+      crm: { dur: 12500, steps: [0, 2900, 6300, 9000], ev: [
+        [0, '.sc-chat', 'on'], [300, '.t1', 'on'], [1400, '.t1', 'on', 1], [1400, '.m1', 'on'],
+        [2900, '.sc-chat', 'gone'], [2900, '.sc-new', 'on'], [3200, '.f0', 'on'], [3500, '.f1', 'on'], [3800, '.f2', 'on'], [4100, '.f3', 'on'], [4400, '.f4', 'on'], [5000, '.f5', 'on'],
+        [6300, '.sc-new', 'gone'], [6300, '.sc-chat', 'gone', 1], [6900, '.m2', 'on'],
+        [9000, '.sc-chat', 'gone'], [9000, '.sc-pipe', 'on'], [9400, '.p1', 'on'], [10200, '.p2', 'on']] },
+      reel: { dur: 12500, steps: [0, 3000, 6500, 8600], ev: [
+        [0, '.sc-plan', 'on'], [500, '.k1', 'on'], [900, '.k2', 'on'], [1300, '.k3', 'on'],
+        [3000, '.sc-plan', 'gone'], [3000, '.sc-make', 'on'], [3300, '.sc-make', 'run'], [5600, '.g2', 'on'],
+        [6500, '.sc-make', 'gone'], [6500, '.sc-post', 'on'], [8600, '.n1', 'on'], [9300, '.n2', 'on'], [10000, '.n3', 'on']] },
+      web: { dur: 14500, steps: [0, 2600, 6000, 8500, 11500], ev: [
+        [0, '.sc-search', 'on'], [300, '.r1', 'on'], [600, '.r2', 'on'], [1700, '.se-res--top', 'tap'],
+        [2600, '.sc-search', 'gone'], [2600, '.sc-site', 'on'], [3100, '.web-scroll', 's1'], [4700, '.web-scroll', 's2'],
+        [6000, '.w1', 'on'], [6700, '.w2', 'on'], [7600, '.web-send', 'tap'],
+        [8500, '.sc-site', 'gone'], [8500, '.sc-lead', 'on'], [8900, '.l1', 'on'], [9600, '.l2', 'on'],
+        [11500, '.sc-lead', 'gone'], [11500, '.sc-brand', 'on']] },
+      quote: { dur: 13000, steps: [0, 3000, 6200, 9000], ev: [
+        [0, '.sc-q1', 'on'], [300, '.c1', 'on'], [700, '.c2', 'on'], [1100, '.c3', 'on'], [1700, '.c4', 'on'],
+        [3000, '.sc-q1', 'gone'], [3000, '.sc-q2', 'on'], [3300, '.i1', 'on'], [3900, '.i2', 'on'], [4600, '.i3', 'on'],
+        [6200, '.sc-q2', 'gone'], [6200, '.sc-q3', 'on'], [6500, '.h1', 'on'], [6900, '.h2', 'on'], [7300, '.h3', 'on'], [7700, '.h4', 'on'], [8300, '.sc-q3 .q-btn', 'tap'],
+        [9000, '.sc-q3', 'gone'], [9000, '.sc-q4', 'on'], [9800, '.o1', 'on']] }
+    };
+    var FLOW_STEPS = {
+      crm: ['Llega un mensaje por WhatsApp', 'El CRM registra el contacto', 'Responde en automático', 'Queda asignado con su seguimiento'],
+      reel: ['Planeamos el contenido', 'Creamos la pieza con IA', 'Se publica en tus redes', 'Llegan reacciones y mensajes'],
+      web: ['Un cliente te encuentra en internet', 'Recorre tu sitio desde el celular', 'Te deja sus datos', 'La solicitud te llega al instante', 'Sitio web creado por Frame Works'],
+      quote: ['Registras el cliente', 'Agregas ítems y el total se calcula', 'Eliges las condiciones', 'La propuesta sale en PDF']
+    };
+    var FLOW_CLS = ['on', 'gone', 'tap', 'run', 's1', 's2'];
+    var flow = null;
+    var flowReset = function (ui) {
+      ui.querySelectorAll('.' + FLOW_CLS.join(',.')).forEach(function (el) {
+        FLOW_CLS.forEach(function (c) { el.classList.remove(c); });
+      });
+    };
+    var flowPill = function (slide, key, s) {
+      var pill = slide.querySelector('.cx__step');
+      if (!pill) return;
+      pill.classList.add('swap');
+      setTimeout(function () {
+        pill.querySelector('.cx__step-n').textContent = s + 1;
+        pill.querySelector('.cx__step-of').textContent = '/' + Math.min(4, FLOW_STEPS[key].length);
+        pill.classList.toggle('is-brand', s >= 4);
+        pill.querySelector('.cx__step-t').textContent = T(FLOW_STEPS[key][s]);
+        pill.classList.remove('swap');
+      }, 220);
+    };
+    var flowStop = function () {
+      if (flow) { cancelAnimationFrame(flow.raf); flow = null; }
+    };
+    var flowStart = function (slide) {
+      flowStop();
+      var ui = slide.querySelector('.ui[data-flow]');
+      if (!ui) return;
+      var key = ui.getAttribute('data-flow'), f = FLOWS[key];
+      var st = { t0: performance.now(), fired: 0, step: -1, raf: 0 };
+      flowReset(ui);
+      var frame = function (now) {
+        var t = now - st.t0;
+        if (t >= f.dur) { flowReset(ui); st.t0 = now; st.fired = 0; t = 0; }
+        while (st.fired < f.ev.length && f.ev[st.fired][0] <= t) {
+          var e = f.ev[st.fired++];
+          ui.querySelectorAll(e[1]).forEach(function (el) { el.classList[e[3] ? 'remove' : 'add'](e[2]); });
+        }
+        var s = 0;
+        for (var k = 0; k < f.steps.length; k++) if (t >= f.steps[k]) s = k;
+        if (s !== st.step) { st.step = s; flowPill(slide, key, s); }
+        st.raf = requestAnimationFrame(frame);
+      };
+      st.raf = requestAnimationFrame(frame);
+      flow = st;
+    };
+
     var cxSet = function (i) {
       if (i === cxIndex && cxSlides[i].classList.contains('is-active')) return;
       cxIndex = i;
       cxSlides.forEach(function (sl, k) { sl.classList.toggle('is-active', k === i); });
       cxTabs.forEach(function (t, k) { t.classList.toggle('is-on', k === i); t.setAttribute('aria-current', String(k === i)); });
+      if (cxVisible) flowStart(cxSlides[i]);
     };
     var cxGo = function (i) {
       i = (i + cxSlides.length) % cxSlides.length;
@@ -438,8 +516,6 @@
         if (i !== cxIndex) cxSet(Math.max(0, Math.min(cxSlides.length - 1, i)));
       });
     }, { passive: true });
-    document.getElementById('cxPrev').addEventListener('click', function () { cxGo(cxIndex - 1); });
-    document.getElementById('cxNext').addEventListener('click', function () { cxGo(cxIndex + 1); });
     cxTabs.forEach(function (t, k) { t.addEventListener('click', function () { cxGo(k); }); });
     cxTrack.addEventListener('keydown', function (e) {
       if (e.key === 'ArrowRight') { e.preventDefault(); cxGo(cxIndex + 1); }
@@ -467,6 +543,15 @@
       cxGo(Math.abs(dx) > w * 0.12 ? start + (dx < 0 ? 1 : -1) : start);
     });
     window.addEventListener('resize', function () { cxTrack.scrollLeft = cxIndex * cxTrack.clientWidth; });
+
+    // El flujo solo corre con la sección en pantalla; al cambiar de idioma vuelve a empezar
+    var cxSection = document.getElementById('casos');
+    var cxRun = function () { if (cxVisible && !document.hidden) flowStart(cxSlides[cxIndex]); else flowStop(); };
+    if ('IntersectionObserver' in window) {
+      new IntersectionObserver(function (en) { cxVisible = en[0].isIntersecting; cxRun(); }, { threshold: 0.25 }).observe(cxSection);
+    } else { cxVisible = true; cxRun(); }
+    document.addEventListener('visibilitychange', cxRun);
+    document.addEventListener('fw:lang', cxRun);
   }
 
   /* ---------- Conversación de ejemplo: se reproduce al entrar en pantalla ---------- */
