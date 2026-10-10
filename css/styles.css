@@ -2106,3 +2106,11 @@ html { scroll-padding-top: 0; }
 .legal-bar p { text-align: center; font-size: 14px; padding-block: 14px 16px; }
 .legal-bar a { color: var(--cobre-claro); }
 .legal-bar a:hover { text-decoration: underline; }
+
+/* ---------- Final de la página todo oscuro (contacto, logo y barra de derechos) ---------- */
+.footer { background: var(--noche); color: var(--marfil); }
+.footer__mark { color: var(--marfil); -webkit-text-fill-color: currentColor; background: none; }
+.footer__row { border-top-color: rgba(244, 240, 232, .18); color: rgba(244, 240, 232, .62); }
+.footer__row a { color: inherit; }
+.footer__links a:hover, .footer__row .link-plain:hover { color: var(--marfil); }
+.legal-bar { background: var(--noche); border-top: 1px solid rgba(244, 240, 232, .1); }
