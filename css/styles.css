@@ -2096,3 +2096,4 @@ html { scroll-padding-top: 0; }
 .sc-brand.on .fw-logo { animation: pdf-in .8s var(--ease) both; }
 .cx__step.is-brand b { display: none; }
 .cx__step.is-brand { background: var(--cobre); }
+.cx__nav { margin-top: clamp(14px, 2.5vh, 28px); }
