@@ -675,7 +675,7 @@
           if (d && String(d.success) === 'false') throw new Error(d.message || 'rechazado');
           form.reset();
           status.className = 'form__status is-ok';
-          status.textContent = T('Gracias. Recibimos tu mensaje y te escribiremos pronto para agendar la llamada.');
+          status.textContent = T('Gracias. Recibimos tu mensaje y te escribiremos pronto.');
         })
         .catch(function () {
           status.textContent = T('No se pudo enviar. Inténtalo de nuevo o escríbenos a') + ' ' + form.dataset.mailto + '.';
