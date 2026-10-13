@@ -1,0 +1,4 @@
+# GitHub Pages: archivos del proyecto que no deben publicarse
+exclude:
+  - README.md
+  - _herramientas

@@ -1,0 +1,47 @@
+/* Frame Works · páginas legales y 404 (misma identidad que la página principal, sin animaciones) */
+:root {
+  --noche: #101820; --cobre: #C65D32; --cobre-hondo: #A84A24; --marfil: #F4F0E8;
+  --pizarra: #474d54; --arena: #e2dccf;
+  --font-display: "Schibsted Grotesk", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --font-text: "Source Serif 4", Georgia, "Times New Roman", serif;
+}
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body { margin: 0; background: var(--marfil); color: var(--noche); font-family: var(--font-text); font-size: 18px; line-height: 1.65; }
+a { color: var(--cobre-hondo); text-underline-offset: 3px; }
+a:hover { color: var(--noche); }
+a:focus-visible, button:focus-visible { outline: 2px solid var(--cobre-hondo); outline-offset: 3px; border-radius: 4px; }
+.skip { position: absolute; left: 16px; top: -60px; background: var(--noche); color: var(--marfil); padding: 10px 16px; font-family: var(--font-display); font-size: 14px; }
+.skip:focus { top: 12px; }
+.wrap { width: min(100% - 32px, 820px); margin-inline: auto; }
+.top { border-bottom: 1px solid var(--arena); }
+.top .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; min-height: 72px; }
+.top img { display: block; height: 26px; width: auto; }
+.top a.back { font-family: var(--font-display); font-size: 15px; font-weight: 600; color: var(--noche); text-decoration: none; display: inline-flex; align-items: center; min-height: 44px; }
+.top a.back:hover { color: var(--cobre-hondo); }
+main { padding-block: clamp(40px, 7vw, 88px); }
+.eyebrow { margin: 0 0 14px; font-family: var(--font-display); font-size: 13px; font-weight: 500; letter-spacing: .12em; text-transform: uppercase; color: var(--pizarra); }
+h1 { margin: 0 0 10px; font-family: var(--font-display); font-size: clamp(36px, 6vw, 60px); line-height: 1.05; letter-spacing: -.03em; font-weight: 650; }
+h1 i { font-style: normal; color: var(--cobre); }
+h2 { margin: 2.2em 0 .5em; font-family: var(--font-display); font-size: clamp(21px, 2.6vw, 26px); line-height: 1.25; letter-spacing: -.015em; font-weight: 650; }
+h3 { margin: 1.6em 0 .4em; font-family: var(--font-display); font-size: 18px; font-weight: 650; }
+p, li { color: #2c3238; }
+ul { padding-left: 1.2em; }
+li { margin-bottom: .35em; }
+.updated { font-family: var(--font-display); font-size: 14px; color: var(--pizarra); }
+.note { margin: 28px 0; padding: 18px 20px; border-left: 3px solid var(--cobre); background: #fbf8f2; font-size: 16.5px; }
+.pend { padding: 0 .3em; border-radius: 4px; background: #fbe3d6; color: #7a3416; font-family: var(--font-display); font-size: .86em; font-weight: 600; white-space: nowrap; }
+table { width: 100%; border-collapse: collapse; margin: 1em 0; font-size: 16px; }
+th, td { padding: 10px 12px; border-bottom: 1px solid var(--arena); text-align: left; vertical-align: top; }
+th { font-family: var(--font-display); font-size: 14px; font-weight: 650; }
+.foot { background: var(--noche); color: rgba(244, 240, 232, .85); font-family: var(--font-display); font-size: 14px; }
+.foot .wrap { display: flex; flex-wrap: wrap; gap: 8px 22px; justify-content: space-between; align-items: center; padding-block: 22px; }
+.foot nav { display: flex; flex-wrap: wrap; gap: 4px 20px; }
+.foot a { color: rgba(244, 240, 232, .85); text-decoration: none; display: inline-flex; min-height: 32px; align-items: center; }
+.foot a:hover, .foot a[aria-current="page"] { color: var(--marfil); text-decoration: underline; }
+.btn { display: inline-flex; align-items: center; gap: 10px; min-height: 48px; padding: 0 26px; border-radius: 999px; background: var(--cobre-hondo); color: #fff; font-family: var(--font-display); font-size: 16px; font-weight: 600; text-decoration: none; }
+.btn:hover { background: var(--noche); color: #fff; }
+.e404 { min-height: calc(100svh - 160px); display: flex; flex-direction: column; justify-content: center; }
+.e404 .num { font-family: var(--font-display); font-size: clamp(90px, 20vw, 180px); line-height: .9; font-weight: 700; letter-spacing: -.05em; margin: 0 0 10px; }
+.e404 .num i { font-style: normal; color: var(--cobre); }
+@media (max-width: 560px) { body { font-size: 17px; } table, thead, tbody, tr, th, td { display: block; } thead { display: none; } td { border: 0; padding: 4px 0; } tr { border-bottom: 1px solid var(--arena); padding: 10px 0; } td:first-child { font-family: var(--font-display); font-weight: 650; } }

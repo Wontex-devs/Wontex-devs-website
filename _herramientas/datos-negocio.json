@@ -1,0 +1,14 @@
+{
+  "_instrucciones": "Completa SOLO datos reales. Lo que quede vacío no se publica. Estos datos alimentan el JSON-LD (Google) y deben coincidir con tu Perfil de Empresa de Google y con el aviso legal.",
+  "nombreLegal": "",
+  "telefono": "",
+  "direccion": "",
+  "ciudad": "",
+  "departamento": "",
+  "codigoPostal": "",
+  "pais": "CO",
+  "horario": [],
+  "_horario_ejemplo": ["Mo-Fr 08:00-18:00"],
+  "redesSociales": [],
+  "_redesSociales_ejemplo": ["https://www.instagram.com/tu-cuenta"]
+}
