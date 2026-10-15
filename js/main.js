@@ -1,4 +1,4 @@
-/* Frame Works · interacciones del sitio. Sin dependencias. */
+/* Zentrik · interacciones del sitio. Sin dependencias. */
 (function () {
   'use strict';
 
@@ -154,7 +154,7 @@
   var setFloatCta = function () {
     if (!floatCta) return;
     if (hasWhatsapp) {
-      floatCta.href = 'https://wa.me/' + waNumber + '?text=' + encodeURIComponent(T(CFG.whatsappMessage || 'Hola, quiero información sobre los servicios de Frame Works.'));
+      floatCta.href = 'https://wa.me/' + waNumber + '?text=' + encodeURIComponent(T(CFG.whatsappMessage || 'Hola, quiero información sobre los servicios de Zentrik.'));
       floatCta.setAttribute('aria-label', T('Escríbenos por WhatsApp (se abre en otra pestaña)'));
     } else {
       floatCta.setAttribute('aria-label', T('Escríbenos: ir al formulario de contacto'));
@@ -260,7 +260,7 @@
     var FLOW_STEPS = {
       crm: ['Llega un mensaje por WhatsApp', 'El CRM registra el contacto', 'Responde en automático', 'Queda asignado con su seguimiento'],
       reel: ['Planeamos el contenido', 'Creamos la pieza con IA', 'Se publica en tus redes', 'Llegan reacciones y mensajes'],
-      web: ['Un cliente te encuentra en internet', 'Recorre tu sitio desde el celular', 'Te deja sus datos', 'La solicitud te llega al instante', 'Sitio web creado por Frame Works'],
+      web: ['Un cliente te encuentra en internet', 'Recorre tu sitio desde el celular', 'Te deja sus datos', 'La solicitud te llega al instante', 'Sitio web creado por Zentrik'],
       quote: ['Registras el cliente', 'Agregas ítems y el total se calcula', 'Eliges las condiciones', 'La propuesta sale en PDF']
     };
     var FLOW_CLS = ['on', 'gone', 'tap', 'run', 's1', 's2'];
@@ -382,7 +382,7 @@
   }
 
   /* ---------- Formulario de contacto ----------
-     Se envía a FormSubmit (data-endpoint), que reenvía el mensaje al correo de Frame Works.
+     Se envía a FormSubmit (data-endpoint), que reenvía el mensaje al correo de Zentrik.
      Si está vacío, abre el correo del visitante con el mensaje ya redactado. */
   var form = document.getElementById('contactForm');
   if (form) {
@@ -519,7 +519,7 @@
   window.addEventListener('resize', fitHeroTitle);
   document.addEventListener('fw:lang', fitHeroTitle);
 
-  /* ---------- Computador del inicio: "arranque" de Frame Works ----------
+  /* ---------- Computador del inicio: "arranque" de Zentrik ----------
      Reposo con el logo → se escriben líneas de terminal → del centro sale una red que
      conecta los servicios → mensaje final → la red se recoge y vuelve al reposo.
      Se repite solo; al pasar el cursor arranca de inmediato. */

@@ -1,7 +1,7 @@
-/* Frame Works · páginas legales y 404 (misma identidad que la página principal, sin animaciones) */
+/* Zentrik · páginas legales y 404 (misma identidad que la página principal, sin animaciones) */
 :root {
-  --noche: #101820; --cobre: #C65D32; --cobre-hondo: #A84A24; --marfil: #F4F0E8;
-  --pizarra: #474d54; --arena: #e2dccf;
+  --noche: #17202E; --cobre: #2457D6; --cobre-hondo: #1B45B0; --marfil: #FFFFFF;
+  --pizarra: #4A5464; --arena: #CFD7E2;
   --font-display: "Schibsted Grotesk", "Helvetica Neue", Helvetica, Arial, sans-serif;
   --font-text: "Source Serif 4", Georgia, "Times New Roman", serif;
 }
@@ -25,19 +25,19 @@ h1 { margin: 0 0 10px; font-family: var(--font-display); font-size: clamp(36px, 
 h1 i { font-style: normal; color: var(--cobre); }
 h2 { margin: 2.2em 0 .5em; font-family: var(--font-display); font-size: clamp(21px, 2.6vw, 26px); line-height: 1.25; letter-spacing: -.015em; font-weight: 650; }
 h3 { margin: 1.6em 0 .4em; font-family: var(--font-display); font-size: 18px; font-weight: 650; }
-p, li { color: #2c3238; }
+p, li { color: #2C3238; }
 ul { padding-left: 1.2em; }
 li { margin-bottom: .35em; }
 .updated { font-family: var(--font-display); font-size: 14px; color: var(--pizarra); }
-.note { margin: 28px 0; padding: 18px 20px; border-left: 3px solid var(--cobre); background: #fbf8f2; font-size: 16.5px; }
-.pend { padding: 0 .3em; border-radius: 4px; background: #fbe3d6; color: #7a3416; font-family: var(--font-display); font-size: .86em; font-weight: 600; white-space: nowrap; }
+.note { margin: 28px 0; padding: 18px 20px; border-left: 3px solid var(--cobre); background: #F4F6F9; font-size: 16.5px; }
+.pend { padding: 0 .3em; border-radius: 4px; background: #E3E8EE; color: #16327A; font-family: var(--font-display); font-size: .86em; font-weight: 600; white-space: nowrap; }
 table { width: 100%; border-collapse: collapse; margin: 1em 0; font-size: 16px; }
 th, td { padding: 10px 12px; border-bottom: 1px solid var(--arena); text-align: left; vertical-align: top; }
 th { font-family: var(--font-display); font-size: 14px; font-weight: 650; }
-.foot { background: var(--noche); color: rgba(244, 240, 232, .85); font-family: var(--font-display); font-size: 14px; }
+.foot { background: var(--noche); color: rgba(255, 255, 255, .85); font-family: var(--font-display); font-size: 14px; }
 .foot .wrap { display: flex; flex-wrap: wrap; gap: 8px 22px; justify-content: space-between; align-items: center; padding-block: 22px; }
 .foot nav { display: flex; flex-wrap: wrap; gap: 4px 20px; }
-.foot a { color: rgba(244, 240, 232, .85); text-decoration: none; display: inline-flex; min-height: 32px; align-items: center; }
+.foot a { color: rgba(255, 255, 255, .85); text-decoration: none; display: inline-flex; min-height: 32px; align-items: center; }
 .foot a:hover, .foot a[aria-current="page"] { color: var(--marfil); text-decoration: underline; }
 .btn { display: inline-flex; align-items: center; gap: 10px; min-height: 48px; padding: 0 26px; border-radius: 999px; background: var(--cobre-hondo); color: #fff; font-family: var(--font-display); font-size: 16px; font-weight: 600; text-decoration: none; }
 .btn:hover { background: var(--noche); color: #fff; }

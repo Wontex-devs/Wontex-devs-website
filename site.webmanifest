@@ -1,13 +1,13 @@
 {
-  "name": "Frame Works",
-  "short_name": "Frame Works",
+  "name": "Zentrik",
+  "short_name": "Zentrik",
   "description": "Automatización, sitios web y marketing digital para negocios.",
   "lang": "es-419",
   "start_url": "./",
   "scope": "./",
   "display": "browser",
-  "background_color": "#F4F0E8",
-  "theme_color": "#101820",
+  "background_color": "#FFFFFF",
+  "theme_color": "#17202E",
   "icons": [
     { "src": "assets/icon-192.png", "sizes": "192x192", "type": "image/png" },
     { "src": "assets/icon-512.png", "sizes": "512x512", "type": "image/png" }

@@ -1,4 +1,4 @@
-/* Frame Works · consentimiento de cookies y analítica
+/* Zentrik · consentimiento de cookies y analítica
    Hoy el sitio NO usa cookies ni analítica. Este archivo solo actúa si en
    js/config.js se escribe un ID de Google Analytics 4 (ga4Id). En ese caso:
    - muestra un aviso para aceptar o rechazar la analítica;

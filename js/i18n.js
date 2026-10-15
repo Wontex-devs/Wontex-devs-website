@@ -1,4 +1,4 @@
-/* Frame Works · cambio de idioma (inglés por defecto, español opcional).
+/* Zentrik · cambio de idioma (inglés por defecto, español opcional).
    El HTML está escrito en español; al cargar, cada texto se cambia por su versión en inglés
    (diccionario en js/i18n-en.js). La elección del visitante se recuerda en este navegador. */
 (function () {
