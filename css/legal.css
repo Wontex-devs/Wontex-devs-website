@@ -1,7 +1,7 @@
 /* Zentrik · páginas legales y 404 (misma identidad que la página principal, sin animaciones) */
 :root {
-  --noche: #17202E; --cobre: #2457D6; --cobre-hondo: #1B45B0; --marfil: #FFFFFF;
-  --pizarra: #4A5464; --arena: #CFD7E2;
+  --noche: #0B1020; --cobre: #2563EB; --cobre-hondo: #1D4ED8; --marfil: #F8FAFC;
+  --pizarra: #475569; --arena: #CFD7E2;
   --font-display: "Schibsted Grotesk", "Helvetica Neue", Helvetica, Arial, sans-serif;
   --font-text: "Source Serif 4", Georgia, "Times New Roman", serif;
 }
