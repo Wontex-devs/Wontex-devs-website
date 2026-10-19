@@ -26,10 +26,10 @@ body { background: var(--cloud); color: var(--mid); font-family: var(--font-text
 /* =========================================================================
    1 · HERO AUDIOVISUAL CON SCROLL NARRATIVO
    ========================================================================= */
-.xh { position: relative; height: 560svh; background: var(--deep); color: var(--cloud); }
+.xh { position: relative; height: 430svh; background: var(--deep); color: var(--cloud); }
 .xh__sticky { position: sticky; top: 0; height: 100svh; overflow: hidden; }
 .xh__media { position: absolute; inset: 0; background: var(--deep) url("../assets/video/wontex-hero-poster.jpg") center / cover no-repeat; }
-.xh__video { width: 100%; height: 100%; object-fit: cover; display: block; transform: scale(calc(1.04 + var(--xp, 0) * .08)); transform-origin: 60% 50%; transition: transform .2s linear; }
+.xh__video { width: 100%; height: 100%; object-fit: cover; display: block; transform: scale(calc(1.04 + var(--xp, 0) * .08)); transform-origin: 60% 50%; will-change: transform; }
 .xh__shade { position: absolute; inset: 0; background:
   linear-gradient(90deg, rgba(13, 31, 44, .92) 0%, rgba(13, 31, 44, .66) 38%, rgba(13, 31, 44, .2) 70%, rgba(13, 31, 44, .1) 100%),
   linear-gradient(0deg, rgba(13, 31, 44, .7) 0%, rgba(13, 31, 44, 0) 35%); }
@@ -168,7 +168,7 @@ body { background: var(--cloud); color: var(--mid); font-family: var(--font-text
 .steps2 { --p: 0; position: relative; list-style: none; margin: 0; padding: 40px 0 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: clamp(20px, 3vw, 48px); }
 .steps2::before, .steps2::after { content: ""; position: absolute; left: 0; top: 0; height: 2px; border-radius: 2px; }
 .steps2::before { right: 0; background: var(--line); }
-.steps2::after { width: calc(var(--p) * 100%); background: var(--mid); transition: width .15s linear; }
+.steps2::after { right: 0; transform-origin: left; transform: scaleX(var(--p)); background: var(--mid); }
 .steps2 li { position: relative; }
 .steps2 li::before { content: ""; position: absolute; left: 0; top: -45px; width: 12px; height: 12px; border-radius: 3px; background: var(--cloud); box-shadow: inset 0 0 0 2px var(--line); transition: background-color .4s var(--ease), box-shadow .4s var(--ease); }
 .steps2 li.is-on::before { background: var(--lime); box-shadow: inset 0 0 0 2px var(--mid); }
@@ -261,3 +261,20 @@ body, .xh__sub, .xs__lead, .sol__desc, .steps2 p, .xc__lead, .cx__desc { -webkit
   .menu-btn__label { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
 }
 @media (max-width: 640px) and (max-height: 720px) { .xh__hint { display: none; } }
+
+/* ---------- Fluidez (2026-10-19) ----------
+   Las frases del hero siguen el scroll de forma continua: opacidad y desplazamiento los calcula main.js
+   (--sy: 1 = entrando desde abajo, 0 = en su sitio, -1 = saliendo hacia arriba). Sin transiciones por tiempo. */
+@media (prefers-reduced-motion: no-preference) {
+  .js .xh__step { transition: none; opacity: 0; transform: translateY(calc(-50% + var(--sy, 1) * 36px)); will-change: opacity, transform; }
+  .js .xh__step.is-on, .js .xh__step.is-past { transform: translateY(calc(-50% + var(--sy, 0) * 36px)); }
+  .xh__rail span { will-change: transform; }
+}
+@media (prefers-reduced-motion: no-preference) and (max-width: 640px) {
+  .js .xh__step, .js .xh__step.is-on, .js .xh__step.is-past { transform: translateY(calc(var(--sy, 0) * 28px)); }
+}
+/* "Conocer más": abre y cierra con altura animada, sin empujar el contenido de golpe */
+.sol__detail { display: grid; grid-template-rows: 0fr; margin-top: 0; opacity: 0; animation: none; transition: grid-template-rows .5s var(--ease-out), opacity .35s var(--ease), margin-top .5s var(--ease-out); }
+.sol__detail-in { min-height: 0; overflow: hidden; }
+.sol__detail.is-open { grid-template-rows: 1fr; opacity: 1; margin-top: 22px; }
+@media (prefers-reduced-motion: reduce) { .sol__detail { transition: none; } }

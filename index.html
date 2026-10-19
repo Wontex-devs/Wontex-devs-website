@@ -30,8 +30,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@300;500;600;700&family=Inter:wght@400;500;600&display=swap">
-  <link rel="stylesheet" href="css/styles.css?v=20261019i">
-  <link rel="stylesheet" href="css/site.css?v=20261019i">
+  <link rel="stylesheet" href="css/styles.css?v=20261019j">
+  <link rel="stylesheet" href="css/site.css?v=20261019j">
   <script>
     // Activa la animación de entrada del logo (se omite si el visitante prefiere menos movimiento)
     // Al recargar, empezar siempre desde arriba (sin restaurar scroll ni saltar a #secciones)
@@ -39,7 +39,9 @@
     if (location.hash) history.replaceState(null, '', location.pathname + location.search);
     (function (d) {
       d.classList.add('js');
-      if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) d.classList.add('intro-playing');
+      // La animación completa se ve una vez por visita; al navegar o recargar, la página abre directo
+      var seen = false; try { seen = sessionStorage.getItem('fw-intro') === '1'; sessionStorage.setItem('fw-intro', '1'); } catch (e) {}
+      if (!seen && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) d.classList.add('intro-playing');
     })(document.documentElement);
   </script>
 </head>
@@ -143,8 +145,10 @@
         <p class="sol__desc">Experiencias digitales diseñadas para comunicar mejor y convertir visitantes en oportunidades.</p>
         <button class="sol__more" type="button" aria-expanded="false" aria-controls="sol-web-det"><span>Conocer más</span><i aria-hidden="true"></i></button>
         <div class="sol__detail" id="sol-web-det" hidden>
-          <ul><li>Sitio web corporativo</li><li>Landing page</li><li>Catálogo y portafolio web</li><li>Tienda online</li><li>Rediseño de sitio web</li></ul>
-          <a class="sol__cta" href="#contacto" data-interest="Sitios web">Cotizar un sitio web <span aria-hidden="true">→</span></a>
+          <div class="sol__detail-in">
+            <ul><li>Sitio web corporativo</li><li>Landing page</li><li>Catálogo y portafolio web</li><li>Tienda online</li><li>Rediseño de sitio web</li></ul>
+            <a class="sol__cta" href="#contacto" data-interest="Sitios web">Cotizar un sitio web <span aria-hidden="true">→</span></a>
+          </div>
         </div>
       </div>
       <div class="sol__visual" aria-hidden="true" data-reveal>
@@ -164,8 +168,10 @@
         <p class="sol__desc">Procesos conectados que reducen tareas repetitivas y mejoran la eficiencia.</p>
         <button class="sol__more" type="button" aria-expanded="false" aria-controls="sol-auto-det"><span>Conocer más</span><i aria-hidden="true"></i></button>
         <div class="sol__detail" id="sol-auto-det" hidden>
-          <ul><li>Automatización de WhatsApp</li><li>Chatbot para preguntas frecuentes</li><li>Captura y seguimiento de prospectos</li><li>Asistentes de IA para tu equipo</li></ul>
-          <a class="sol__cta" href="#contacto" data-interest="Automatización">Cotizar una automatización <span aria-hidden="true">→</span></a>
+          <div class="sol__detail-in">
+            <ul><li>Automatización de WhatsApp</li><li>Chatbot para preguntas frecuentes</li><li>Captura y seguimiento de prospectos</li><li>Asistentes de IA para tu equipo</li></ul>
+            <a class="sol__cta" href="#contacto" data-interest="Automatización">Cotizar una automatización <span aria-hidden="true">→</span></a>
+          </div>
         </div>
       </div>
       <div class="sol__visual" aria-hidden="true" data-reveal>
@@ -184,8 +190,10 @@
         <p class="sol__desc">Sistemas para organizar contactos, oportunidades y seguimientos.</p>
         <button class="sol__more" type="button" aria-expanded="false" aria-controls="sol-crm-det"><span>Conocer más</span><i aria-hidden="true"></i></button>
         <div class="sol__detail" id="sol-crm-det" hidden>
-          <ul><li>Implementación y configuración de CRM, incluido GoHighLevel</li><li>Etapas de venta y seguimientos</li><li>Recordatorios y mensajes automáticos</li><li>Reportes de oportunidades</li></ul>
-          <a class="sol__cta" href="#contacto" data-interest="CRM y gestión comercial">Cotizar un CRM <span aria-hidden="true">→</span></a>
+          <div class="sol__detail-in">
+            <ul><li>Implementación y configuración de CRM, incluido GoHighLevel</li><li>Etapas de venta y seguimientos</li><li>Recordatorios y mensajes automáticos</li><li>Reportes de oportunidades</li></ul>
+            <a class="sol__cta" href="#contacto" data-interest="CRM y gestión comercial">Cotizar un CRM <span aria-hidden="true">→</span></a>
+          </div>
         </div>
       </div>
       <div class="sol__visual" aria-hidden="true" data-reveal>
@@ -202,8 +210,10 @@
         <p class="sol__desc">Soluciones digitales personalizadas para organizar información, cotizar, analizar y gestionar procesos.</p>
         <button class="sol__more" type="button" aria-expanded="false" aria-controls="sol-tools-det"><span>Conocer más</span><i aria-hidden="true"></i></button>
         <div class="sol__detail" id="sol-tools-det" hidden>
-          <ul><li>Cotizadores digitales</li><li>Formularios de captura</li><li>Dashboards y reportes</li><li>Herramientas internas a la medida</li></ul>
-          <a class="sol__cta" href="#contacto" data-interest="Herramientas de negocio">Cotizar una herramienta <span aria-hidden="true">→</span></a>
+          <div class="sol__detail-in">
+            <ul><li>Cotizadores digitales</li><li>Formularios de captura</li><li>Dashboards y reportes</li><li>Herramientas internas a la medida</li></ul>
+            <a class="sol__cta" href="#contacto" data-interest="Herramientas de negocio">Cotizar una herramienta <span aria-hidden="true">→</span></a>
+          </div>
         </div>
       </div>
       <div class="sol__visual" aria-hidden="true" data-reveal>
@@ -445,10 +455,10 @@
 </footer>
 <div class="legal-bar"><div class="container"><p>Copyright <span id="year">2026</span> - Wontex - Todos los derechos reservados - Diseñado por <a href="#top">Wontex</a></p></div></div>
 
-<script src="js/config.js?v=20261019i" defer></script>
-<script src="js/i18n-en.js?v=20261019i" defer></script>
-<script src="js/i18n.js?v=20261019i" defer></script>
-<script src="js/main.js?v=20261019i" defer></script>
-<script src="js/consent.js?v=20261019i" defer></script>
+<script src="js/config.js?v=20261019j" defer></script>
+<script src="js/i18n-en.js?v=20261019j" defer></script>
+<script src="js/i18n.js?v=20261019j" defer></script>
+<script src="js/main.js?v=20261019j" defer></script>
+<script src="js/consent.js?v=20261019j" defer></script>
 </body>
 </html>

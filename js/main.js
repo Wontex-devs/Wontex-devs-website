@@ -33,7 +33,7 @@
         if (k >= steps.length) {
           introLive.classList.remove('is-typing');
           setTimeout(function () { intro.classList.add('show-tag'); }, 220);
-          setTimeout(endIntro, 1650);
+          setTimeout(endIntro, 1250);
           return;
         }
         var st = steps[k++];
@@ -45,7 +45,8 @@
       };
       if (introText) nextStep(); else setTimeout(endIntro, 1450);
       intro.addEventListener('click', endIntro);
-      document.addEventListener('keydown', function (e) { if (e.key === 'Escape') endIntro(); }, { once: true });
+      // Quien ya quiere avanzar no espera: rueda, deslizar o cualquier tecla abren la página
+      ['wheel', 'touchmove', 'keydown'].forEach(function (ev) { window.addEventListener(ev, endIntro, { once: true, passive: true }); });
     }
   }
 
@@ -432,36 +433,78 @@
       if (i === k) st.removeAttribute('inert'); else st.setAttribute('inert', '');
     });
   }
-  function storyUpdate() {
+  // Valores objetivo (según el scroll) y valores mostrados, que los siguen con suavidad.
+  // Así la rueda del mouse, que avanza a saltos, se percibe continua sin secuestrar el scroll.
+  var story = { hp: 0, sf: 0, pp: 0 }, shown = { hp: 0, sf: 0, pp: 0 }, storyRAF = 0;
+  var stepsN = xhSteps.length;
+
+  function storyTarget() {
     var vh = window.innerHeight;
     if (xh) {
       var r = xh.getBoundingClientRect(), total = r.height - vh;
-      var p = total > 0 ? clamp01(-r.top / total) : 0;
-      xh.style.setProperty('--xp', p.toFixed(4));
-      xh.classList.toggle('is-scrolled', p > 0.02);
-      if (!reduceMotion && xhSteps.length) xhSetStep(Math.min(xhSteps.length - 1, Math.floor(p * xhSteps.length)));
+      story.hp = total > 0 ? clamp01(-r.top / total) : 0;
       if (headerBar) headerBar.classList.toggle('is-over', r.bottom > 72);
     }
     if (statementFill) {
       var sr = statementFill.parentNode.getBoundingClientRect();
-      var sp = reduceMotion ? 1 : clamp01((vh * 0.88 - sr.top) / (vh * 0.55));
-      statementFill.style.setProperty('--fill', (sp * 100).toFixed(1) + '%');
+      story.sf = reduceMotion ? 1 : clamp01((vh * 0.88 - sr.top) / (vh * 0.55));
     }
     if (steps2) {
       var pr = steps2.getBoundingClientRect();
-      var pp = reduceMotion ? 1 : clamp01((vh * 0.82 - pr.top) / (pr.height + vh * 0.25));
-      steps2.style.setProperty('--p', pp.toFixed(3));
-      steps2Items.forEach(function (li, i) { li.classList.toggle('is-on', pp > i / steps2Items.length + 0.04 || pp === 1); });
+      story.pp = reduceMotion ? 1 : clamp01((vh * 0.82 - pr.top) / (pr.height + vh * 0.25));
     }
   }
-  var storyTick = false;
-  window.addEventListener('scroll', function () {
-    if (storyTick) return;
-    storyTick = true;
-    requestAnimationFrame(function () { storyTick = false; storyUpdate(); });
-  }, { passive: true });
+  function storyPaint() {
+    var p = shown.hp;
+    if (xh) {
+      xh.style.setProperty('--xp', p.toFixed(4));
+      xh.classList.toggle('is-scrolled', story.hp > 0.02);
+      if (!reduceMotion && stepsN) {
+        // Cada frase ocupa un tramo; dentro de él entra, se sostiene y sale. La primera ya está visible
+        // al llegar y la última se queda al final.
+        var pos = p * stepsN, best = 0, bestA = -1;
+        xhSteps.forEach(function (st, i) {
+          var t = pos - i;                       // 0…1 dentro de su tramo
+          var a = i === 0 ? 1 : clamp01(t / 0.28);
+          var out = i === stepsN - 1 ? 0 : clamp01((t - 0.72) / 0.28);
+          a = Math.min(a, 1 - out);
+          var y = i === 0 && t < 0.72 ? 0 : (t < 0.5 ? (1 - clamp01(t / 0.28)) : -out);
+          st.style.opacity = a.toFixed(3);
+          st.style.setProperty('--sy', y.toFixed(3));
+          if (a > bestA) { bestA = a; best = i; }
+        });
+        xhSetStep(best);
+      }
+    }
+    if (statementFill) statementFill.style.setProperty('--fill', (shown.sf * 100).toFixed(1) + '%');
+    if (steps2) {
+      steps2.style.setProperty('--p', shown.pp.toFixed(3));
+      steps2Items.forEach(function (li, i) { li.classList.toggle('is-on', shown.pp > i / steps2Items.length + 0.04 || shown.pp > 0.995); });
+    }
+  }
+  var storyLast = 0;
+  function storyLoop(now) {
+    // Suavizado por tiempo (no por cuadro): igual en pantallas de 60 y 120 Hz; ~95 % del recorrido en 0,33 s
+    var dt = storyLast ? Math.min(64, now - storyLast) : 16.7;
+    storyLast = now;
+    var f = reduceMotion ? 1 : 1 - Math.pow(0.86, dt / 16.7);
+    var moving = false;
+    ['hp', 'sf', 'pp'].forEach(function (k) {
+      var d = story[k] - shown[k];
+      if (Math.abs(d) > 0.0004) { shown[k] += d * f; moving = true; } else shown[k] = story[k];
+    });
+    storyPaint();
+    if (moving) storyRAF = requestAnimationFrame(storyLoop); else { storyRAF = 0; storyLast = 0; }
+  }
+  function storyUpdate() {
+    storyTarget();
+    if (!storyRAF) storyRAF = requestAnimationFrame(storyLoop);
+  }
+  window.addEventListener('scroll', storyUpdate, { passive: true });
   window.addEventListener('resize', storyUpdate);
-  storyUpdate();
+  storyTarget();
+  shown.hp = story.hp; shown.sf = story.sf; shown.pp = story.pp;
+  storyPaint();
 
   if (heroVideo) {
     if (reduceMotion) { heroVideo.pause(); heroVideo.removeAttribute('autoplay'); }
@@ -483,7 +526,17 @@
       var det = document.getElementById(btn.getAttribute('aria-controls'));
       var open = btn.getAttribute('aria-expanded') !== 'true';
       btn.setAttribute('aria-expanded', String(open));
-      if (det) det.hidden = !open;
+      if (!det) return;
+      clearTimeout(det._fwT);
+      if (open) {
+        det.hidden = false;
+        void det.offsetHeight;                   // fija el estado cerrado antes de animar la apertura
+        det.classList.add('is-open');
+      } else {
+        det.classList.remove('is-open');
+        // Se oculta (para lectores de pantalla y teclado) cuando termina de cerrarse
+        det._fwT = setTimeout(function () { if (btn.getAttribute('aria-expanded') !== 'true') det.hidden = true; }, reduceMotion ? 0 : 520);
+      }
     });
   });
   /* "Cotizar …" deja marcado ese servicio en el formulario */
