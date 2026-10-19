@@ -11,13 +11,15 @@ web/
 ├── cookies.html            Política de cookies    ┘
 ├── 404.html                Página de error
 ├── robots.txt · site.webmanifest · favicon.ico
-├── css/styles.css          Estilos de la página principal
+├── css/styles.css          Estilos base de la página principal (marca, cabecera, formulario, ejemplos)
+├── css/site.css            Capa del rediseño: hero con video, soluciones, proceso, contacto y pie
 ├── css/legal.css           Estilos de las páginas legales y 404
 ├── js/config.js            ← DATOS PENDIENTES (WhatsApp, analítica, dominio)
 ├── js/main.js              Interacciones
 ├── js/consent.js           Aviso de cookies (solo actúa si hay analítica configurada)
 ├── js/i18n.js · i18n-en.js Cambio de idioma (inglés por defecto, español opcional)
 ├── assets/                 Imágenes, favicons e imagen para compartir (og-image.jpg)
+├── assets/video/           Video del hero y su imagen de respaldo (poster)
 └── _herramientas/          No se publica (GitHub Pages ignora carpetas con "_")
     ├── preparar-dominio.py Configura el dominio definitivo
     └── datos-negocio.json  Datos reales del negocio para Google (opcional)
@@ -98,10 +100,33 @@ GitHub Pages sirve para este sitio: es estático, admite dominio propio, HTTPS g
 la página `404.html`. **No** ejecuta código de servidor ni permite cabeceras de seguridad personalizadas;
 si más adelante se quieren (CSP, etc.), Cloudflare Pages publica esta misma carpeta sin cambios.
 
+## Estructura de la página
+
+1. **Hero audiovisual** (`#top`): video de fondo fijo mientras se desplaza; las frases cambian con el scroll
+   (intro → 4 frases → cierre WONTEX). El video no se reinicia ni bloquea el desplazamiento.
+2. **Nuestro enfoque** (`#enfoque`): frase que se "llena" al desplazarse.
+3. **Soluciones** (`#soluciones`): Sitios web, Automatización, CRM y gestión comercial, Herramientas de negocio.
+   "Conocer más" despliega el detalle; "Cotizar…" lleva al formulario con el interés ya marcado.
+4. **Tecnología aplicada** (`#aplicada`): ejemplos ilustrativos (CRM, página web, cotizador). Los nombres que
+   aparecen en las pantallas son ficticios y la sección lo indica.
+5. **Cómo trabajamos** (`#proceso`): 4 pasos.
+6. **Contacto** (`#contacto`): correo real configurado y formulario.
+
+Con `prefers-reduced-motion` el hero se muestra estático (sin video ni frases animadas).
+
+## Video del hero (provisional)
+
+- `assets/video/wontex-hero.mp4` (1280×720, 12 s en bucle, H.264, ~2,5 MB) y `wontex-hero-poster.jpg` son
+  **provisionales**: una animación abstracta con la paleta de marca, no un video oficial.
+- Para reemplazarlo, conserva los mismos nombres de archivo (o cambia las rutas en `index.html`, buscando
+  `heroVideo`). Recomendado: MP4 H.264 sin audio, 1280–1920 px de ancho, 8–15 s con inicio y fin que empalmen,
+  menos de 4 MB, y el elemento principal hacia la derecha (el texto ocupa la izquierda; en móvil, la parte baja).
+- Exporta también un fotograma como `wontex-hero-poster.jpg`: se ve mientras carga y si el video falla.
+
 ## Imágenes
 
-- En uso: `servicios.jpg`, `nosotros-banda.jpg`, `nosotros-equipo.jpg` (Unsplash), `ads/` (NOIR creada con IA,
-  FLUX.1 schnell, Apache 2.0; VOLT y AURA de Unsplash), `arca/` (Unsplash). El logotipo WONTEX es texto (fuente Unbounded) con un cursor dibujado en CSS, no una imagen.
-- Las fotos de secciones eliminadas se movieron a `../archivo-fotos-web/` (fuera de la web publicada).
-- Espacios ocultos listos para cuando haya contenido real: logos de clientes (`<!-- CLIENTES -->`) y sello
-  de alianza (`<!-- SELLO DE ALIANZA -->`). No publiques logos ni sellos que no sean reales.
+- En uso: `arca/` (Unsplash), en el ejemplo de página web. El logotipo WONTEX es texto (fuente Unbounded) con un
+  cursor dibujado en CSS, no una imagen.
+- Las fotos que dejaron de usarse con el rediseño están en `../archivo-fotos-web/sin-uso-rediseno-2026-10/`
+  (fuera de la web publicada).
+- No publiques logos de clientes, testimonios ni cifras que no sean reales.

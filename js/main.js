@@ -145,7 +145,7 @@
         });
       });
     }, { rootMargin: '-45% 0px -50% 0px' });
-    ['metodo', 'servicios', 'casos', 'nosotros', 'problema', 'por-que', 'oferta', 'para-quien', 'faq', 'contacto', 'top'].forEach(function (id) {
+    ['top', 'enfoque', 'soluciones', 'aplicada', 'proceso', 'contacto'].forEach(function (id) {
       var el = document.getElementById(id);
       if (el) sectionIO.observe(el);
     });
@@ -384,7 +384,7 @@
     window.addEventListener('resize', function () { cxTrack.scrollLeft = cxIndex * cxTrack.clientWidth; });
 
     // El flujo solo corre con la sección en pantalla; al cambiar de idioma vuelve a empezar
-    var cxSection = document.getElementById('casos');
+    var cxSection = cxTrack.closest('.cx');
     var cxRun = function () { if (cxVisible && !document.hidden) flowStart(cxSlides[cxIndex]); else flowStop(); };
     if ('IntersectionObserver' in window) {
       new IntersectionObserver(function (en) { cxVisible = en[0].isIntersecting; cxRun(); }, { threshold: 0.25 }).observe(cxSection);
@@ -405,6 +405,94 @@
       btn.addEventListener('pointerleave', function () { btn.style.transform = ''; });
     });
   }
+
+  /* ---------- Rediseño · hero audiovisual, enfoque, soluciones y proceso ----------
+     Un solo manejador de scroll (con requestAnimationFrame) actualiza:
+     - el hero: progreso 0–1 de la sección alta; cada tramo muestra una frase (las demás quedan inertes);
+     - la frase de enfoque, que se "rellena" mientras se lee;
+     - la línea del proceso.
+     El video nunca se reinicia: solo se pausa fuera de pantalla o con movimiento reducido. */
+  var clamp01 = function (v) { return Math.min(1, Math.max(0, v)); };
+  var xh = document.querySelector('.xh');
+  var xhSteps = xh ? Array.prototype.slice.call(xh.querySelectorAll('.xh__step')) : [];
+  var xhRail = document.getElementById('heroRail');
+  var heroVideo = document.getElementById('heroVideo');
+  var headerBar = document.getElementById('header');
+  var statementFill = document.querySelector('#statement .fill');
+  var steps2 = document.getElementById('steps2');
+  var steps2Items = steps2 ? Array.prototype.slice.call(steps2.children) : [];
+  var xhCurrent = -1;
+
+  function xhSetStep(k) {
+    if (k === xhCurrent) return;
+    xhCurrent = k;
+    xhSteps.forEach(function (st, i) {
+      st.classList.toggle('is-on', i === k);
+      st.classList.toggle('is-past', i < k);
+      if (i === k) st.removeAttribute('inert'); else st.setAttribute('inert', '');
+    });
+  }
+  function storyUpdate() {
+    var vh = window.innerHeight;
+    if (xh) {
+      var r = xh.getBoundingClientRect(), total = r.height - vh;
+      var p = total > 0 ? clamp01(-r.top / total) : 0;
+      xh.style.setProperty('--xp', p.toFixed(4));
+      xh.classList.toggle('is-scrolled', p > 0.02);
+      if (!reduceMotion && xhSteps.length) xhSetStep(Math.min(xhSteps.length - 1, Math.floor(p * xhSteps.length)));
+      if (headerBar) headerBar.classList.toggle('is-over', r.bottom > 72);
+    }
+    if (statementFill) {
+      var sr = statementFill.parentNode.getBoundingClientRect();
+      var sp = reduceMotion ? 1 : clamp01((vh * 0.88 - sr.top) / (vh * 0.55));
+      statementFill.style.setProperty('--fill', (sp * 100).toFixed(1) + '%');
+    }
+    if (steps2) {
+      var pr = steps2.getBoundingClientRect();
+      var pp = reduceMotion ? 1 : clamp01((vh * 0.82 - pr.top) / (pr.height + vh * 0.25));
+      steps2.style.setProperty('--p', pp.toFixed(3));
+      steps2Items.forEach(function (li, i) { li.classList.toggle('is-on', pp > i / steps2Items.length + 0.04 || pp === 1); });
+    }
+  }
+  var storyTick = false;
+  window.addEventListener('scroll', function () {
+    if (storyTick) return;
+    storyTick = true;
+    requestAnimationFrame(function () { storyTick = false; storyUpdate(); });
+  }, { passive: true });
+  window.addEventListener('resize', storyUpdate);
+  storyUpdate();
+
+  if (heroVideo) {
+    if (reduceMotion) { heroVideo.pause(); heroVideo.removeAttribute('autoplay'); }
+    else {
+      var heroPlay = function () { var pl = heroVideo.play(); if (pl && pl.catch) pl.catch(function () { /* el navegador no permite autoplay: queda la imagen fija */ }); };
+      if ('IntersectionObserver' in window && xh) {
+        new IntersectionObserver(function (en) { if (en[0].isIntersecting) heroPlay(); else heroVideo.pause(); }).observe(xh);
+      } else heroPlay();
+      // Al volver a la pestaña, retoma el video si el hero sigue en pantalla
+      document.addEventListener('visibilitychange', function () {
+        if (document.visibilityState === 'visible' && xh && xh.getBoundingClientRect().bottom > 0) heroPlay();
+      });
+    }
+  }
+
+  /* Soluciones: "Conocer más" despliega el detalle del servicio */
+  document.querySelectorAll('.sol__more').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var det = document.getElementById(btn.getAttribute('aria-controls'));
+      var open = btn.getAttribute('aria-expanded') !== 'true';
+      btn.setAttribute('aria-expanded', String(open));
+      if (det) det.hidden = !open;
+    });
+  });
+  /* "Cotizar …" deja marcado ese servicio en el formulario */
+  document.querySelectorAll('[data-interest]').forEach(function (a) {
+    a.addEventListener('click', function () {
+      var v = a.getAttribute('data-interest');
+      document.querySelectorAll('#contactForm input[name="interes"]').forEach(function (cb) { if (cb.value === v) cb.checked = true; });
+    });
+  });
 
   /* ---------- Formulario de contacto ----------
      Se envía a FormSubmit (data-endpoint), que reenvía el mensaje al correo de Wontex.
