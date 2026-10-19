@@ -1,4 +1,4 @@
-# Zentrik · sitio web
+# Wontex · sitio web
 
 Sitio **estático** de una sola página (HTML, CSS y JavaScript, sin compilación ni servidor).
 Funciona en cualquier alojamiento estático. Hoy se publica en GitHub Pages en una dirección **provisional**.
@@ -101,7 +101,7 @@ si más adelante se quieren (CSP, etc.), Cloudflare Pages publica esta misma car
 ## Imágenes
 
 - En uso: `servicios.jpg`, `nosotros-banda.jpg`, `nosotros-equipo.jpg` (Unsplash), `ads/` (NOIR creada con IA,
-  FLUX.1 schnell, Apache 2.0; VOLT y AURA de Unsplash), `arca/` (Unsplash) y `logo/logo-zentrik.png`.
+  FLUX.1 schnell, Apache 2.0; VOLT y AURA de Unsplash), `arca/` (Unsplash). El logotipo WONTEX es texto (fuente Unbounded) con un cursor dibujado en CSS, no una imagen.
 - Las fotos de secciones eliminadas se movieron a `../archivo-fotos-web/` (fuera de la web publicada).
 - Espacios ocultos listos para cuando haya contenido real: logos de clientes (`<!-- CLIENTES -->`) y sello
   de alianza (`<!-- SELLO DE ALIANZA -->`). No publiques logos ni sellos que no sean reales.

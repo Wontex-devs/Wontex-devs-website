@@ -1,4 +1,4 @@
-/* Zentrik · configuración del sitio
+/* Wontex · configuración del sitio
    =====================================================================
    Aquí se completan los datos que todavía están PENDIENTES. No hace falta
    tocar ningún otro archivo para activarlos.
@@ -17,7 +17,7 @@
    ===================================================================== */
 window.FW_CONFIG = {
   whatsapp: '',          // PENDIENTE: número comercial de WhatsApp
-  whatsappMessage: 'Hola, quiero información sobre los servicios de Zentrik.',
+  whatsappMessage: 'Hola, quiero información sobre los servicios de Wontex.',
   ga4Id: '',             // PENDIENTE (opcional): ID de Google Analytics 4
   siteUrl: ''            // PENDIENTE: se completa con _herramientas/preparar-dominio.py
 };

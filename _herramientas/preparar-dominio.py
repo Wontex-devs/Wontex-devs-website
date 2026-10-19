@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Zentrik · prepara la web para el dominio definitivo.
+"""Wontex · prepara la web para el dominio definitivo.
 
 Uso (desde la carpeta web/):
     python3 _herramientas/preparar-dominio.py https://www.tudominio.com
@@ -54,7 +54,7 @@ def json_ld(site, d):
     ld = {
         "@context": "https://schema.org",
         "@type": "ProfessionalService",
-        "name": "Zentrik",
+        "name": "Wontex",
         "url": site + "/",
         "logo": site + "/assets/icon-512.png",
         "image": site + "/assets/og-image.jpg",
@@ -122,7 +122,7 @@ def main():
         for p in PAGES)
     write("sitemap.xml", '<?xml version="1.0" encoding="UTF-8"?>\n'
           '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' + urls + "</urlset>\n")
-    write("robots.txt", "# Zentrik · robots.txt\nUser-agent: *\nAllow: /\n\nSitemap: %s/sitemap.xml\n" % site)
+    write("robots.txt", "# Wontex · robots.txt\nUser-agent: *\nAllow: /\n\nSitemap: %s/sitemap.xml\n" % site)
     write("CNAME", host + "\n")
 
     cfg = read("js/config.js")

@@ -1,4 +1,4 @@
-/* Zentrik · interacciones del sitio. Sin dependencias. */
+/* Wontex · interacciones del sitio. Sin dependencias. */
 (function () {
   'use strict';
 
@@ -18,7 +18,32 @@
   if (intro) {
     if (!root.classList.contains('intro-playing')) intro.remove();
     else {
-      setTimeout(endIntro, 1450);
+      // Alguien escribe "WIN", se da cuenta, borra hasta la W y escribe bien "WONTEX".
+      // Luego aparece la frase y el cursor queda parpadeando un momento antes de abrir la página.
+      var introText = document.getElementById('introText');
+      var introLive = introText ? introText.parentNode : null;
+      var steps = [
+        [380, 'W'], [130, 'I'], [150, 'N'],      // error (la I está junto a la O en el teclado)
+        [460, '<'], [110, '<'],                   // pausa, se da cuenta y borra
+        [260, 'O'], [120, 'N'], [130, 'T'], [110, 'E'], [140, 'X']
+      ];
+      var k = 0;
+      var nextStep = function () {
+        if (intro.classList.contains('is-done')) return;
+        if (k >= steps.length) {
+          introLive.classList.remove('is-typing');
+          setTimeout(function () { intro.classList.add('show-tag'); }, 220);
+          setTimeout(endIntro, 1650);
+          return;
+        }
+        var st = steps[k++];
+        setTimeout(function () {
+          introLive.classList.add('is-typing');
+          introText.textContent = st[1] === '<' ? introText.textContent.slice(0, -1) : introText.textContent + st[1];
+          nextStep();
+        }, st[0]);
+      };
+      if (introText) nextStep(); else setTimeout(endIntro, 1450);
       intro.addEventListener('click', endIntro);
       document.addEventListener('keydown', function (e) { if (e.key === 'Escape') endIntro(); }, { once: true });
     }
@@ -154,7 +179,7 @@
   var setFloatCta = function () {
     if (!floatCta) return;
     if (hasWhatsapp) {
-      floatCta.href = 'https://wa.me/' + waNumber + '?text=' + encodeURIComponent(T(CFG.whatsappMessage || 'Hola, quiero información sobre los servicios de Zentrik.'));
+      floatCta.href = 'https://wa.me/' + waNumber + '?text=' + encodeURIComponent(T(CFG.whatsappMessage || 'Hola, quiero información sobre los servicios de Wontex.'));
       floatCta.setAttribute('aria-label', T('Escríbenos por WhatsApp (se abre en otra pestaña)'));
     } else {
       floatCta.setAttribute('aria-label', T('Escríbenos: ir al formulario de contacto'));
@@ -260,7 +285,7 @@
     var FLOW_STEPS = {
       crm: ['Llega un mensaje por WhatsApp', 'El CRM registra el contacto', 'Responde en automático', 'Queda asignado con su seguimiento'],
       reel: ['Planeamos el contenido', 'Creamos la pieza con IA', 'Se publica en tus redes', 'Llegan reacciones y mensajes'],
-      web: ['Un cliente te encuentra en internet', 'Recorre tu sitio desde el celular', 'Te deja sus datos', 'La solicitud te llega al instante', 'Sitio web creado por Zentrik'],
+      web: ['Un cliente te encuentra en internet', 'Recorre tu sitio desde el celular', 'Te deja sus datos', 'La solicitud te llega al instante', 'Sitio web creado por Wontex'],
       quote: ['Registras el cliente', 'Agregas ítems y el total se calcula', 'Eliges las condiciones', 'La propuesta sale en PDF']
     };
     var FLOW_CLS = ['on', 'gone', 'tap', 'run', 's1', 's2'];
@@ -382,7 +407,7 @@
   }
 
   /* ---------- Formulario de contacto ----------
-     Se envía a FormSubmit (data-endpoint), que reenvía el mensaje al correo de Zentrik.
+     Se envía a FormSubmit (data-endpoint), que reenvía el mensaje al correo de Wontex.
      Si está vacío, abre el correo del visitante con el mensaje ya redactado. */
   var form = document.getElementById('contactForm');
   if (form) {
@@ -519,7 +544,7 @@
   window.addEventListener('resize', fitHeroTitle);
   document.addEventListener('fw:lang', fitHeroTitle);
 
-  /* ---------- Computador del inicio: "arranque" de Zentrik ----------
+  /* ---------- Computador del inicio: "arranque" de Wontex ----------
      Reposo con el logo → se escriben líneas de terminal → del centro sale una red que
      conecta los servicios → mensaje final → la red se recoge y vuelve al reposo.
      Se repite solo; al pasar el cursor arranca de inmediato. */

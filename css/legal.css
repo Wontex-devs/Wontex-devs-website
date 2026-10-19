@@ -1,9 +1,9 @@
-/* Zentrik · páginas legales y 404 (misma identidad que la página principal, sin animaciones) */
+/* Wontex · páginas legales y 404 (misma identidad que la página principal, sin animaciones) */
 :root {
-  --noche: #0B1020; --cobre: #2563EB; --cobre-hondo: #1D4ED8; --marfil: #F8FAFC;
-  --pizarra: #475569; --arena: #CFD7E2;
-  --font-display: "Schibsted Grotesk", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  --font-text: "Source Serif 4", Georgia, "Times New Roman", serif;
+  --noche: #142B3B; --cobre: #C7F464; --cobre-hondo: #B4E34A; --marfil: #F7F8F4;
+  --pizarra: #56656F; --arena: #DDE1DB;
+  --font-display: "Unbounded", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --font-text: "Inter", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 * { box-sizing: border-box; }
 html { -webkit-text-size-adjust: 100%; }
@@ -45,3 +45,18 @@ th { font-family: var(--font-display); font-size: 14px; font-weight: 650; }
 .e404 .num { font-family: var(--font-display); font-size: clamp(90px, 20vw, 180px); line-height: .9; font-weight: 700; letter-spacing: -.05em; margin: 0 0 10px; }
 .e404 .num i { font-style: normal; color: var(--cobre); }
 @media (max-width: 560px) { body { font-size: 17px; } table, thead, tbody, tr, th, td { display: block; } thead { display: none; } td { border: 0; padding: 4px 0; } tr { border-bottom: 1px solid var(--arena); padding: 10px 0; } td:first-child { font-family: var(--font-display); font-weight: 650; } }
+/* Logotipo Wontex (Unbounded Bold + cursor) */
+.wm { display: inline-flex; align-items: flex-end; font-family: "Unbounded", var(--font-display); font-weight: 700; letter-spacing: -.01em; line-height: 1; white-space: nowrap; color: var(--noche); }
+.wm-cursor { display: inline-block; width: .52em; height: .13em; margin: 0 0 .02em .1em; background: currentColor; }
+.top .brand { text-decoration: none; display: inline-flex; min-height: 44px; align-items: center; }
+.top .wm { font-size: 20px; }
+/* Regla del lima: en fondos claros el lima solo como relleno */
+a { color: var(--noche); text-decoration-color: var(--cobre-hondo); text-decoration-thickness: 2px; }
+a:hover { text-decoration-color: var(--noche); }
+.btn { background: var(--cobre); color: var(--noche); }
+.btn:hover { background: var(--noche); color: var(--marfil); }
+a:focus-visible, button:focus-visible { outline-color: var(--noche); }
+h1 i, .e404 .num i { color: var(--noche); }
+.note { border-left-color: var(--cobre); }
+.pend { background: #EEF6D8; color: #3B4A12; }
+.pend { white-space: normal; }
