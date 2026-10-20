@@ -116,16 +116,15 @@ Con `prefers-reduced-motion` el hero se muestra estático (sin video ni frases a
 
 ## Video del hero
 
-- `assets/video/wontex-hero.mp4` (1920×1080, 12 s en bucle, H.264 sin audio, ~4,5 MB, optimizado para web) y
-  `wontex-hero-poster.jpg` (su primer fotograma): versión mejorada de la animación conceptual de la marca
-  (más color, contraste, nitidez y viñeta). La versión anterior (1280×720) está en
-  `../archivo-fotos-web/video-hero-provisional-v1/`.
+- La animación de la marca se renderiza en **nativo** (dibujo vectorial, sin ampliar), con tratamiento de
+  color (saturación, contraste, viñeta) y un grano fijo muy fino que evita bandas en los degradados oscuros:
+  - `assets/video/wontex-hero-1440.mp4`: 2560×1440, ~11 MB, para pantallas de 1200 px o más.
+  - `assets/video/wontex-hero.mp4`: 1920×1080, ~7 MB, para celulares y pantallas medianas.
+  - `assets/video/wontex-hero-poster.jpg`: primer fotograma; se ve mientras carga o si el video falla.
+- Ambos: 12 s en bucle, H.264 sin audio, con el índice al inicio (empiezan a reproducirse sin descargarse completos).
+- Versiones anteriores en `../archivo-fotos-web/` (`video-hero-provisional-v1/` y `video-hero-video2x-1080/`).
 - Si cambias el video o el póster, sube el número `?v=` en `index.html` y `css/site.css` para que los
   navegadores no muestren la versión guardada.
-- Para reemplazarlo, conserva los mismos nombres de archivo (o cambia las rutas en `index.html`, buscando
-  `heroVideo`). Recomendado: MP4 H.264 sin audio, 1280–1920 px de ancho, 8–15 s con inicio y fin que empalmen,
-  menos de 4 MB, y el elemento principal hacia la derecha (el texto ocupa la izquierda; en móvil, la parte baja).
-- Exporta también un fotograma como `wontex-hero-poster.jpg`: se ve mientras carga y si el video falla.
 
 ## Imágenes
 
