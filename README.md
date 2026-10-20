@@ -114,10 +114,14 @@ si más adelante se quieren (CSP, etc.), Cloudflare Pages publica esta misma car
 
 Con `prefers-reduced-motion` el hero se muestra estático (sin video ni frases animadas).
 
-## Video del hero (provisional)
+## Video del hero
 
-- `assets/video/wontex-hero.mp4` (1280×720, 12 s en bucle, H.264, ~2,5 MB) y `wontex-hero-poster.jpg` son
-  **provisionales**: una animación abstracta con la paleta de marca, no un video oficial.
+- `assets/video/wontex-hero.mp4` (1920×1080, 12 s en bucle, H.264 sin audio, ~4,5 MB, optimizado para web) y
+  `wontex-hero-poster.jpg` (su primer fotograma): versión mejorada de la animación conceptual de la marca
+  (más color, contraste, nitidez y viñeta). La versión anterior (1280×720) está en
+  `../archivo-fotos-web/video-hero-provisional-v1/`.
+- Si cambias el video o el póster, sube el número `?v=` en `index.html` y `css/site.css` para que los
+  navegadores no muestren la versión guardada.
 - Para reemplazarlo, conserva los mismos nombres de archivo (o cambia las rutas en `index.html`, buscando
   `heroVideo`). Recomendado: MP4 H.264 sin audio, 1280–1920 px de ancho, 8–15 s con inicio y fin que empalmen,
   menos de 4 MB, y el elemento principal hacia la derecha (el texto ocupa la izquierda; en móvil, la parte baja).
