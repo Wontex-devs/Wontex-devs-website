@@ -1,7 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://wontex-devs.com/</loc><lastmod>2026-10-25</lastmod></url>
-  <url><loc>https://wontex-devs.com/aviso-legal.html</loc><lastmod>2026-10-25</lastmod></url>
-  <url><loc>https://wontex-devs.com/privacidad.html</loc><lastmod>2026-10-25</lastmod></url>
-  <url><loc>https://wontex-devs.com/cookies.html</loc><lastmod>2026-10-25</lastmod></url>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url>
+    <loc>https://wontex-devs.com/</loc>
+    <lastmod>2026-10-25</lastmod>
+    <xhtml:link rel="alternate" hreflang="es" href="https://wontex-devs.com/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://wontex-devs.com/en/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://wontex-devs.com/"/>
+  </url>
+  <url>
+    <loc>https://wontex-devs.com/en/</loc>
+    <lastmod>2026-10-25</lastmod>
+    <xhtml:link rel="alternate" hreflang="es" href="https://wontex-devs.com/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://wontex-devs.com/en/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://wontex-devs.com/"/>
+  </url>
 </urlset>

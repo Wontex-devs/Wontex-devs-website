@@ -1,30 +1,53 @@
 #!/usr/bin/env python3
-"""Wontex · prepara la web para el dominio definitivo.
+"""Wontex · SEO del sitio y página en inglés.
 
-Uso (desde la carpeta web/):
-    python3 _herramientas/preparar-dominio.py https://www.tudominio.com
+Uso (desde la carpeta web/), cada vez que cambies index.html, las páginas legales o el diccionario:
+    python3 _herramientas/preparar-dominio.py https://wontex-devs.com
 
-Qué hace (se puede ejecutar de nuevo si cambias de dominio):
-  1. index.html y páginas legales: escribe la URL canónica, og:url, la imagen
-     para compartir y los datos estructurados (JSON-LD) con el dominio, y
-     cambia "noindex" por "index, follow" para que Google pueda indexar.
-  2. Crea sitemap.xml con las páginas públicas.
-  3. Reescribe robots.txt con la línea "Sitemap:".
-  4. Crea el archivo CNAME que GitHub Pages usa para el dominio propio.
-  5. Guarda el dominio en js/config.js (siteUrl).
-Los datos de negocio reales (teléfono, dirección, horario, redes) se toman de
-_herramientas/datos-negocio.json; los campos vacíos no se publican.
-No usa internet ni instala nada.
+Qué hace (se puede ejecutar las veces que quieras; siempre deja el mismo resultado):
+  1. index.html (español, la página principal): URL canónica, hreflang (es, en, x-default), Open Graph,
+     Twitter Card y datos estructurados (ProfessionalService + WebSite) dentro del bloque DOMINIO.
+  2. Páginas legales: URL canónica sin .html, BreadcrumbList y meta robots. Mientras una página tenga
+     textos "[PENDIENTE", queda en "noindex, follow" y fuera del sitemap.
+  3. en/index.html: la misma página traducida con el diccionario de js/i18n-en.js (textos, atributos
+     accesibles, título y descripciones), con sus propias canónica y hreflang. No se edita a mano.
+  4. sitemap.xml (solo páginas indexables, con sus alternativas de idioma) y robots.txt.
+  5. siteUrl en js/config.js.
+Los datos de negocio reales (teléfono, dirección, horario, redes) se toman de _herramientas/datos-negocio.json;
+los campos vacíos no se publican. No usa internet ni instala nada.
 """
 import datetime
+import hashlib
+import html
 import json
 import os
 import re
 import sys
 
 WEB = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-PAGES = ["index.html", "aviso-legal.html", "privacidad.html", "cookies.html"]
+LEGAL = ["aviso-legal.html", "privacidad.html", "cookies.html"]
 BLOCK = re.compile(r"(<!-- DOMINIO:INICIO.*?-->)(.*?)(\s*<!-- DOMINIO:FIN -->)", re.S)
+ROBOTS_ON = "index, follow, max-image-preview:large"
+ROBOTS_OFF = "noindex, follow"
+
+TEXT = {
+    "es": {
+        "description": "Sitios web, automatizaciones con inteligencia artificial, CRM (incluido GoHighLevel) "
+                       "y herramientas de negocio para empresas.",
+        "knowsAbout": ["Desarrollo de sitios web", "Automatización con inteligencia artificial",
+                       "CRM y gestión comercial", "GoHighLevel", "Herramientas de negocio"],
+        "slogan": "Soluciones inteligentes. Resultados reales.",
+        "home": "Inicio",
+    },
+    "en": {
+        "description": "Websites, AI-powered automations, CRM (including GoHighLevel) "
+                       "and business tools for companies.",
+        "knowsAbout": ["Website development", "AI automation", "CRM and sales management",
+                       "GoHighLevel", "Business tools"],
+        "slogan": "Smart solutions. Real results.",
+        "home": "Home",
+    },
+}
 
 
 def fail(msg):
@@ -38,7 +61,9 @@ def read(name):
 
 
 def write(name, text):
-    with open(os.path.join(WEB, name), "w", encoding="utf-8") as f:
+    path = os.path.join(WEB, name)
+    os.makedirs(os.path.dirname(path), exist_ok=True)
+    with open(path, "w", encoding="utf-8") as f:
         f.write(text)
 
 
@@ -50,24 +75,34 @@ def business_data():
         return json.load(f)
 
 
-def json_ld(site, d):
-    ld = {
-        "@context": "https://schema.org",
+def clean_url(site, page):
+    return site + "/" + ("" if page == "index.html" else page[:-5])
+
+
+def ld(obj):
+    return '  <script type="application/ld+json">%s</script>' % json.dumps(obj, ensure_ascii=False)
+
+
+def org_graph(site, d, lang):
+    t = TEXT[lang]
+    org = {
         "@type": "ProfessionalService",
+        "@id": site + "/#organizacion",
         "name": "Wontex",
         "url": site + "/",
         "logo": site + "/assets/icon-512.png",
         "image": site + "/assets/og-image.jpg",
-        "description": "Automatización con IA, sitios web, marketing digital y herramientas de negocio para empresas.",
+        "description": t["description"],
+        "slogan": t["slogan"],
         "email": "info@wontex-devs.com",
-        "knowsAbout": ["Automatización con inteligencia artificial", "Desarrollo de sitios web",
-                       "Marketing digital", "CRM y herramientas de negocio"],
+        "knowsAbout": t["knowsAbout"],
+        "knowsLanguage": ["es", "en"],
         "areaServed": {"@type": "Country", "name": "Colombia"},
     }
     if d.get("nombreLegal"):
-        ld["legalName"] = d["nombreLegal"]
+        org["legalName"] = d["nombreLegal"]
     if d.get("telefono"):
-        ld["telephone"] = d["telefono"]
+        org["telephone"] = d["telefono"]
     addr = {k: v for k, v in {
         "streetAddress": d.get("direccion"), "addressLocality": d.get("ciudad"),
         "addressRegion": d.get("departamento"), "postalCode": d.get("codigoPostal"),
@@ -75,55 +110,163 @@ def json_ld(site, d):
     if addr:
         addr["@type"] = "PostalAddress"
         addr["addressCountry"] = d.get("pais") or "CO"
-        ld["address"] = addr
+        org["address"] = addr
     if d.get("horario"):
-        ld["openingHours"] = d["horario"]
+        org["openingHours"] = d["horario"]
     if d.get("redesSociales"):
-        ld["sameAs"] = d["redesSociales"]
-    return json.dumps(ld, ensure_ascii=False)
+        org["sameAs"] = d["redesSociales"]   # solo redes oficiales que existan
+    site_node = {"@type": "WebSite", "@id": site + "/#sitio", "url": site + "/", "name": "Wontex",
+                 "inLanguage": ["es", "en"], "publisher": {"@id": site + "/#organizacion"}}
+    return {"@context": "https://schema.org", "@graph": [org, site_node]}
+
+
+def home_lines(site, d, lang):
+    url = site + ("/en/" if lang == "en" else "/")
+    return [
+        '  <meta name="robots" content="%s">' % ROBOTS_ON,
+        '  <link rel="canonical" href="%s">' % url,
+        '  <link rel="alternate" hreflang="es" href="%s/">' % site,
+        '  <link rel="alternate" hreflang="en" href="%s/en/">' % site,
+        '  <link rel="alternate" hreflang="x-default" href="%s/">' % site,
+        '  <meta property="og:url" content="%s">' % url,
+        '  <meta property="og:image" content="%s/assets/og-image.jpg">' % site,
+        '  <meta property="og:image:width" content="1200">',
+        '  <meta property="og:image:height" content="630">',
+        '  <meta name="twitter:image" content="%s/assets/og-image.jpg">' % site,
+        ld(org_graph(site, d, lang)),
+    ]
+
+
+def set_block(page_html, lines, page):
+    new, n = BLOCK.subn(lambda m: m.group(1) + "\n" + "\n".join(lines) + m.group(3), page_html)
+    if n != 1:
+        fail("no encontré el bloque DOMINIO en %s." % page)
+    return new
+
+
+# ---------- Página en inglés ----------
+TOKEN = re.compile(r"(<!--.*?-->|<script\b.*?</script>|<style\b.*?</style>|<[^>]+>)", re.S | re.I)
+ATTRS = ("alt", "aria-label", "placeholder", "title", "data-alt")
+META_TEXT = re.compile(r'(<meta\s+(?:name|property)="(?:description|og:description|twitter:description|og:title|twitter:title)"\s+content=")([^"]*)(")')
+URL_ATTR = re.compile(r'(\s(?:href|src|poster)=")([^"]*)(")')
+SPANISH = re.compile(r"[áéíóúñ¿¡]|\b(de|para|que|los|las|una|con|tu|tus|del)\b", re.I)
+
+
+def make_translator(dic):
+    missing = []
+
+    def tr(text, where=""):
+        key = re.sub(r"\s+", " ", text).strip()
+        if not key:
+            return text
+        if key in dic:
+            lead = re.match(r"^\s*", text).group(0)
+            trail = re.search(r"\s*$", text).group(0)
+            return lead + dic[key] + trail
+        if SPANISH.search(key):
+            missing.append((where, key))
+        return text
+    return tr, missing
+
+
+def absolute(url):
+    if not url or re.match(r"^(https?:|//|/|#|mailto:|tel:|data:|javascript:)", url):
+        return url
+    return "/" + url
+
+
+def build_english(es_html, site, d):
+    dic = json.loads(read("js/i18n-en.js").split("window.FW_EN = ", 1)[1].rstrip().rstrip(";"))
+    tr, missing = make_translator(dic)
+    out = []
+    for part in TOKEN.split(es_html):
+        if not part:
+            continue
+        if part.startswith("<!--") or re.match(r"<style\b", part, re.I):
+            out.append(part)
+        elif re.match(r"<script\b", part, re.I):
+            # contenido intacto; solo se ajusta la ruta del archivo (src) en la etiqueta de apertura
+            opening, rest = part.split(">", 1)
+            out.append(URL_ATTR.sub(lambda m: m.group(1) + absolute(m.group(2)) + m.group(3), opening) + ">" + rest)
+        elif part.startswith("<"):
+            tag = part
+            for a in ATTRS:
+                tag = re.sub(r'(\s%s=")([^"]*)(")' % a,
+                             lambda m: m.group(1) + html.escape(tr(html.unescape(m.group(2)), "atributo " + a)) + m.group(3), tag)
+            tag = META_TEXT.sub(lambda m: m.group(1) + html.escape(tr(html.unescape(m.group(2)), "meta")) + m.group(3), tag)
+            tag = URL_ATTR.sub(lambda m: m.group(1) + absolute(m.group(2)) + m.group(3), tag)
+            out.append(tag)
+        else:
+            out.append(html.escape(tr(html.unescape(part), "texto"), quote=False))
+    en = "".join(out)
+    en = re.sub(r"<title>(.*?)</title>", lambda m: "<title>%s</title>" % html.escape(tr(html.unescape(m.group(1)), "título"), quote=False), en, 1)
+    en = en.replace('<html lang="es-419">', '<html lang="en">', 1)
+    en = en.replace('<meta property="og:locale" content="es_LA">', '<meta property="og:locale" content="en_US">', 1)
+    en = en.replace('<meta property="og:locale:alternate" content="en_US">', '<meta property="og:locale:alternate" content="es_LA">', 1)
+    en = set_block(en, home_lines(site, d, "en"), "en/index.html")
+    # Selector de idioma: en esta página el actual es EN
+    en, n = re.subn(r'<a href="/en/" hreflang="en" lang="en">EN</a>\s*<a href="/" hreflang="es" aria-current="page">ES</a>',
+                    '<a href="/en/" hreflang="en" aria-current="page">EN</a>\n      <a href="/" hreflang="es" lang="es">ES</a>', en)
+    if n != 1:
+        fail("no encontré el selector de idioma en index.html.")
+    # El diccionario solo lo necesita la página en inglés (mensajes que genera el código)
+    en, n = re.subn(r'(<script src="/js/i18n\.js[^"]*" defer></script>)',
+                    lambda m: '<script src="/js/i18n-en.js?v=%s" defer></script>\n' % version("js/i18n-en.js") + m.group(1), en)
+    if n != 1:
+        fail("no encontré js/i18n.js en index.html.")
+    return en, missing
+
+
+def version(name):
+    # huella del contenido: cambia solo cuando cambia el archivo (evita que el navegador use una copia vieja)
+    with open(os.path.join(WEB, name), "rb") as f:
+        return hashlib.sha256(f.read()).hexdigest()[:10]
 
 
 def main():
     if len(sys.argv) != 2:
-        fail("indica el dominio. Ejemplo: python3 _herramientas/preparar-dominio.py https://www.tudominio.com")
+        fail("indica el dominio. Ejemplo: python3 _herramientas/preparar-dominio.py https://wontex-devs.com")
     site = sys.argv[1].strip().rstrip("/")
-    m = re.fullmatch(r"https://([a-z0-9-]+(\.[a-z0-9-]+)+)", site, re.I)
-    if not m:
-        fail("el dominio debe empezar por https:// y no llevar rutas (ejemplo: https://www.tudominio.com).")
-    host = m.group(1).lower()
-    if host.endswith("github.io"):
-        fail("la dirección de github.io es provisional; usa tu dominio definitivo.")
+    if not re.fullmatch(r"https://([a-z0-9-]+(\.[a-z0-9-]+)+)", site, re.I):
+        fail("el dominio debe empezar por https:// y no llevar rutas (ejemplo: https://wontex-devs.com).")
     data = business_data()
-
-    for page in PAGES:
-        html = read(page)
-        url = site + "/" + ("" if page == "index.html" else page)
-        lines = [
-            '  <meta name="robots" content="index, follow">',
-            '  <link rel="canonical" href="%s">' % url,
-        ]
-        if page == "index.html":
-            lines += [
-                '  <meta property="og:url" content="%s">' % url,
-                '  <meta property="og:image" content="%s/assets/og-image.jpg">' % site,
-                '  <meta property="og:image:width" content="1200">',
-                '  <meta property="og:image:height" content="630">',
-                '  <meta name="twitter:image" content="%s/assets/og-image.jpg">' % site,
-                '  <script type="application/ld+json">%s</script>' % json_ld(site, data),
-            ]
-        new, n = BLOCK.subn(lambda mm: mm.group(1) + "\n" + "\n".join(lines) + mm.group(3), html)
-        if n != 1:
-            fail("no encontré el bloque DOMINIO en %s." % page)
-        write(page, new)
-
     today = datetime.date.today().isoformat()
-    urls = "".join(
-        "  <url><loc>%s/%s</loc><lastmod>%s</lastmod></url>\n" % (site, "" if p == "index.html" else p, today)
-        for p in PAGES)
+
+    es = set_block(read("index.html"), home_lines(site, data, "es"), "index.html")
+    write("index.html", es)
+
+    indexable = []
+    for page in LEGAL:
+        page_html = read(page)
+        draft = "[PENDIENTE" in page_html
+        title = re.search(r"<h1>(.*?)<", page_html).group(1).strip()
+        crumbs = {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [
+            {"@type": "ListItem", "position": 1, "name": TEXT["es"]["home"], "item": site + "/"},
+            {"@type": "ListItem", "position": 2, "name": title, "item": clean_url(site, page)}]}
+        lines = ['  <meta name="robots" content="%s">' % (ROBOTS_OFF if draft else ROBOTS_ON),
+                 '  <link rel="canonical" href="%s">' % clean_url(site, page), ld(crumbs)]
+        write(page, set_block(page_html, lines, page))
+        if not draft:
+            indexable.append(page)
+        print("%-17s %s" % (page, "borrador (noindex, fuera del sitemap)" if draft else "indexable"))
+
+    en, missing = build_english(es, site, data)
+    write("en/index.html", en)
+    print("en/index.html     generada")
+    for where, text in missing:
+        print("  ⚠ sin traducción (%s): %s" % (where, text[:90]))
+
+    alt = ('    <xhtml:link rel="alternate" hreflang="es" href="{s}/"/>\n'
+           '    <xhtml:link rel="alternate" hreflang="en" href="{s}/en/"/>\n'
+           '    <xhtml:link rel="alternate" hreflang="x-default" href="{s}/"/>\n').format(s=site)
+    urls = "".join("  <url>\n    <loc>%s</loc>\n    <lastmod>%s</lastmod>\n%s  </url>\n" % (u, today, alt)
+                   for u in (site + "/", site + "/en/"))
+    urls += "".join("  <url>\n    <loc>%s</loc>\n    <lastmod>%s</lastmod>\n  </url>\n" % (clean_url(site, p), today)
+                    for p in indexable)
     write("sitemap.xml", '<?xml version="1.0" encoding="UTF-8"?>\n'
-          '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' + urls + "</urlset>\n")
+          '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">\n'
+          + urls + "</urlset>\n")
     write("robots.txt", "# Wontex · robots.txt\nUser-agent: *\nAllow: /\n\nSitemap: %s/sitemap.xml\n" % site)
-    write("CNAME", host + "\n")
 
     cfg = read("js/config.js")
     cfg, n = re.subn(r"siteUrl: '[^']*'", "siteUrl: '%s'" % site, cfg)
@@ -131,8 +274,7 @@ def main():
         fail("no encontré siteUrl en js/config.js.")
     write("js/config.js", cfg)
 
-    print("Listo. Dominio configurado: " + site)
-    print("Revisa los cambios, súbelos a GitHub y configura el DNS (ver README, sección Publicar).")
+    print("Listo: " + site + ". Revisa los cambios y súbelos a GitHub (Cloudflare Pages publica solo).")
 
 
 if __name__ == "__main__":

@@ -4,30 +4,33 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>Wontex · Sitios web, automatización y CRM para negocios</title>
-  <meta name="description" content="Soluciones digitales que simplifican tu negocio: sitios web, automatizaciones, CRM y herramientas de negocio.">
+  <meta name="description" content="Wontex crea sitios web, automatizaciones con IA, CRM (incluido GoHighLevel) y herramientas de negocio que simplifican el trabajo diario de tu empresa.">
   <meta name="theme-color" content="#142B3B">
   <meta name="author" content="Wontex">
   <meta name="referrer" content="strict-origin-when-cross-origin">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Wontex">
   <meta property="og:title" content="Wontex · Sitios web, automatización y CRM para negocios">
-  <meta property="og:description" content="Soluciones digitales que simplifican tu negocio: sitios web, automatizaciones, CRM y herramientas de negocio.">
+  <meta property="og:description" content="Wontex crea sitios web, automatizaciones con IA, CRM (incluido GoHighLevel) y herramientas de negocio que simplifican el trabajo diario de tu empresa.">
   <meta property="og:locale" content="es_LA">
   <meta property="og:locale:alternate" content="en_US">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Wontex · Sitios web, automatización y CRM para negocios">
-  <meta name="twitter:description" content="Soluciones digitales que simplifican tu negocio: sitios web, automatizaciones, CRM y herramientas de negocio.">
+  <meta name="twitter:description" content="Wontex crea sitios web, automatizaciones con IA, CRM (incluido GoHighLevel) y herramientas de negocio que simplifican el trabajo diario de tu empresa.">
   <!-- DOMINIO:INICIO · Este bloque lo reescribe _herramientas/preparar-dominio.py con el dominio definitivo
        (URL canónica, imagen para compartir y datos estructurados con URL). Mientras tanto la web NO se indexa,
        para que Google no tome la dirección provisional como la oficial. -->
-  <meta name="robots" content="index, follow">
+  <meta name="robots" content="index, follow, max-image-preview:large">
   <link rel="canonical" href="https://wontex-devs.com/">
+  <link rel="alternate" hreflang="es" href="https://wontex-devs.com/">
+  <link rel="alternate" hreflang="en" href="https://wontex-devs.com/en/">
+  <link rel="alternate" hreflang="x-default" href="https://wontex-devs.com/">
   <meta property="og:url" content="https://wontex-devs.com/">
   <meta property="og:image" content="https://wontex-devs.com/assets/og-image.jpg">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta name="twitter:image" content="https://wontex-devs.com/assets/og-image.jpg">
-  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "ProfessionalService", "name": "Wontex", "url": "https://wontex-devs.com/", "logo": "https://wontex-devs.com/assets/icon-512.png", "image": "https://wontex-devs.com/assets/og-image.jpg", "description": "Automatización con IA, sitios web, marketing digital y herramientas de negocio para empresas.", "email": "info@wontex-devs.com", "knowsAbout": ["Automatización con inteligencia artificial", "Desarrollo de sitios web", "Marketing digital", "CRM y herramientas de negocio"], "areaServed": {"@type": "Country", "name": "Colombia"}}</script>
+  <script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "ProfessionalService", "@id": "https://wontex-devs.com/#organizacion", "name": "Wontex", "url": "https://wontex-devs.com/", "logo": "https://wontex-devs.com/assets/icon-512.png", "image": "https://wontex-devs.com/assets/og-image.jpg", "description": "Sitios web, automatizaciones con inteligencia artificial, CRM (incluido GoHighLevel) y herramientas de negocio para empresas.", "slogan": "Soluciones inteligentes. Resultados reales.", "email": "info@wontex-devs.com", "knowsAbout": ["Desarrollo de sitios web", "Automatización con inteligencia artificial", "CRM y gestión comercial", "GoHighLevel", "Herramientas de negocio"], "knowsLanguage": ["es", "en"], "areaServed": {"@type": "Country", "name": "Colombia"}}, {"@type": "WebSite", "@id": "https://wontex-devs.com/#sitio", "url": "https://wontex-devs.com/", "name": "Wontex", "inLanguage": ["es", "en"], "publisher": {"@id": "https://wontex-devs.com/#organizacion"}}]}</script>
   <!-- DOMINIO:FIN -->
   <link rel="icon" href="favicon.ico" sizes="32x32">
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
@@ -37,18 +40,7 @@
   <link rel="stylesheet" href="css/fonts.css?v=20261025a">
   <link rel="stylesheet" href="css/styles.css?v=20261020b">
   <link rel="stylesheet" href="css/site.css?v=20261020b">
-  <script>
-    // Activa la animación de entrada del logo (se omite si el visitante prefiere menos movimiento)
-    // Al recargar, empezar siempre desde arriba (sin restaurar scroll ni saltar a #secciones)
-    if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
-    if (location.hash) history.replaceState(null, '', location.pathname + location.search);
-    (function (d) {
-      d.classList.add('js');
-      // La animación completa se ve una vez por visita; al navegar o recargar, la página abre directo
-      var seen = false; try { seen = sessionStorage.getItem('fw-intro') === '1'; sessionStorage.setItem('fw-intro', '1'); } catch (e) {}
-      if (!seen && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) d.classList.add('intro-playing');
-    })(document.documentElement);
-  </script>
+  <script src="js/head.js?v=20261025a"></script>
 </head>
 <body>
 <div class="intro" id="intro" aria-hidden="true">
@@ -72,10 +64,10 @@
       <a href="#contacto">Contacto</a>
     </nav>
     <a class="btn btn--small btn--pill header__cta" href="#contacto"><span>Hablemos</span></a>
-    <div class="lang" role="group" aria-label="Idioma">
-      <button type="button" data-lang="en" aria-pressed="true">EN</button>
-      <button type="button" data-lang="es" aria-pressed="false">ES</button>
-    </div>
+    <nav class="lang" aria-label="Idioma">
+      <a href="/en/" hreflang="en" lang="en">EN</a>
+      <a href="/" hreflang="es" aria-current="page">ES</a>
+    </nav>
     <button class="menu-btn" id="menuBtn" type="button" aria-expanded="false" aria-controls="mobileNav"><span class="menu-btn__label">Menú</span><span class="menu-btn__icon" aria-hidden="true"></span></button>
   </div>
 </header>
@@ -432,8 +424,15 @@
         <textarea id="f-msg" name="mensaje" rows="4" maxlength="2000" required></textarea>
       </div>
       <div class="field field--full field--consent">
-        <label class="consent-check" for="f-consent"><input id="f-consent" name="autorizacion" type="checkbox" value="Sí" required><span>Autorizo el tratamiento de mis datos personales para responder esta solicitud, según la <a href="privacidad.html">Política de privacidad</a>.</span></label>
+        <label class="consent-check" for="f-consent"><input id="f-consent" name="autorizacion" type="checkbox" value="Sí" required><span>Autorizo el tratamiento de mis datos personales para responder esta solicitud, según la <a href="/privacidad">Política de privacidad</a>.</span></label>
       </div>
+      <div class="field field--full field--consent">
+        <label class="consent-check" for="f-terms"><input id="f-terms" name="acepta_aviso_legal" type="checkbox" value="Sí" required><span>Acepto los Términos y Condiciones del <a href="/aviso-legal">Aviso legal</a>.</span></label>
+      </div>
+      <div class="field field--full field--consent">
+        <label class="consent-check" for="f-privacy"><input id="f-privacy" name="leyo_privacidad" type="checkbox" value="Sí" required><span>He leído la <a href="/privacidad">Política de privacidad</a>.</span></label>
+      </div>
+      <input type="hidden" name="constancia" value="">
       <div class="form__foot">
         <button class="btn btn--pill" type="submit"><span>Enviar solicitud</span><span class="arr" aria-hidden="true">→</span></button>
         <p class="form__status" id="formStatus" role="status" aria-live="polite"></p>
@@ -451,10 +450,10 @@
     </div>
     <div class="footer__row">
       <nav class="footer__links" aria-label="Legal">
-        <a href="aviso-legal.html">Aviso legal</a>
-        <a href="privacidad.html">Privacidad</a>
-        <a href="cookies.html">Cookies</a>
-        <a href="cookies.html" data-consent-open hidden>Preferencias de cookies</a>
+        <a href="/aviso-legal">Aviso legal</a>
+        <a href="/privacidad">Privacidad</a>
+        <a href="/cookies">Cookies</a>
+        <a href="/cookies" data-consent-open hidden>Preferencias de cookies</a>
       </nav>
       <a href="#top" class="link-plain">Volver arriba ↑</a>
     </div>
@@ -463,7 +462,6 @@
 <div class="legal-bar"><div class="container"><p>Copyright <span id="year">2026</span> - Wontex - Todos los derechos reservados - Diseñado por <a href="#top">Wontex</a></p></div></div>
 
 <script src="js/config.js?v=20261020b" defer></script>
-<script src="js/i18n-en.js?v=20261020b" defer></script>
 <script src="js/i18n.js?v=20261020b" defer></script>
 <script src="js/main.js?v=20261020b" defer></script>
 <script src="js/consent.js?v=20261020b" defer></script>

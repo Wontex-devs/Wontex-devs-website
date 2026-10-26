@@ -3,25 +3,26 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Política de cookies · Wontex</title>
-  <meta name="description" content="Qué datos guarda el sitio web de Wontex en tu navegador y cómo gestionarlos.">
+  <title>Política de cookies y almacenamiento local · Wontex</title>
+  <meta name="description" content="Qué cookies y qué almacenamiento del navegador usa el sitio web de Wontex, para qué sirven y cómo puedes aceptarlos, rechazarlos o cambiar tu elección.">
   <meta name="theme-color" content="#142B3B">
   <!-- DOMINIO:INICIO · Lo reescribe _herramientas/preparar-dominio.py (URL canónica). Sin dominio definitivo no se indexa. -->
-  <meta name="robots" content="index, follow">
-  <link rel="canonical" href="https://wontex-devs.com/cookies.html">
+  <meta name="robots" content="noindex, follow">
+  <link rel="canonical" href="https://wontex-devs.com/cookies">
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Inicio", "item": "https://wontex-devs.com/"}, {"@type": "ListItem", "position": 2, "name": "Política de cookies", "item": "https://wontex-devs.com/cookies"}]}</script>
   <!-- DOMINIO:FIN -->
   <link rel="icon" href="favicon.ico" sizes="32x32">
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
   <link rel="preload" href="assets/fonts/unbounded-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="css/fonts.css?v=20261025a">
-  <link rel="stylesheet" href="css/legal.css?v=20261018d">
+  <link rel="stylesheet" href="css/legal.css?v=20261025a">
 </head>
 <body>
 <a class="skip" href="#main">Saltar al contenido</a>
 <header class="top"><div class="wrap">
-  <a class="brand" href="./" aria-label="Wontex, volver al inicio"><span class="wm">WONTEX<span class="wm-cursor" aria-hidden="true"></span></span></a>
-  <a class="back" href="./">← Volver al inicio</a>
+  <a class="brand" href="/" aria-label="Wontex, volver al inicio"><span class="wm">WONTEX<span class="wm-cursor" aria-hidden="true"></span></span></a>
+  <a class="back" href="/">← Volver al inicio</a>
 </div></header>
 <main id="main"><div class="wrap">
 <p class="eyebrow">Legal</p>
@@ -50,12 +51,14 @@
 <h2>5. Cómo borrar estos datos</h2>
 <p>Puedes borrar las cookies y el almacenamiento local desde la configuración de privacidad de tu navegador. El sitio seguirá funcionando; solo volverá a mostrarse en el idioma predeterminado.</p>
 <h2>6. Más información</h2>
-<p>Consulta la <a href="privacidad.html">Política de privacidad</a> o escríbenos a <a href="mailto:info@wontex-devs.com">info@wontex-devs.com</a>.</p>
+<p>Consulta la <a href="/privacidad">Política de privacidad</a> o escríbenos a <a href="mailto:info@wontex-devs.com">info@wontex-devs.com</a>.</p>
 </div></main>
 <footer class="foot"><div class="wrap">
-  <nav aria-label="Legal"><a href="aviso-legal.html">Aviso legal</a><a href="privacidad.html">Privacidad</a><a href="cookies.html" aria-current="page">Cookies</a></nav>
+  <nav aria-label="Legal"><a href="/aviso-legal">Aviso legal</a><a href="/privacidad">Privacidad</a><a href="/cookies" aria-current="page">Cookies</a><a href="/cookies" data-consent-open hidden>Preferencias de cookies</a></nav>
   <span>Copyright <span class="year">2026</span> - Wontex - Todos los derechos reservados</span>
 </div></footer>
-<script>document.querySelectorAll('.year').forEach(function (e) { e.textContent = new Date().getFullYear(); });</script>
+<script src="js/config.js?v=20261025a" defer></script>
+<script src="js/legal.js?v=20261025a" defer></script>
+<script src="js/consent.js?v=20261025a" defer></script>
 </body>
 </html>

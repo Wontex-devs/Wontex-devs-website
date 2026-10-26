@@ -3,37 +3,38 @@
 <head>
   <meta charset="utf-8">
   <base href="/">
-  <script>if (location.pathname.indexOf("/frameworks-website/") === 0) document.querySelector("base").href = "/frameworks-website/";</script>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Página no encontrada · Wontex</title>
   <meta name="description" content="La página que buscas no existe.">
   <meta name="theme-color" content="#142B3B">
-  <meta name="robots" content="noindex">
+  <meta name="robots" content="noindex, follow">
   <link rel="icon" href="favicon.ico" sizes="32x32">
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
   <link rel="preload" href="assets/fonts/unbounded-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="css/fonts.css?v=20261025a">
-  <link rel="stylesheet" href="css/legal.css?v=20261018d">
+  <link rel="stylesheet" href="css/legal.css?v=20261025a">
 </head>
 <body>
 <a class="skip" href="#main">Saltar al contenido</a>
 <header class="top"><div class="wrap">
-  <a class="brand" href="./" aria-label="Wontex, volver al inicio"><span class="wm">WONTEX<span class="wm-cursor" aria-hidden="true"></span></span></a>
-  <a class="back" href="./">← Volver al inicio</a>
+  <a class="brand" href="/" aria-label="Wontex, volver al inicio"><span class="wm">WONTEX<span class="wm-cursor" aria-hidden="true"></span></span></a>
+  <a class="back" href="/">← Volver al inicio</a>
 </div></header>
 <main id="main"><div class="wrap">
 <section class="e404">
 <p class="num">404<i>.</i></p>
 <h1>Esta página no existe</h1>
 <p>Puede que la dirección esté mal escrita o que la página se haya movido.</p>
-<p><a class="btn" href="./">Volver al inicio <span aria-hidden="true">→</span></a></p>
+<p><a class="btn" href="/">Volver al inicio <span aria-hidden="true">→</span></a></p>
 </section>
 </div></main>
 <footer class="foot"><div class="wrap">
-  <nav aria-label="Legal"><a href="aviso-legal.html">Aviso legal</a><a href="privacidad.html">Privacidad</a><a href="cookies.html">Cookies</a></nav>
+  <nav aria-label="Legal"><a href="/aviso-legal">Aviso legal</a><a href="/privacidad">Privacidad</a><a href="/cookies">Cookies</a><a href="/cookies" data-consent-open hidden>Preferencias de cookies</a></nav>
   <span>Copyright <span class="year">2026</span> - Wontex - Todos los derechos reservados</span>
 </div></footer>
-<script>document.querySelectorAll('.year').forEach(function (e) { e.textContent = new Date().getFullYear(); });</script>
+<script src="js/config.js?v=20261025a" defer></script>
+<script src="js/legal.js?v=20261025a" defer></script>
+<script src="js/consent.js?v=20261025a" defer></script>
 </body>
 </html>

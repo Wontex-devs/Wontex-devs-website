@@ -233,5 +233,14 @@ window.FW_EN = {
 "Enviando…": "Sending…",
 "No se pudo enviar. Inténtalo de nuevo o escríbenos a": "We couldn't send it. Please try again or email us at",
 "Se abrió tu correo con el mensaje listo. Si no se abrió, escríbenos a": "Your email app opened with the message ready. If it didn't open, email us at",
-"Hola, quiero información sobre los servicios de Wontex.": "Hi, I'd like information about Wontex's services."
+"Hola, quiero información sobre los servicios de Wontex.": "Hi, I'd like information about Wontex's services.",
+"Acepto los Términos y Condiciones del": "I accept the Terms and Conditions of the",
+"He leído la": "I have read the",
+"Para enviar la solicitud debes aceptar el Aviso legal.": "To send your request, you must accept the Legal notice.",
+"Para enviar la solicitud debes confirmar que leíste la Política de privacidad.": "To send your request, you must confirm that you have read the Privacy policy.",
+"Revisa los campos marcados.": "Please check the highlighted fields.",
+"Configurar": "Customize",
+"Guardar": "Save",
+"Cookies de analítica (Google Analytics)": "Analytics cookies (Google Analytics)",
+"Wontex crea sitios web, automatizaciones con IA, CRM (incluido GoHighLevel) y herramientas de negocio que simplifican el trabajo diario de tu empresa.": "Wontex builds websites, AI-powered automations, CRM (including GoHighLevel) and business tools that simplify the way your company works every day."
 };

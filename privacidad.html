@@ -3,25 +3,26 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Política de privacidad · Wontex</title>
-  <meta name="description" content="Cómo trata Wontex los datos personales que recibe por su sitio web, según la Ley 1581 de 2012.">
+  <title>Política de privacidad y tratamiento de datos · Wontex</title>
+  <meta name="description" content="Cómo trata Wontex los datos personales que recibe por su sitio web, con qué finalidades y cómo ejercer tus derechos según la Ley 1581 de 2012.">
   <meta name="theme-color" content="#142B3B">
   <!-- DOMINIO:INICIO · Lo reescribe _herramientas/preparar-dominio.py (URL canónica). Sin dominio definitivo no se indexa. -->
-  <meta name="robots" content="index, follow">
-  <link rel="canonical" href="https://wontex-devs.com/privacidad.html">
+  <meta name="robots" content="noindex, follow">
+  <link rel="canonical" href="https://wontex-devs.com/privacidad">
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Inicio", "item": "https://wontex-devs.com/"}, {"@type": "ListItem", "position": 2, "name": "Política de privacidad", "item": "https://wontex-devs.com/privacidad"}]}</script>
   <!-- DOMINIO:FIN -->
   <link rel="icon" href="favicon.ico" sizes="32x32">
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
   <link rel="preload" href="assets/fonts/unbounded-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="css/fonts.css?v=20261025a">
-  <link rel="stylesheet" href="css/legal.css?v=20261018d">
+  <link rel="stylesheet" href="css/legal.css?v=20261025a">
 </head>
 <body>
 <a class="skip" href="#main">Saltar al contenido</a>
 <header class="top"><div class="wrap">
-  <a class="brand" href="./" aria-label="Wontex, volver al inicio"><span class="wm">WONTEX<span class="wm-cursor" aria-hidden="true"></span></span></a>
-  <a class="back" href="./">← Volver al inicio</a>
+  <a class="brand" href="/" aria-label="Wontex, volver al inicio"><span class="wm">WONTEX<span class="wm-cursor" aria-hidden="true"></span></span></a>
+  <a class="back" href="/">← Volver al inicio</a>
 </div></header>
 <main id="main"><div class="wrap">
 <p class="eyebrow">Legal</p>
@@ -51,7 +52,7 @@
 <h3>WhatsApp</h3>
 <p>Si nos escribes por WhatsApp, recibimos tu número y los mensajes que envíes. Esa conversación también queda sujeta a las condiciones y la política de privacidad de WhatsApp (Meta).</p>
 <h3>Navegación</h3>
-<p>El sitio no usa cookies ni herramientas de analítica. Solo guarda en tu navegador tu preferencia de idioma (español o inglés) y, por seguridad, un contador temporal de envíos del formulario que se borra al cerrar la pestaña. Más detalles en la <a href="cookies.html">Política de cookies</a>.</p>
+<p>El sitio no usa cookies ni herramientas de analítica. Solo guarda en tu navegador tu preferencia de idioma (español o inglés) y, por seguridad, un contador temporal de envíos del formulario que se borra al cerrar la pestaña. Más detalles en la <a href="/cookies">Política de cookies</a>.</p>
 <h2>3. Para qué usamos tus datos</h2>
 <ul>
   <li>Responder tu solicitud y preparar la cotización que pediste.</li>
@@ -96,9 +97,11 @@
 <p>Si cambiamos esta política, publicaremos la nueva versión en esta página con su fecha de actualización.</p>
 </div></main>
 <footer class="foot"><div class="wrap">
-  <nav aria-label="Legal"><a href="aviso-legal.html">Aviso legal</a><a href="privacidad.html" aria-current="page">Privacidad</a><a href="cookies.html">Cookies</a></nav>
+  <nav aria-label="Legal"><a href="/aviso-legal">Aviso legal</a><a href="/privacidad" aria-current="page">Privacidad</a><a href="/cookies">Cookies</a><a href="/cookies" data-consent-open hidden>Preferencias de cookies</a></nav>
   <span>Copyright <span class="year">2026</span> - Wontex - Todos los derechos reservados</span>
 </div></footer>
-<script>document.querySelectorAll('.year').forEach(function (e) { e.textContent = new Date().getFullYear(); });</script>
+<script src="js/config.js?v=20261025a" defer></script>
+<script src="js/legal.js?v=20261025a" defer></script>
+<script src="js/consent.js?v=20261025a" defer></script>
 </body>
 </html>

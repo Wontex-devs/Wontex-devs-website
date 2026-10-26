@@ -551,6 +551,7 @@
      Se envía a FormSubmit (data-endpoint), que reenvía el mensaje al correo de Wontex.
      Si está vacío, abre el correo del visitante con el mensaje ya redactado. */
   var form = document.getElementById('contactForm');
+  var LEGAL_VERSION = '2026-10-25';   // cámbiala cuando se actualicen el Aviso legal o la Política de privacidad
   if (form) {
     var status = document.getElementById('formStatus');
 
@@ -589,9 +590,15 @@
         fieldError(msg, T('Por seguridad, el mensaje no puede incluir más de dos enlaces.'));
         ok = false;
       }
-      var consent = form.elements.autorizacion;
-      fieldError(consent, consent.checked ? '' : T('Para enviar la solicitud debes autorizar el tratamiento de tus datos.'));
-      if (!consent.checked) ok = false;
+      // Casillas obligatorias y separadas (ninguna viene marcada): autorización de datos, aviso legal y privacidad
+      [['autorizacion', 'Para enviar la solicitud debes autorizar el tratamiento de tus datos.'],
+       ['acepta_aviso_legal', 'Para enviar la solicitud debes aceptar el Aviso legal.'],
+       ['leyo_privacidad', 'Para enviar la solicitud debes confirmar que leíste la Política de privacidad.']].forEach(function (c) {
+        var box = form.elements[c[0]];
+        if (!box) return;
+        fieldError(box, box.checked ? '' : T(c[1]));
+        if (!box.checked) ok = false;
+      });
       return ok;
     }
 
@@ -619,6 +626,7 @@
       status.textContent = '';
       if (!validate()) {
         var firstBad = form.querySelector('[aria-invalid="true"]');
+        status.textContent = T('Revisa los campos marcados.');
         if (firstBad) firstBad.focus();
         return;
       }
@@ -630,13 +638,21 @@
         return;
       }
 
+      // Constancia de aceptación que viaja con el mensaje (Ley 527 de 1999: mensaje de datos):
+      // formulario, fecha y hora de Colombia (-05:00), versión de los documentos aceptados y página de envío.
+      var co = new Date(Date.now() - 5 * 60 * 60 * 1000).toISOString().slice(0, 19) + '-05:00';
+      form.elements.constancia.value = 'Formulario: contacto web · Fecha y hora: ' + co +
+        ' · Aceptó: autorización de tratamiento de datos, Aviso legal y Política de privacidad (versión ' + LEGAL_VERSION + ')' +
+        ' · Página: ' + location.origin + location.pathname + ' · Idioma: ' + (window.FW_LANG ? window.FW_LANG() : 'es');
+
       var endpoint = form.dataset.endpoint;
       var data = new FormData(form);
 
       if (!endpoint) {
         var body = 'Idioma: ' + (window.FW_LANG ? window.FW_LANG() : 'es') + '\nNombre: ' + data.get('nombre') + '\nCorreo: ' + data.get('email') +
           '\nEmpresa: ' + (data.get('empresa') || '-') +
-          '\nMe interesa: ' + (data.getAll('interes').join(', ') || '-') + '\n\n' + data.get('mensaje');
+          '\nMe interesa: ' + (data.getAll('interes').join(', ') || '-') + '\n\n' + data.get('mensaje') +
+          '\n\n' + data.get('constancia');
         window.location.href = 'mailto:' + form.dataset.mailto +
           '?subject=' + encodeURIComponent('Diagnóstico · ' + data.get('nombre')) +
           '&body=' + encodeURIComponent(body);
