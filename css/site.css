@@ -145,6 +145,9 @@ body { background: var(--cloud); color: var(--mid); font-family: var(--font-text
 .mk-tool__total b { color: var(--lime); font-family: var(--font-display); font-weight: 600; }
 .mk-tool__chart { display: flex; align-items: flex-end; gap: 8%; padding: 14px; border-radius: 14px; background: rgba(247, 248, 244, .05); }
 .mk-tool__chart i { flex: 1; height: var(--h); border-radius: 6px 6px 2px 2px; background: rgba(247, 248, 244, .18); transform-origin: bottom; animation: mk-grow 5s var(--ease) infinite; }
+/* alturas de las barras (antes en atributos style; aquí para una CSP sin estilos en línea) */
+.mk-tool__chart i:nth-child(1) { --h: 38%; } .mk-tool__chart i:nth-child(2) { --h: 56%; } .mk-tool__chart i:nth-child(3) { --h: 47%; }
+.mk-tool__chart i:nth-child(4) { --h: 72%; } .mk-tool__chart i:nth-child(5) { --h: 64%; } .mk-tool__chart i:nth-child(6) { --h: 88%; }
 .mk-tool__chart i:last-child { background: var(--lime); }
 .mk-tool__chart i:nth-child(2) { animation-delay: .1s; } .mk-tool__chart i:nth-child(3) { animation-delay: .2s; } .mk-tool__chart i:nth-child(4) { animation-delay: .3s; } .mk-tool__chart i:nth-child(5) { animation-delay: .4s; } .mk-tool__chart i:nth-child(6) { animation-delay: .5s; }
 @keyframes mk-grow { 0% { transform: scaleY(.2); } 25%, 80% { transform: scaleY(1); } 100% { transform: scaleY(.2); } }
@@ -278,3 +281,10 @@ body, .xh__sub, .xs__lead, .sol__desc, .steps2 p, .xc__lead, .cx__desc { -webkit
 .sol__detail-in { min-height: 0; overflow: hidden; }
 .sol__detail.is-open { grid-template-rows: 1fr; opacity: 1; margin-top: 22px; }
 @media (prefers-reduced-motion: reduce) { .sol__detail { transition: none; } }
+
+/* Foco visible con contraste suficiente (WCAG 2.2, 3:1 frente al fondo): Midnight sobre fondos claros y
+   lima sobre fondos oscuros. Solo se ve al navegar con teclado. */
+:focus-visible, .btn:focus-visible { outline-color: var(--mid); }
+.xh :focus-visible, .xs--contact :focus-visible, .footer :focus-visible, .legal-bar :focus-visible,
+.header.is-over :focus-visible, .consent :focus-visible, .intro :focus-visible { outline-color: var(--lime); }
+.float-cta:focus-visible { outline-color: var(--lime); box-shadow: 0 0 0 5px var(--mid); }

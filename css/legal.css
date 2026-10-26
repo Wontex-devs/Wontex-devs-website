@@ -70,3 +70,5 @@ h1 i, .e404 .num i { color: var(--noche); }
 .consent__btn { min-height: 40px; padding: 0 18px; border: 1px solid rgba(255, 255, 255, .35); border-radius: 999px; background: none; color: var(--marfil); font: inherit; font-weight: 600; cursor: pointer; }
 .consent__cfg { flex: 1 1 100%; } .consent__cfg label { display: flex; align-items: center; gap: 10px; cursor: pointer; }
 .foot [hidden] { display: none; }
+/* Foco visible sobre el pie oscuro y el aviso de cookies (contraste 3:1) */
+.foot a:focus-visible, .consent :focus-visible { outline-color: var(--cobre); }

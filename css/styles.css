@@ -232,6 +232,7 @@ main p.eyebrow, .contact__mail, .form__status, .footer__mark {
 
 /* ---------- Selector de idioma ---------- */
 .lang { display: inline-flex; align-items: center; border: 1px solid var(--arena); border-radius: 999px; padding: 3px; font-family: var(--font-display); font-size: 12.5px; font-weight: 600; letter-spacing: .04em; }
+.lang a { display: inline-block; text-align: center; letter-spacing: normal; word-spacing: normal; text-transform: none; text-indent: 0; }
 .lang button, .lang a { border: 0; background: none; cursor: pointer; padding: 5px 10px; border-radius: 999px; color: var(--pizarra); transition: background-color .3s var(--ease), color .3s var(--ease); }
 .lang button[aria-pressed="true"], .lang a[aria-current="page"] { background: var(--noche); color: var(--marfil); }
 .lang button:not([aria-pressed="true"]):hover, .lang a:not([aria-current="page"]):hover { color: var(--noche); }

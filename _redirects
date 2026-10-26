@@ -1,0 +1,6 @@
+# Wontex · redirecciones para Cloudflare Pages.
+# Ya resueltas sin este archivo: http → https y www → dominio sin www (regla en Cloudflare, 301),
+# y /pagina.html → /pagina, /index.html → / (Cloudflare Pages, 308).
+# El español vive en la raíz: quien escriba /es llega a la página principal.
+/es    /    301
+/es/*  /:splat    301
