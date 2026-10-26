@@ -1,7 +1,11 @@
 # Wontex · sitio web
 
 Sitio **estático** de una sola página (HTML, CSS y JavaScript, sin compilación ni servidor).
-Funciona en cualquier alojamiento estático. Hoy se publica en GitHub Pages en una dirección **provisional**.
+Funciona en cualquier alojamiento estático. Se publica en **Cloudflare Pages** (proyecto `wontex-devs-website`,
+conectado al repositorio `Wontex-devs/Wontex-devs-website`): cada cambio en la rama `main` se publica solo.
+Dominio: **https://wontex-devs.com** (dirección de respaldo: https://wontex-devs-website.pages.dev).
+Comando de compilación en Cloudflare: `rm -rf _herramientas README.md _config.yml` (no publica los archivos internos);
+carpeta de salida: la raíz.
 
 ```
 web/

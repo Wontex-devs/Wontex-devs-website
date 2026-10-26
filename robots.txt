@@ -1,5 +1,5 @@
 # Wontex · robots.txt
-# Mientras no haya dominio definitivo, las páginas llevan <meta name="robots" content="noindex">.
-# _herramientas/preparar-dominio.py reescribe este archivo y agrega la línea "Sitemap:".
 User-agent: *
 Allow: /
+
+Sitemap: https://wontex-devs.com/sitemap.xml
