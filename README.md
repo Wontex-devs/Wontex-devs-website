@@ -53,7 +53,7 @@ alojamiento). Son una base: **conviene que las revise un abogado** antes de publ
 
 ## Formulario de contacto
 
-- Se envía a **FormSubmit** (`formsubmit.co`), que reenvía cada solicitud a `frameworkscol@gmail.com`.
+- Se envía a **FormSubmit** (`formsubmit.co`), que reenvía cada solicitud a `info@wontex-devs.com`.
 - **Activación (una sola vez):** envía una prueba desde la web publicada; llegará un correo de FormSubmit para
   confirmar. Hasta entonces los envíos no se entregan.
 - Después de activarlo, FormSubmit ofrece una dirección alternativa (una cadena aleatoria) para no mostrar el correo

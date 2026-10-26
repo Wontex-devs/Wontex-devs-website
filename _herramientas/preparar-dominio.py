@@ -59,7 +59,7 @@ def json_ld(site, d):
         "logo": site + "/assets/icon-512.png",
         "image": site + "/assets/og-image.jpg",
         "description": "Automatización con IA, sitios web, marketing digital y herramientas de negocio para empresas.",
-        "email": "frameworkscol@gmail.com",
+        "email": "info@wontex-devs.com",
         "knowsAbout": ["Automatización con inteligencia artificial", "Desarrollo de sitios web",
                        "Marketing digital", "CRM y herramientas de negocio"],
         "areaServed": {"@type": "Country", "name": "Colombia"},
