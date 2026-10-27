@@ -101,8 +101,8 @@ Redirecciones: `http` → `https` y `www` → sin `www` (regla 301 en Cloudflare
 
 ## Estructura de la página
 
-1. **Hero** (`#top`): una pantalla con el video de fondo, la marca WONTEX (título principal), el lema y el botón
-   "Hablemos de tu negocio". La animación de entrada del logo se muestra en cada carga de la página.
+1. **Hero** (`#top`): video fijo con dos momentos: presentación (titular, botones y "Desliza") y, tras un solo
+   desplazamiento, el cierre de marca (WONTEX, lema y botón). La animación de entrada se muestra en cada carga.
 2. **Nuestro enfoque** (`#enfoque`): tres frases que se "llenan" al desplazarse.
 3. **Soluciones** (`#soluciones`): Sitios web (incluido SEO), Automatización, CRM y gestión comercial, Herramientas
    de negocio. "Conocer más" despliega el detalle; "Cotizar…" lleva al formulario con el interés ya marcado.

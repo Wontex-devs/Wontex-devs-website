@@ -40,7 +40,7 @@
   <link rel="preload" href="/assets/video/wontex-hero-poster.jpg?v=3" as="image" fetchpriority="high">
   <link rel="stylesheet" href="/css/fonts.css?v=20261025a">
   <link rel="stylesheet" href="/css/styles.css?v=20261025b">
-  <link rel="stylesheet" href="/css/site.css?v=20261027a">
+  <link rel="stylesheet" href="/css/site.css?v=20261027b">
   <script src="/js/head.js?v=20261026a"></script>
 </head>
 <body>
@@ -84,7 +84,7 @@
 
 <main id="main">
 
-<!-- 1 · HERO AUDIOVISUAL: una pantalla con el video de fondo, la marca y la invitación a conversar.
+<!-- 1 · HERO AUDIOVISUAL: video fijo con dos momentos; un solo desplazamiento pasa de la presentación al cierre de marca.
      VIDEO: animación conceptual de la marca renderizada en nativo: wontex-hero-1440.mp4 (2560×1440, pantallas
      de 1200 px o más) y wontex-hero.mp4 (1920×1080, resto).
      Para cambiarlo, reemplaza ese archivo (MP4 H.264, 1280×720 o 1920×1080,
@@ -99,12 +99,23 @@
       <div class="xh__shade"></div>
     </div>
     <div class="container xh__stage">
-      <div class="xh__final">
-        <h1 class="xh__h1"><span class="wm wm--live xh__wm">WONTEX<span class="wm-cursor" aria-hidden="true"></span></span><span class="sr-only"> · Websites, automation and artificial intelligence for businesses</span></h1>
+      <div class="xh__step xh__intro is-on" data-step="0">
+        <p class="xh__kicker">Websites · Automation · CRM</p>
+        <h1 class="xh__title">Digital solutions that simplify your business.</h1>
+        <p class="xh__sub">We build websites, automations and tools that work for you.</p>
+        <div class="xh__ctas">
+          <a class="btn btn--pill" href="#contacto"><span>Request a quote</span><span class="arr" aria-hidden="true">→</span></a>
+          <a class="xh__link" href="#soluciones">See solutions</a>
+        </div>
+      </div>
+      <div class="xh__step xh__final" data-step="1">
+        <span class="wm wm--live xh__wm" aria-hidden="true">WONTEX<span class="wm-cursor"></span></span>
         <p class="xh__claim">Technology behind.<br><span>The solution, up front.</span></p>
         <a class="btn btn--pill" href="#contacto"><span>Let's talk about your business</span><span class="arr" aria-hidden="true">→</span></a>
       </div>
     </div>
+    <div class="xh__rail" aria-hidden="true"><span id="heroRail"></span></div>
+    <p class="xh__hint" aria-hidden="true"><span>Scroll</span><i></i></p>
   </div>
 </section>
 
