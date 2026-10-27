@@ -374,3 +374,85 @@ body, .xh__sub, .xs__lead, .sol__desc, .steps2 p, .xc__lead, .cx__desc { -webkit
 /* Hero interactivo (js/hero-live.js): en computadores la animación se dibuja en vivo y reemplaza al video */
 .xh__live { filter: saturate(1.65) contrast(1.12) brightness(1.1); }
 .xh__media.is-live .xh__video:not(.xh__live) { display: none; }
+
+/* ---------- CRM · experiencia del cliente (animación automática, no interactiva) ----------
+   main.js recorre 5 escenas en bucle (20 s): chat en el sitio → WhatsApp con enlace → agenda →
+   confirmación y recordatorio → reseña. Los nombres son ficticios. */
+.mk--journey { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: center; gap: clamp(16px, 3vw, 40px); aspect-ratio: 16 / 11; }
+.cj-steps { list-style: none; margin: 0; padding: 0; display: grid; gap: 14px; counter-reset: cj; }
+.cj-steps li { counter-increment: cj; display: grid; grid-template-columns: 26px 1fr; align-items: center; gap: 10px; font-family: var(--font-text); font-size: clamp(12.5px, 1.05vw, 14.5px); line-height: 1.3; color: rgba(247, 248, 244, .45); transition: color .4s var(--ease); }
+.cj-steps li::before { content: counter(cj); display: grid; place-items: center; width: 26px; height: 26px; border-radius: 8px; background: rgba(247, 248, 244, .08); font-family: var(--font-display); font-size: 11.5px; font-weight: 600; color: rgba(247, 248, 244, .6); transition: background-color .4s var(--ease), color .4s var(--ease); }
+.cj-steps li.is-on { color: var(--cloud); }
+.cj-steps li.is-on::before { background: var(--lime); color: var(--mid); }
+.cj-phone { height: 100%; max-height: 420px; aspect-ratio: 9 / 18.6; padding: 7px; border-radius: 30px; background: #0B1A26; box-shadow: inset 0 0 0 1.5px #2B313A, 0 30px 60px -28px rgba(0, 0, 0, .7); }
+.cj-screen { position: relative; height: 100%; overflow: hidden; border-radius: 24px; background: #F4F5F1; font-family: var(--font-text); color: #142B3B; font-size: 10.5px; line-height: 1.35; }
+.cj-s { position: absolute; inset: 0; display: flex; flex-direction: column; opacity: 0; transform: translateY(10px); transition: opacity .45s var(--ease), transform .45s var(--ease); }
+.cj-s.on { opacity: 1; transform: none; }
+.cj-s.gone { opacity: 0; transform: translateY(-10px); }
+.cj-pop { opacity: 0; transform: translateY(6px) scale(.98); transition: opacity .35s var(--ease), transform .35s var(--ease); }
+.cj-pop.on { opacity: 1; transform: none; }
+.cj-av { flex: none; display: grid; place-items: center; width: 26px; height: 26px; border-radius: 50%; background: #142B3B; color: #fff; font-size: 9px; font-weight: 600; }
+.cj-av--wa { background: #1F8F5F; }
+.cj-bub { display: block; max-width: 86%; padding: 7px 9px; border-radius: 12px; }
+.cj-bub--in { background: #fff; box-shadow: 0 1px 2px rgba(20, 43, 59, .1); border-top-left-radius: 4px; }
+.cj-bub--out { align-self: flex-end; background: #D9FDD3; border-top-right-radius: 4px; }
+/* 1 · sitio web con chat */
+.cj-site { display: flex; align-items: center; justify-content: space-between; padding: 26px 12px 8px; background: #fff; }
+.cj-site b { font-size: 11px; }
+.cj-site__nav { display: flex; gap: 3px; } .cj-site__nav i { width: 12px; height: 3px; border-radius: 2px; background: #C9D0D4; }
+.cj-site__hero { display: grid; gap: 6px; padding: 14px 12px 70px; background: linear-gradient(160deg, #E4F1F5, #F4F5F1); }
+.cj-site__hero span { height: 7px; width: 80%; border-radius: 4px; background: #B8C6CE; } .cj-site__hero span:nth-child(2) { width: 55%; }
+.cj-site__hero .cj-site__btn { width: 38%; height: 14px; border-radius: 8px; background: #142B3B; margin-top: 4px; }
+.cj-chat { position: absolute; left: 8px; right: 8px; bottom: 10px; display: flex; flex-direction: column; border-radius: 16px; background: #fff; box-shadow: 0 14px 30px -12px rgba(20, 43, 59, .45); overflow: hidden; }
+.cj-chat__top { display: flex; align-items: center; gap: 7px; padding: 8px 10px; background: #142B3B; color: #fff; }
+.cj-chat__top small, .cj-wa small { display: block; font-size: 8.5px; opacity: .75; }
+.cj-chat__body { display: flex; flex-direction: column; gap: 6px; padding: 9px; min-height: 92px; background: #F4F5F1; }
+.cj-chat__in { display: flex; align-items: center; gap: 6px; margin: 7px; padding: 6px 8px; border-radius: 10px; border: 1px solid #DDE1DB; min-height: 26px; }
+.cj-typed { display: inline-block; max-width: 0; overflow: hidden; white-space: nowrap; color: #142B3B; transition: max-width 1.2s steps(34); }
+.cj-typed.on { max-width: 100%; }
+.cj-typed.gone { max-width: 0; transition: none; }
+.cj-send { margin-left: auto; flex: none; width: 18px; height: 18px; border-radius: 50%; background: var(--lime); transition: transform .2s; }
+.cj-send.tap, .cj-link.tap, .cj-btn.tap { transform: scale(.9); }
+/* 2 y 5 · WhatsApp */
+.cj-wa { display: flex; align-items: center; gap: 7px; padding: 26px 10px 8px; background: #1F8F5F; color: #fff; }
+.cj-wa__body { flex: 1; display: flex; flex-direction: column; gap: 8px; padding: 12px 9px; background: #ECE5DD; }
+.cj-link { display: block; margin-top: 7px; padding: 6px 8px; border-radius: 8px; background: #E9F7EF; color: #1F8F5F; font-style: normal; font-weight: 600; text-align: center; transition: transform .2s; }
+/* 3 · agenda */
+.cj-s3 { padding: 26px 12px 12px; gap: 10px; }
+.cj-cal__h small { display: block; font-size: 8.5px; color: #56656F; } .cj-cal__h b { font-size: 12.5px; }
+.cj-cal { display: grid; grid-template-columns: repeat(7, 1fr); gap: 4px; }
+.cj-cal i { aspect-ratio: 1; border-radius: 6px; background: #E6EAE3; font-style: normal; font-size: 8.5px; display: grid; place-items: center; }
+.cj-day.on, .cj-slot.on { background: #142B3B; color: #fff; }
+.cj-slots { display: grid; grid-template-columns: 1fr 1fr; gap: 5px; }
+.cj-slots span { padding: 6px 0; border-radius: 8px; border: 1px solid #DDE1DB; text-align: center; background: #fff; transition: background-color .3s, color .3s; }
+.cj-btn { margin-top: auto; padding: 8px; border-radius: 10px; background: #C7F464; color: #142B3B; font-weight: 600; text-align: center; transition: transform .2s; }
+/* 4 · confirmación y recordatorio */
+.cj-s4 { padding: 30px 9px 12px; gap: 10px; background: linear-gradient(180deg, #DDE6EB, #F4F5F1); }
+.cj-mail { display: grid; gap: 3px; padding: 10px; border-radius: 12px; background: #fff; box-shadow: 0 1px 3px rgba(20, 43, 59, .12); }
+.cj-mail small { font-size: 8.5px; color: #56656F; } .cj-mail b { font-size: 12px; }
+.cj-mail em { margin-top: 5px; font-style: normal; font-weight: 600; color: #1F6FA8; }
+.cj-push { display: flex; gap: 7px; align-items: center; padding: 9px; border-radius: 14px; background: rgba(255, 255, 255, .92); box-shadow: 0 10px 24px -12px rgba(20, 43, 59, .5); }
+.cj-push small { display: block; color: #56656F; }
+/* 5 · reseña */
+.cj-stars { display: flex; gap: 4px; padding: 7px 9px; border-radius: 12px; background: #fff; align-self: flex-start; }
+.cj-stars i { width: 15px; height: 15px; background: #DDE1DB; clip-path: polygon(50% 0, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%); transition: background-color .25s; }
+.cj-stars i.on { background: #F5B301; }
+.cj-thanks { align-self: center; padding: 5px 10px; border-radius: 999px; background: rgba(20, 43, 59, .08); font-size: 9.5px; font-weight: 600; }
+@media (max-width: 640px) {
+  .mk--journey { grid-template-columns: 1fr; aspect-ratio: auto; justify-items: center; }
+  .cj-phone { height: 400px; }
+  .cj-steps { justify-self: stretch; }
+}
+/* Movimiento reducido: escena de la agenda fija y sin transiciones */
+@media (prefers-reduced-motion: reduce) {
+  .cj-s, .cj-pop, .cj-typed { transition: none !important; }
+}
+.cj-month { margin: 0; font-weight: 600; font-size: 10px; color: #56656F; }
+.cj-cal { gap: 3px; }
+.cj-cal i { font-size: 8.5px; color: #142B3B; background: #fff; }
+.cj-cal i.cj-wd { aspect-ratio: auto; background: none; font-weight: 600; color: #82919B; }
+.cj-cal i.cj-off { background: transparent; color: #B4BEC4; }
+.cj-s3 { gap: 8px; }
+.cj-clock { display: grid; justify-items: center; margin: 4px 0 6px; color: #142B3B; }
+.cj-clock b { font-family: var(--font-display); font-size: 30px; font-weight: 600; letter-spacing: -.02em; line-height: 1.1; }
+.cj-clock small { font-size: 9px; color: #56656F; }

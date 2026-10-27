@@ -521,6 +521,50 @@
     }
   }
 
+  /* CRM · experiencia del cliente: animación automática en bucle (no interactiva), 5 escenas de 4 s */
+  document.querySelectorAll('[data-journey]').forEach(function (box) {
+    var steps = Array.prototype.slice.call(box.querySelectorAll('.cj-steps li'));
+    var setStep = function (k) { steps.forEach(function (li, i) { li.classList.toggle('is-on', i === k); }); };
+    var all = function (sel) { return Array.prototype.slice.call(box.querySelectorAll(sel)); };
+    if (reduceMotion) {   // imagen fija: la agenda con el día y la hora elegidos
+      all('.cj-s3, .cj-day, .cj-slot').forEach(function (el) { el.classList.add('on'); });
+      setStep(2);
+      return;
+    }
+    var EV = [
+      [0, '.cj-s1', 'on'], [300, '.cj-a1', 'on'], [900, '.cj-typed', 'on'], [2300, '.cj-send', 'tap'], [2500, '.cj-typed', 'gone'], [2500, '.cj-s1 .cj-bub--out', 'on'],
+      [4000, '.cj-s1', 'gone'], [4000, '.cj-s2', 'on'], [4400, '.cj-b1', 'on'], [5800, '.cj-link', 'tap'],
+      [8000, '.cj-s2', 'gone'], [8000, '.cj-s3', 'on'], [8800, '.cj-day', 'on'], [9600, '.cj-slot', 'on'], [10600, '.cj-btn', 'tap'],
+      [12000, '.cj-s3', 'gone'], [12000, '.cj-s4', 'on'], [12400, '.cj-d1', 'on'], [14000, '.cj-d2', 'on'],
+      [16000, '.cj-s4', 'gone'], [16000, '.cj-s5', 'on'], [16300, '.cj-e1', 'on'], [16900, '.cj-e2', 'on'], [17100, '.cj-e3', 'on'],
+      [17300, '.cj-e4', 'on'], [17500, '.cj-e5', 'on'], [17700, '.cj-e6', 'on'], [18200, '.cj-e7', 'on'], [18800, '.cj-e8', 'on']
+    ];
+    var DUR = 20000, t0 = 0, fired = 0, raf = 0, step = -1;
+    var reset = function () { all('.on, .gone, .tap').forEach(function (el) { el.classList.remove('on', 'gone', 'tap'); }); fired = 0; step = -1; };
+    var frame = function (now) {
+      if (!t0) t0 = now;
+      var t = now - t0;
+      if (t >= DUR) { reset(); t0 = now; t = 0; }
+      while (fired < EV.length && EV[fired][0] <= t) {
+        var e = EV[fired++];
+        all(e[1]).forEach(function (el) {
+          if (e[2] === 'gone') el.classList.remove('on');
+          el.classList.add(e[2]);
+          if (e[2] === 'tap') setTimeout(function () { el.classList.remove('tap'); }, 260);
+        });
+      }
+      var k = Math.min(4, Math.floor(t / 4000));
+      if (k !== step) { step = k; setStep(k); }
+      raf = requestAnimationFrame(frame);
+    };
+    var run = function (on) {
+      if (on && !raf) { reset(); t0 = 0; raf = requestAnimationFrame(frame); }
+      else if (!on && raf) { cancelAnimationFrame(raf); raf = 0; }
+    };
+    if ('IntersectionObserver' in window) new IntersectionObserver(function (en) { run(en[0].isIntersecting); }, { threshold: 0.2 }).observe(box);
+    else run(true);
+  });
+
   /* Tecnología aplicada: el sitio dentro del PC se dibuja a 1440 px de ancho y se escala al tamaño de la pantalla */
   document.querySelectorAll('.pc__screen').forEach(function (screen) {
     var frame = screen.querySelector('.pc__frame');
