@@ -1,33 +1,44 @@
 # Wontex · sitio web
 
-Sitio **estático** de una sola página (HTML, CSS y JavaScript, sin compilación ni servidor).
-Funciona en cualquier alojamiento estático. Se publica en **Cloudflare Pages** (proyecto `wontex-devs-website`,
-conectado al repositorio `Wontex-devs/Wontex-devs-website`): cada cambio en la rama `main` se publica solo.
-Dominio: **https://wontex-devs.com** (dirección de respaldo: https://wontex-devs-website.pages.dev).
-Comando de compilación en Cloudflare: `rm -rf _herramientas README.md _config.yml` (no publica los archivos internos);
-carpeta de salida: la raíz.
+Sitio **estático** (HTML, CSS y JavaScript, sin compilación ni servidor). Se publica en **Cloudflare Pages**
+(proyecto `wontex-devs-website`, conectado al repositorio `Wontex-devs/Wontex-devs-website`): cada cambio en la
+rama `main` se publica solo. Dominio: **https://wontex-devs.com** (respaldo: https://wontex-devs-website.pages.dev).
+En Cloudflare: comando de compilación `rm -rf _herramientas README.md _config.yml` (no publica archivos internos);
+carpeta de salida: la raíz. La auditoría técnica completa está en `_herramientas/AUDITORIA.md` (no se publica).
 
 ```
 web/
-├── index.html              Página principal
-├── aviso-legal.html        Aviso legal            ┐
-├── privacidad.html         Política de privacidad ├ datos marcados [PENDIENTE]
-├── cookies.html            Política de cookies    ┘
-├── 404.html                Página de error
-├── robots.txt · site.webmanifest · favicon.ico
-├── css/styles.css          Estilos base de la página principal (marca, cabecera, formulario, ejemplos)
-├── css/site.css            Capa del rediseño: hero con video, soluciones, proceso, contacto y pie
-├── css/legal.css           Estilos de las páginas legales y 404
-├── js/config.js            ← DATOS PENDIENTES (WhatsApp, analítica, dominio)
-├── js/main.js              Interacciones
-├── js/consent.js           Aviso de cookies (solo actúa si hay analítica configurada)
-├── js/i18n.js · i18n-en.js Cambio de idioma (inglés por defecto, español opcional)
-├── assets/                 Imágenes, favicons e imagen para compartir (og-image.jpg)
-├── assets/video/           Video del hero y su imagen de respaldo (poster)
-└── _herramientas/          No se publica (GitHub Pages ignora carpetas con "_")
-    ├── preparar-dominio.py Configura el dominio definitivo
+├── index.html              Página principal en español (/)
+├── en/index.html           Página en inglés (/en/) · GENERADA, no se edita a mano
+├── aviso-legal.html        Aviso legal            ┐ borradores con datos [PENDIENTE]:
+├── privacidad.html         Política de privacidad ├ quedan en noindex y fuera del sitemap
+├── cookies.html            Política de cookies    ┘ hasta completarlos
+├── 404.html                Página de error (noindex)
+├── _headers · _redirects   Cabeceras de seguridad/caché y redirecciones de Cloudflare Pages
+├── robots.txt · sitemap.xml · site.webmanifest · favicon.ico
+├── css/fonts.css           Tipografías Unbounded e Inter alojadas en el sitio (assets/fonts, licencia OFL)
+├── css/styles.css · site.css · legal.css   Estilos
+├── js/head.js              Se ejecuta en el <head> (sin scripts en línea, por la CSP)
+├── js/config.js            ← DATOS PENDIENTES (WhatsApp, analítica)
+├── js/main.js · consent.js · legal.js      Interacciones, aviso de cookies (solo con analítica), año del pie
+├── js/i18n.js · i18n-en.js Idioma de los mensajes del código y diccionario español → inglés
+├── assets/                 Imágenes, fuentes, video, favicons e imagen para compartir (og-image.jpg)
+└── _herramientas/          No se publica
+    ├── preparar-dominio.py SEO de todas las páginas + genera en/index.html, sitemap.xml y robots.txt
     └── datos-negocio.json  Datos reales del negocio para Google (opcional)
 ```
+
+## Después de cada cambio (importante)
+
+Si cambias `index.html`, las páginas legales o el diccionario, ejecuta desde `web/`:
+
+```bash
+python3 _herramientas/preparar-dominio.py https://wontex-devs.com
+```
+
+Regenera la página en inglés, las canónicas, `hreflang`, datos estructurados, `sitemap.xml` y `robots.txt`, y
+avisa si algún texto nuevo no tiene traducción. Si cambias un CSS o JS, sube su `?v=` en el HTML (tienen caché
+de un año); las fuentes se renombran si cambian.
 
 ## Verlo en local
 
@@ -35,74 +46,57 @@ web/
 python3 -m http.server 4321
 ```
 
-Luego abre http://localhost:4321
+Luego abre http://localhost:4321 (las cabeceras de `_headers` solo se aplican en Cloudflare).
 
 ## Datos pendientes (no se inventaron)
 
 | Dato | Dónde se completa | Si no se completa |
 |---|---|---|
 | Número de WhatsApp comercial | `js/config.js` → `whatsapp: '573001234567'` (solo dígitos, con indicativo 57) | El botón "Escríbenos" lleva al formulario |
-| Dominio definitivo | `python3 _herramientas/preparar-dominio.py https://www.tudominio.com` | La web no se indexa en Google |
-| Titular, NIT o cédula, dirección y teléfono | Páginas legales: buscar `[PENDIENTE` | Las páginas muestran el aviso de dato pendiente |
-| Fecha de publicación y plazo de conservación de datos | `privacidad.html`, `aviso-legal.html`, `cookies.html` | Se ve como pendiente |
-| ID de Google Analytics 4 (opcional) | `js/config.js` → `ga4Id: 'G-XXXXXXXXXX'` | No hay analítica ni aviso de cookies |
-| Datos para Google (teléfono, dirección, horario, redes) | `_herramientas/datos-negocio.json` y volver a ejecutar el script de dominio | Google solo recibe nombre, correo y servicios |
+| Titular, NIT o cédula, dirección, teléfono, matrícula, área de atención | Páginas legales: buscar `[PENDIENTE` | Las páginas muestran el dato pendiente y no se indexan |
+| Fecha de publicación, vigencia y plazo de conservación de datos | `privacidad.html`, `aviso-legal.html`, `cookies.html` | Se ve como pendiente |
+| ID de Google Analytics 4 (opcional) | `js/config.js` → `ga4Id: 'G-XXXXXXXXXX'` y dominios de Google en `_headers` | No hay analítica ni aviso de cookies |
+| Datos para Google (teléfono, dirección, horario, redes oficiales) | `_herramientas/datos-negocio.json` y volver a ejecutar el script | Google solo recibe nombre, correo y servicios |
 
-Las políticas legales describen lo que el sitio hace realmente (FormSubmit, Gmail, Google Fonts, WhatsApp,
-alojamiento). Son una base: **conviene que las revise un abogado** antes de publicar.
+Los textos legales describen lo que el sitio hace realmente (Cloudflare, FormSubmit, correo en Hostinger,
+WhatsApp). Son **borradores**: deben revisarlos un abogado antes de darlos por aprobados.
 
 ## Formulario de contacto
 
-- Se envía a **FormSubmit** (`formsubmit.co`), que reenvía cada solicitud a `info@wontex-devs.com`.
-- **Activación (una sola vez):** envía una prueba desde la web publicada; llegará un correo de FormSubmit para
-  confirmar. Hasta entonces los envíos no se entregan.
+- Se envía a **FormSubmit** (`formsubmit.co`), que reenvía cada solicitud a `info@wontex-devs.com` (correo en Hostinger).
+- **Activación (una sola vez):** envía una prueba desde https://wontex-devs.com; llegará a `info@wontex-devs.com`
+  un correo de FormSubmit para confirmar. Hasta entonces los envíos no se entregan.
 - Después de activarlo, FormSubmit ofrece una dirección alternativa (una cadena aleatoria) para no mostrar el correo
-  en el código: reemplázala en `data-endpoint` del formulario en `index.html`.
+  en el código: reemplázala en `data-endpoint` del formulario en `index.html` y ejecuta el script de dominio.
+- Tres casillas obligatorias, separadas y desmarcadas: autorización de datos (Ley 1581), Aviso legal y Política de
+  privacidad. Cada envío incluye una **constancia** (fecha y hora `-05:00`, versión de los documentos, página e
+  idioma). Si cambias los textos legales, actualiza `LEGAL_VERSION` en `js/main.js`.
 - Antispam: campo trampa invisible, tiempo mínimo de llenado (3 s), máximo 3 envíos cada 10 minutos por
   navegador, máximo 2 enlaces por mensaje y el filtro propio de FormSubmit.
-- Casilla obligatoria de autorización de datos (Ley 1581 de 2012) con enlace a la política de privacidad.
 
 ## Cookies y analítica
 
-- Hoy el sitio **no usa cookies**. Solo guarda en el navegador la preferencia de idioma (`fw-lang`) y un contador
-  antispam temporal (`fw-sends`). Por eso no se muestra ningún aviso.
-- Si se agrega un ID de Google Analytics 4 en `js/config.js`, aparece un aviso para aceptar o rechazar; la
-  analítica solo se carga si el visitante acepta, y en el pie aparece "Preferencias de cookies".
-  Antes de activarla, actualiza `cookies.html` con las cookies de Google Analytics (`_ga`, `_ga_*`).
+- Hoy el sitio **no usa cookies ni recursos de terceros**. Solo guarda en el navegador, durante la visita,
+  `fw-intro` (animación de entrada ya vista) y `fw-sends` (contador antispam). Por eso no se muestra ningún aviso.
+- Si se agrega un ID de Google Analytics 4: aparece el aviso con **Aceptar, Rechazar y Configurar**; la analítica
+  solo se carga si el visitante acepta; la elección dura 12 meses como máximo y se cambia desde "Preferencias de
+  cookies" en el pie de todas las páginas. Antes de activarla: actualiza `cookies.html` (`_ga`, `_ga_*`) y agrega
+  los dominios de Google a la CSP de `_headers` (instrucciones dentro del archivo).
 
 ## Idiomas
 
-- El HTML está en español; `js/i18n.js` lo cambia al inglés con `js/i18n-en.js`.
-- El diccionario completo se mantiene fuera de la web; `i18n-en.js` solo publica las traducciones que se usan.
-  Si cambias un texto en español, agrega su traducción (clave = texto español exacto).
+- Español en `/` (principal) e inglés en `/en/`, cada uno con su HTML estático, `lang`, canónica y `hreflang`
+  recíprocos. El selector EN/ES es un enlace entre ambas páginas.
+- `en/index.html` lo genera `preparar-dominio.py` desde `index.html` con el diccionario `js/i18n-en.js`
+  (clave = texto en español exacto). Para cambiar un texto en inglés, edita el diccionario y vuelve a generar.
 - Las páginas legales están solo en español (legislación colombiana).
 
-## Publicar en el dominio definitivo (pasos exactos)
+## Seguridad
 
-1. Completa los datos `[PENDIENTE` de las páginas legales y, si ya lo tienes, el WhatsApp en `js/config.js`.
-2. Compra o define el dominio (por ejemplo `www.tudominio.com`).
-3. Desde la carpeta `web/` ejecuta:
-   ```bash
-   python3 _herramientas/preparar-dominio.py https://www.tudominio.com
-   ```
-   Esto escribe las URL canónicas, la imagen para compartir, los datos estructurados, `sitemap.xml`,
-   `robots.txt`, el archivo `CNAME` y quita el bloqueo de indexación.
-4. Sube los cambios a GitHub.
-5. En GitHub → repositorio → **Settings → Pages → Custom domain**, escribe el dominio y guarda.
-6. En el proveedor del dominio crea los registros DNS que indica GitHub:
-   - `www` → registro **CNAME** hacia `frameworkscol.github.io`
-   - dominio raíz → registros **A** hacia `185.199.108.153`, `185.199.109.153`, `185.199.110.153`, `185.199.111.153`
-7. Cuando GitHub muestre el certificado listo, activa **Enforce HTTPS**. GitHub redirige http → https y el dominio raíz ↔ www.
-8. Envía una prueba del formulario y confirma la activación de FormSubmit.
-9. En **Google Search Console**: agrega el dominio, verifica la propiedad y envía `https://www.tudominio.com/sitemap.xml`.
-10. En **Google Business Profile**: crea el perfil con el mismo nombre, correo, teléfono y dirección (o zona de
-    servicio) que pusiste en las páginas legales y en `datos-negocio.json`, y agrega la URL del sitio.
-
-### Sobre el alojamiento
-
-GitHub Pages sirve para este sitio: es estático, admite dominio propio, HTTPS gratuito, redirección www y
-la página `404.html`. **No** ejecuta código de servidor ni permite cabeceras de seguridad personalizadas;
-si más adelante se quieren (CSP, etc.), Cloudflare Pages publica esta misma carpeta sin cambios.
+`_headers` aplica en Cloudflare: Content-Security-Policy estricta (solo recursos propios y FormSubmit), HSTS
+(sin `preload`), `nosniff`, `X-Frame-Options`, `Referrer-Policy`, `Permissions-Policy` y `Cross-Origin-Opener-Policy`.
+Por eso no se deben agregar scripts ni atributos `style` en línea: van en archivos `.js` y `.css`.
+Redirecciones: `http` → `https` y `www` → sin `www` (regla 301 en Cloudflare), `.html` → sin extensión (Cloudflare Pages).
 
 ## Estructura de la página
 
@@ -130,9 +124,11 @@ Con `prefers-reduced-motion` el hero se muestra estático (sin video ni frases a
 - Si cambias el video o el póster, sube el número `?v=` en `index.html` y `css/site.css` para que los
   navegadores no muestren la versión guardada.
 
-## Imágenes
+## Imágenes, fuentes y derechos
 
-- En uso: `arca/` (Unsplash), en el ejemplo de página web. El logotipo WONTEX es texto (fuente Unbounded) con un
+- Inventario completo con origen y licencia en `_herramientas/AUDITORIA.md`.
+- En uso: `arca/` (Unsplash), en el ejemplo de página web; tipografías Unbounded e Inter (SIL OFL 1.1, licencias en
+  `assets/fonts/`). El logotipo WONTEX es texto (fuente Unbounded) con un
   cursor dibujado en CSS, no una imagen.
 - Las fotos que dejaron de usarse con el rediseño están en `../archivo-fotos-web/sin-uso-rediseno-2026-10/`
   (fuera de la web publicada).
