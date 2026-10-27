@@ -520,6 +520,19 @@
     }
   }
 
+  /* Tecnología aplicada: el sitio dentro del PC se dibuja a 1440 px de ancho y se escala al tamaño de la pantalla */
+  document.querySelectorAll('.pc__screen').forEach(function (screen) {
+    var frame = screen.querySelector('.pc__frame');
+    if (!frame) return;
+    var fit = function () {
+      var s = screen.clientWidth / 1440;
+      frame.style.transform = 'scale(' + s + ')';
+      frame.style.height = Math.round(screen.clientHeight / s) + 'px';
+    };
+    fit();
+    if ('ResizeObserver' in window) new ResizeObserver(fit).observe(screen); else window.addEventListener('resize', fit);
+  });
+
   /* Soluciones: "Conocer más" despliega el detalle del servicio */
   document.querySelectorAll('.sol__more').forEach(function (btn) {
     btn.addEventListener('click', function () {

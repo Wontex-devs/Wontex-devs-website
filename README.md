@@ -76,8 +76,9 @@ WhatsApp). Son **borradores**: deben revisarlos un abogado antes de darlos por a
 
 ## Cookies y analítica
 
-- Hoy el sitio **no usa cookies ni recursos de terceros**. Solo guarda en el navegador, durante la visita,
-  `fw-intro` (animación de entrada ya vista) y `fw-sends` (contador antispam). Por eso no se muestra ningún aviso.
+- Hoy el sitio **no usa cookies**. Solo guarda en el navegador, durante la visita,
+  `fw-sends` (contador antispam). Por eso no se muestra ningún aviso. El PC de "Tecnología aplicada" carga una página
+  de GitHub Pages solo cuando el visitante llega a esa sección (está descrito en privacidad y cookies).
 - Si se agrega un ID de Google Analytics 4: aparece el aviso con **Aceptar, Rechazar y Configurar**; la analítica
   solo se carga si el visitante acepta; la elección dura 12 meses como máximo y se cambia desde "Preferencias de
   cookies" en el pie de todas las páginas. Antes de activarla: actualiza `cookies.html` (`_ga`, `_ga_*`) y agrega
@@ -100,17 +101,18 @@ Redirecciones: `http` → `https` y `www` → sin `www` (regla 301 en Cloudflare
 
 ## Estructura de la página
 
-1. **Hero audiovisual** (`#top`): video de fondo fijo mientras se desplaza; las frases cambian con el scroll
-   (intro → 4 frases → cierre WONTEX). El video no se reinicia ni bloquea el desplazamiento.
-2. **Nuestro enfoque** (`#enfoque`): frase que se "llena" al desplazarse.
-3. **Soluciones** (`#soluciones`): Sitios web, Automatización, CRM y gestión comercial, Herramientas de negocio.
-   "Conocer más" despliega el detalle; "Cotizar…" lleva al formulario con el interés ya marcado.
-4. **Tecnología aplicada** (`#aplicada`): ejemplos ilustrativos (CRM, página web, cotizador). Los nombres que
-   aparecen en las pantallas son ficticios y la sección lo indica.
-5. **Cómo trabajamos** (`#proceso`): 4 pasos.
-6. **Contacto** (`#contacto`): correo real configurado y formulario.
+1. **Hero** (`#top`): una pantalla con el video de fondo, la marca WONTEX (título principal), el lema y el botón
+   "Hablemos de tu negocio". La animación de entrada del logo se muestra en cada carga de la página.
+2. **Nuestro enfoque** (`#enfoque`): tres frases que se "llenan" al desplazarse.
+3. **Soluciones** (`#soluciones`): Sitios web (incluido SEO), Automatización, CRM y gestión comercial, Herramientas
+   de negocio. "Conocer más" despliega el detalle; "Cotizar…" lleva al formulario con el interés ya marcado.
+4. **Tecnología aplicada** (`#aplicada`): ejemplos ilustrativos (CRM y cotizador en celular) y un PC que muestra en
+   vivo la propuesta de sitio web para un hotel publicada en GitHub Pages (se carga solo al llegar a la sección;
+   la CSP la permite con `frame-src https://wontex-devs.github.io`).
+5. **Cómo trabajamos** (`#proceso`): 4 pasos numerados.
+6. **Contacto** (`#contacto`): texto y correo a la izquierda; formulario en tarjeta a la derecha.
 
-Con `prefers-reduced-motion` el hero se muestra estático (sin video ni frases animadas).
+Con `prefers-reduced-motion` no se muestran la animación de entrada ni el video (queda la imagen fija).
 
 ## Video del hero
 
@@ -127,8 +129,8 @@ Con `prefers-reduced-motion` el hero se muestra estático (sin video ni frases a
 ## Imágenes, fuentes y derechos
 
 - Inventario completo con origen y licencia en `_herramientas/AUDITORIA.md`.
-- En uso: `arca/` (Unsplash), en el ejemplo de página web; tipografías Unbounded e Inter (SIL OFL 1.1, licencias en
-  `assets/fonts/`). El logotipo WONTEX es texto (fuente Unbounded) con un
+- En uso: tipografías Unbounded e Inter (SIL OFL 1.1, licencias en `assets/fonts/`). Las fotos de Unsplash del
+  antiguo ejemplo de página web se movieron a `../archivo-fotos-web/sin-uso-2026-10-26/`. El logotipo WONTEX es texto (fuente Unbounded) con un
   cursor dibujado en CSS, no una imagen.
 - Las fotos que dejaron de usarse con el rediseño están en `../archivo-fotos-web/sin-uso-rediseno-2026-10/`
   (fuera de la web publicada).

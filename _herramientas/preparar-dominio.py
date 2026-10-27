@@ -32,18 +32,18 @@ ROBOTS_OFF = "noindex, follow"
 
 TEXT = {
     "es": {
-        "description": "Sitios web, automatizaciones con inteligencia artificial, CRM (incluido GoHighLevel) "
-                       "y herramientas de negocio para empresas.",
-        "knowsAbout": ["Desarrollo de sitios web", "Automatización con inteligencia artificial",
-                       "CRM y gestión comercial", "GoHighLevel", "Herramientas de negocio"],
+        "description": "Sitios web con posicionamiento en buscadores (SEO), automatizaciones con inteligencia artificial, "
+                       "CRM y gestión comercial, y herramientas de negocio para empresas.",
+        "knowsAbout": ["Desarrollo de sitios web", "Posicionamiento en buscadores (SEO)", "Automatización con inteligencia artificial",
+                       "CRM y gestión comercial", "Herramientas de negocio"],
         "slogan": "Soluciones inteligentes. Resultados reales.",
         "home": "Inicio",
     },
     "en": {
-        "description": "Websites, AI-powered automations, CRM (including GoHighLevel) "
-                       "and business tools for companies.",
-        "knowsAbout": ["Website development", "AI automation", "CRM and sales management",
-                       "GoHighLevel", "Business tools"],
+        "description": "Websites with search engine optimization (SEO), AI-powered automations, "
+                       "CRM and sales management, and business tools for companies.",
+        "knowsAbout": ["Website development", "Search engine optimization (SEO)", "AI automation",
+                       "CRM and sales management", "Business tools"],
         "slogan": "Smart solutions. Real results.",
         "home": "Home",
     },

@@ -111,8 +111,9 @@ https://developer.mozilla.org/en-US/observatory (no se puede medir antes de subi
 
 ## 7. Cookies, privacidad y textos legales
 
-**Cookies:** el sitio no usa cookies ni recursos de terceros al cargar. Almacenamiento de sesión: `fw-intro` y
-`fw-sends` (técnicos, sin datos personales). Con GA4 activado: nada se carga antes de aceptar; Aceptar, Rechazar y
+**Cookies:** el sitio no usa cookies. Almacenamiento de sesión: `fw-sends` (técnico, sin datos personales). Desde el
+26/10/2026 el PC de «Tecnología aplicada» carga, al llegar a esa sección, una propuesta de sitio web alojada en GitHub
+Pages (GitHub, Inc.); está declarado en privacidad y cookies y permitido en la CSP con `frame-src`. Con GA4 activado: nada se carga antes de aceptar; Aceptar, Rechazar y
 Configurar con el mismo peso visual; preferencia `fw-consent` por 12 meses máximo; "Preferencias de cookies" en todas
 las páginas.
 
@@ -175,7 +176,8 @@ Conclusiones jurídicas: corresponden a un abogado. Los documentos siguen como b
 
 | Recurso | Origen | Licencia / estado |
 |---|---|---|
-| `assets/img/arca/*.jpg` (demostración de página web) | Unsplash | Licencia Unsplash. **Pendiente: registrar autores y enlaces de cada foto.** |
+| Propuesta de sitio web de hotel (mostrada en vivo en el PC) | Diseñada por Wontex, publicada en GitHub Pages | Marcas e imágenes de ese sitio: confirmar autorización del hotel y origen de sus fotos |
+| ~~`assets/img/arca/*.jpg`~~ | Unsplash | Ya no se usan (archivadas el 26/10/2026) |
 | `assets/video/wontex-hero*.mp4` y póster | Animación creada para Wontex (render propio con la paleta de la marca) | Propia de Wontex |
 | `assets/og-image.jpg`, favicons, íconos | Creados para Wontex con el logotipo | Propios de Wontex |
 | Logotipo WONTEX | Texto en Unbounded + cursor en CSS | Propio; tipografía OFL |
@@ -205,7 +207,7 @@ nueva, envío real de prueba del formulario y activación de FormSubmit.
 2. 🟠 Entregar los datos legales pendientes (§13) y pasar los borradores a revisión jurídica.
 3. 🟠 Registrar el sitio en Google Search Console y Bing (§14).
 4. 🟡 Decidir el botón de pausa del video (§9).
-5. 🟡 Registrar autores de las fotos de Unsplash.
+5. 🟡 Confirmar la autorización del hotel para mostrar su propuesta y el origen de sus fotos.
 6. ⚪ Al activar GA4: actualizar `cookies.html` y la CSP.
 
 ## 13. Datos que debes entregar
@@ -217,7 +219,7 @@ nueva, envío real de prueba del formulario y activación de FormSubmit.
 - Número comercial de WhatsApp (opcional).
 - ID de Google Analytics 4 (opcional).
 - Redes sociales oficiales, si existen (para `sameAs`).
-- Autores de las fotos de Unsplash usadas en la demostración.
+- Confirmación de que el hotel autoriza mostrar la propuesta de sitio web.
 
 ## 14. Instrucciones
 
