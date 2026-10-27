@@ -40,7 +40,7 @@
   <link rel="preload" href="/assets/video/wontex-hero-poster.jpg?v=3" as="image" fetchpriority="high">
   <link rel="stylesheet" href="/css/fonts.css?v=20261025a">
   <link rel="stylesheet" href="/css/styles.css?v=20261025b">
-  <link rel="stylesheet" href="/css/site.css?v=20261027b">
+  <link rel="stylesheet" href="/css/site.css?v=20261027e">
   <script src="/js/head.js?v=20261026a"></script>
 </head>
 <body>
@@ -92,7 +92,7 @@
 <section class="xh" id="top" aria-label="Home">
   <div class="xh__sticky">
     <div class="xh__media" aria-hidden="true">
-      <video class="xh__video" id="heroVideo" autoplay muted loop playsinline preload="metadata" poster="/assets/video/wontex-hero-poster.jpg?v=3">
+      <video class="xh__video" id="heroVideo" muted loop playsinline preload="none" poster="/assets/video/wontex-hero-poster.jpg?v=3">
         <source src="/assets/video/wontex-hero-1440.mp4?v=3" type="video/mp4" media="(min-width: 1200px)">
         <source src="/assets/video/wontex-hero.mp4?v=3" type="video/mp4">
       </video>
@@ -277,10 +277,9 @@
         <div class="cx__body">
           <div class="cx__stage"><svg class="cx__blob" viewBox="0 0 400 440" aria-hidden="true"><path d="M214 18c62 6 128 40 156 104 30 70 4 150-22 206-28 60-82 104-150 108-70 4-138-34-170-96C-4 280 8 190 40 124 74 56 150 12 214 18z"/></svg><div class="cx__pc">
               <div class="pc__monitor">
-                <div class="pc__bar" aria-hidden="true"><i></i><i></i><i></i><span class="pc__url">amari · website proposal</span></div>
+                <div class="pc__bar" aria-hidden="true"><span class="pc__dots"><i></i><i></i><i></i></span><span class="pc__url"><svg viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>wontex-devs.github.io/PropuestawebAmariHotel</span><span class="pc__sp"></span></div>
                 <div class="pc__screen"><iframe class="pc__frame" src="https://wontex-devs.github.io/PropuestawebAmariHotel/opcion-1-full/#barranquilla" title="Website proposal for a hotel in Barranquilla, designed by Wontex" loading="lazy" referrerpolicy="no-referrer"></iframe></div>
               </div>
-              <div class="pc__stand" aria-hidden="true"></div>
             </div></div>
         </div>
       </div>
@@ -348,11 +347,11 @@
       <h2 class="xs__title" data-reveal>From idea to solution.</h2>
       <p class="xs__intro" data-reveal>A clear process to turn real needs into digital solutions that work.</p>
     </header>
-    <ol class="proc">
-      <li data-reveal><span class="proc__n" aria-hidden="true">01</span><div><h3>We understand your business</h3><p>We identify your needs, the challenges in your operations and the opportunities for improvement.</p></div></li>
-      <li data-reveal><span class="proc__n" aria-hidden="true">02</span><div><h3>We design the solution</h3><p>We define the right approach, tools and scope for your goals.</p></div></li>
-      <li data-reveal><span class="proc__n" aria-hidden="true">03</span><div><h3>We implement and connect</h3><p>We build, configure and test each solution to integrate it into your operations.</p></div></li>
-      <li data-reveal><span class="proc__n" aria-hidden="true">04</span><div><h3>We grow with you</h3><p>We support you through adoption and adjust the solutions as your business grows.</p></div></li>
+    <ol class="steps2" id="steps2">
+      <li data-reveal><h3>We understand your business</h3><p>We identify your needs, the challenges in your operations and the opportunities for improvement.</p></li>
+      <li data-reveal><h3>We design the solution</h3><p>We define the right approach, tools and scope for your goals.</p></li>
+      <li data-reveal><h3>We implement and connect</h3><p>We build, configure and test each solution to integrate it into your operations.</p></li>
+      <li data-reveal><h3>We grow with you</h3><p>We support you through adoption and adjust the solutions as your business grows.</p></li>
     </ol>
   </div>
 </section>
@@ -440,7 +439,8 @@
 <script src="/js/config.js?v=20261025a" defer></script>
 <script src="/js/i18n-en.js?v=20abb35b52" defer></script>
 <script src="/js/i18n.js?v=20261025a" defer></script>
-<script src="/js/main.js?v=20261026a" defer></script>
+<script src="/js/hero-live.js?v=20261027a" defer></script>
+<script src="/js/main.js?v=20261027a" defer></script>
 <script src="/js/consent.js?v=20261025a" defer></script>
 </body>
 </html>

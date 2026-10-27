@@ -313,34 +313,25 @@ body, .xh__sub, .xs__lead, .sol__desc, .steps2 p, .xc__lead, .cx__desc { -webkit
    se vea como en un computador de 1440 px. */
 .cx__pc { position: relative; z-index: 1; width: min(760px, 92vw); display: flex; flex-direction: column; align-items: center; transition: opacity .7s var(--ease), transform .7s var(--ease); }
 .cx__slide:not(.is-active) .cx__pc { opacity: .4; transform: scale(.94); }
-.pc__monitor { width: 100%; padding: 10px 10px 14px; border-radius: 18px; background: #0E2130; box-shadow: inset 0 0 0 1.5px #2B313A, 0 0 0 1px rgba(0, 0, 0, .35), 0 50px 80px -36px rgba(20, 43, 59, .55); }
-.pc__bar { display: flex; align-items: center; gap: 6px; padding: 2px 6px 10px; }
-.pc__bar i { width: 9px; height: 9px; border-radius: 50%; background: rgba(247, 248, 244, .22); }
-.pc__url { flex: 1; margin-left: 10px; padding: 4px 12px; border-radius: 999px; background: rgba(247, 248, 244, .08); color: var(--steel-2); font-family: var(--font-text); font-size: 11px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-.pc__screen { position: relative; aspect-ratio: 16 / 10; overflow: hidden; border-radius: 6px; background: #fff; }
+/* Ventana de navegador (contorno de la página): barra clara con los tres botones y la dirección real */
+.pc__monitor { width: 100%; overflow: hidden; border-radius: 14px; background: #fff; border: 1px solid rgba(20, 43, 59, .12); box-shadow: 0 1px 2px rgba(20, 43, 59, .08), 0 30px 70px -30px rgba(20, 43, 59, .45); }
+.pc__bar { display: grid; grid-template-columns: 1fr minmax(0, 3fr) 1fr; align-items: center; gap: 10px; padding: 10px 14px; background: #F1F2EE; border-bottom: 1px solid #E2E5E0; }
+.pc__dots { display: flex; gap: 7px; }
+.pc__dots i { width: 11px; height: 11px; border-radius: 50%; background: #FF5F57; }
+.pc__dots i:nth-child(2) { background: #FEBC2E; }
+.pc__dots i:nth-child(3) { background: #28C840; }
+.pc__url { display: flex; align-items: center; justify-content: center; gap: 6px; min-width: 0; padding: 5px 12px; border-radius: 8px; background: #fff; border: 1px solid #E2E5E0; color: var(--slate); font-family: var(--font-text); font-size: 12px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.pc__url svg { flex: none; width: 12px; height: 12px; fill: none; stroke: var(--slate); stroke-width: 2; stroke-linecap: round; }
+.pc__screen { position: relative; aspect-ratio: 16 / 10; overflow: hidden; background: #fff; }
 .pc__frame { position: absolute; left: 0; top: 0; width: 1440px; height: 900px; border: 0; transform-origin: 0 0; }
-.pc__stand { width: 18%; height: 34px; background: linear-gradient(#1C3A4F, #142B3B); clip-path: polygon(22% 0, 78% 0, 92% 100%, 8% 100%); }
-.pc__stand::after { content: ""; display: block; width: 260%; height: 8px; margin: 34px 0 0 -80%; border-radius: 6px; background: #142B3B; }
-.cx__pc .pc__stand { margin-bottom: 8px; }
 .cx__open { margin: 14px 0 0; text-align: center !important; }
 .cx__open a { font-family: var(--font-text); font-weight: 600; font-size: 15px; color: var(--mid); text-decoration: underline; text-underline-offset: 4px; }
 .cx__open a:hover { color: var(--slate); }
-@media (max-width: 640px) { .pc__monitor { padding: 6px 6px 9px; border-radius: 12px; } .pc__bar { padding-bottom: 6px; } .pc__url { font-size: 9.5px; } .pc__stand { height: 22px; } }
+@media (max-width: 640px) { .pc__monitor { border-radius: 10px; } .pc__bar { grid-template-columns: auto minmax(0, 1fr); padding: 7px 10px; } .pc__sp { display: none; } .pc__dots i { width: 8px; height: 8px; } .pc__url { font-size: 10px; padding: 3px 8px; } }
 
-/* ---------- Cómo trabajamos: lista numerada con separadores (2026-10-26) ---------- */
-.xs__intro { margin: 22px 0 0; max-width: 62ch; font-size: clamp(17px, 1.35vw, 20px); line-height: 1.55; color: var(--slate); }
-.xs--process .xs__head { margin-bottom: 0; padding-bottom: clamp(32px, 4vw, 52px); border-bottom: 1px solid var(--line); }
-.proc { list-style: none; margin: 0; padding: 0; }
-.proc li { display: grid; grid-template-columns: 64px minmax(0, 1fr); column-gap: clamp(18px, 2.4vw, 32px); align-items: start; padding-block: clamp(28px, 3.6vw, 48px); border-bottom: 1px solid var(--line); }
-.proc__n { display: grid; place-items: center; width: 64px; height: 64px; border-radius: 14px; background: #D4F58C; background: color-mix(in srgb, var(--lime) 72%, var(--cloud)); color: var(--mid); font-family: var(--font-display); font-weight: 600; font-size: 21px; letter-spacing: -.01em; }
-.proc h3 { margin: 4px 0 10px; font-family: var(--font-display); font-weight: 600; font-size: clamp(19px, 1.7vw, 25px); line-height: 1.2; letter-spacing: -.02em; color: var(--mid); }
-.proc p, .xs__intro { -webkit-hyphens: manual; hyphens: manual; }
-.proc p { margin: 0; max-width: 64ch; font-size: clamp(16px, 1.3vw, 19px); line-height: 1.55; color: var(--slate); }
-@media (max-width: 640px) {
-  .proc li { grid-template-columns: 48px minmax(0, 1fr); }
-  .proc__n { width: 48px; height: 48px; border-radius: 12px; font-size: 16px; }
-  .proc h3 { margin-top: 2px; }
-}
+/* ---------- Cómo trabajamos: línea de tiempo con los textos nuevos (2026-10-27) ---------- */
+.xs__intro { margin: 22px 0 0; max-width: 62ch; font-size: clamp(17px, 1.35vw, 20px); line-height: 1.55; color: var(--slate); -webkit-hyphens: manual; hyphens: manual; }
+.steps2 p { max-width: 30ch; }
 
 /* ---------- Contacto: distribución y estética (2026-10-26) ----------
    Texto a la izquierda (fijo al desplazarse en escritorio) y formulario en una tarjeta a la derecha. */
@@ -379,3 +370,7 @@ body, .xh__sub, .xs__lead, .sol__desc, .steps2 p, .xc__lead, .cx__desc { -webkit
   .xc .form__foot .btn { width: 100%; }
 }
 .xc .field label .opt { color: #A3AFB7; font-weight: 500; }
+
+/* Hero interactivo (js/hero-live.js): en computadores la animación se dibuja en vivo y reemplaza al video */
+.xh__live { filter: saturate(1.65) contrast(1.12) brightness(1.1); }
+.xh__media.is-live .xh__video:not(.xh__live) { display: none; }

@@ -507,7 +507,8 @@
   storyPaint();
 
   if (heroVideo) {
-    if (reduceMotion) { heroVideo.pause(); heroVideo.removeAttribute('autoplay'); }
+    // Con mouse, hero-live.js dibuja la animación en vivo y el video no se usa (ni se descarga)
+    if (reduceMotion || window.FW_LIVE_HERO) { heroVideo.pause(); heroVideo.removeAttribute('autoplay'); }
     else {
       var heroPlay = function () { var pl = heroVideo.play(); if (pl && pl.catch) pl.catch(function () { /* el navegador no permite autoplay: queda la imagen fija */ }); };
       if ('IntersectionObserver' in window && xh) {

@@ -103,13 +103,15 @@ Redirecciones: `http` → `https` y `www` → sin `www` (regla 301 en Cloudflare
 
 1. **Hero** (`#top`): video fijo con dos momentos: presentación (titular, botones y "Desliza") y, tras un solo
    desplazamiento, el cierre de marca (WONTEX, lema y botón). La animación de entrada se muestra en cada carga.
+   En computadores con mouse, `js/hero-live.js` dibuja la animación en vivo (el W_ sigue al cursor y no se descarga
+   el video); en celulares y tabletas se reproduce el video.
 2. **Nuestro enfoque** (`#enfoque`): tres frases que se "llenan" al desplazarse.
 3. **Soluciones** (`#soluciones`): Sitios web (incluido SEO), Automatización, CRM y gestión comercial, Herramientas
    de negocio. "Conocer más" despliega el detalle; "Cotizar…" lleva al formulario con el interés ya marcado.
-4. **Tecnología aplicada** (`#aplicada`): ejemplos ilustrativos (CRM y cotizador en celular) y un PC que muestra en
+4. **Tecnología aplicada** (`#aplicada`): ejemplos ilustrativos (CRM y cotizador en celular) y una ventana de navegador que muestra en
    vivo la propuesta de sitio web para un hotel publicada en GitHub Pages (se carga solo al llegar a la sección;
    la CSP la permite con `frame-src https://wontex-devs.github.io`).
-5. **Cómo trabajamos** (`#proceso`): 4 pasos numerados.
+5. **Cómo trabajamos** (`#proceso`): línea de tiempo de 4 pasos que se llena al desplazarse.
 6. **Contacto** (`#contacto`): texto y correo a la izquierda; formulario en tarjeta a la derecha.
 
 Con `prefers-reduced-motion` no se muestran la animación de entrada ni el video (queda la imagen fija).
