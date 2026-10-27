@@ -6,5 +6,6 @@ if (location.hash) history.replaceState(null, '', location.pathname + location.s
 (function (d) {
   d.classList.add('js');
   // La animación de entrada se muestra en cada carga de la página (también al recargar)
-  if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) d.classList.add('intro-playing');
+  // Solo en la página de inicio (marcada con data-intro); las páginas de servicios abren directo
+  if (d.hasAttribute('data-intro') && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) d.classList.add('intro-playing');
 })(document.documentElement);

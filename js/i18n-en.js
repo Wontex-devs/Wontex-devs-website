@@ -294,5 +294,19 @@ window.FW_EN = {
 "¡Excelente atención!": "Excellent service!",
 "¡Gracias por tu reseña!": "Thanks for your review!",
 "Noviembre": "November",
-"miércoles 13 de noviembre": "Wednesday, November 13"
+"miércoles 13 de noviembre": "Wednesday, November 13",
+"Wontex | Desarrollo Web y Automatización Empresarial": "Wontex | Web Development and Business Automation",
+"En Wontex desarrollamos páginas web, automatizamos procesos e integramos CRM e inteligencia artificial para empresas de Barranquilla y toda Colombia.": "At Wontex we build websites, automate processes and integrate CRM and artificial intelligence for businesses in Barranquilla and across Colombia.",
+"Soluciones digitales y automatización para empresas.": "Digital solutions and automation for businesses.",
+"Sitios web · Automatización · IA · CRM": "Websites · Automation · AI · CRM",
+"Automatización e inteligencia artificial": "Automation and artificial intelligence",
+"Procesos conectados, chatbots y asistentes de IA que reducen tareas repetitivas y mejoran la atención a tus clientes.": "Connected processes, chatbots and AI assistants that reduce repetitive tasks and improve customer service.",
+"Ayudamos a emprendedores y a pequeñas y medianas empresas de Barranquilla y de toda Colombia a trabajar mejor con tecnología: páginas web, automatización de procesos, inteligencia artificial, CRM y herramientas digitales a la medida.": "We help entrepreneurs and small and medium-sized businesses in Barranquilla and across Colombia work better with technology: websites, process automation, artificial intelligence, CRM and custom digital tools.",
+"Ver servicio de desarrollo web": "Web development service (in Spanish)",
+"Ver servicio de automatización e IA": "Automation and AI service (in Spanish)",
+"Ver servicio de CRM": "CRM service (in Spanish)",
+"Ver servicio de herramientas digitales": "Digital tools service (in Spanish)",
+"Desarrollo web": "Web development",
+"Automatización e IA": "Automation and AI",
+"Herramientas digitales": "Digital tools"
 };

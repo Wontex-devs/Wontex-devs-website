@@ -27,3 +27,9 @@
 # Imágenes sin versión: una semana
 /assets/img/*
   Cache-Control: public, max-age=604800
+
+# Copias de Cloudflare Pages (dirección .pages.dev y vistas previas): fuera de Google; solo se indexa wontex-devs.com
+https://wontex-devs-website.pages.dev/*
+  X-Robots-Tag: noindex
+https://:hash.wontex-devs-website.pages.dev/*
+  X-Robots-Tag: noindex

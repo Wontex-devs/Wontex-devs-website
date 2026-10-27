@@ -9,6 +9,8 @@ Qué hace (se puede ejecutar las veces que quieras; siempre deja el mismo result
      Twitter Card y datos estructurados (ProfessionalService + WebSite) dentro del bloque DOMINIO.
   2. Páginas legales: URL canónica sin .html, BreadcrumbList y meta robots. Mientras una página tenga
      textos "[PENDIENTE", queda en "noindex, follow" y fuera del sitemap.
+  2b. Páginas de servicios (/desarrollo-web/, /automatizacion-e-inteligencia-artificial/, /crm/,
+     /herramientas-digitales/) desde _herramientas/servicios.py, con su SEO y datos estructurados (Service).
   3. en/index.html: la misma página traducida con el diccionario de js/i18n-en.js (textos, atributos
      accesibles, título y descripciones), con sus propias canónica y hreflang. No se edita a mano.
   4. sitemap.xml (solo páginas indexables, con sus alternativas de idioma) y robots.txt.
@@ -32,18 +34,22 @@ ROBOTS_OFF = "noindex, follow"
 
 TEXT = {
     "es": {
-        "description": "Sitios web con posicionamiento en buscadores (SEO), automatizaciones con inteligencia artificial, "
-                       "CRM y gestión comercial, y herramientas de negocio para empresas.",
-        "knowsAbout": ["Desarrollo de sitios web", "Posicionamiento en buscadores (SEO)", "Automatización con inteligencia artificial",
-                       "CRM y gestión comercial", "Herramientas de negocio"],
+        "description": "Desarrollo de páginas web con SEO, automatización de procesos empresariales, inteligencia "
+                       "artificial (chatbots y asistentes), implementación de CRM y herramientas digitales para "
+                       "emprendedores y pequeñas y medianas empresas de Barranquilla y toda Colombia.",
+        "knowsAbout": ["Desarrollo de páginas web", "Posicionamiento en buscadores (SEO)", "Automatización de procesos empresariales",
+                       "Inteligencia artificial para empresas", "Chatbots y asistentes virtuales", "Implementación de CRM",
+                       "Automatización comercial", "Cotizadores digitales", "Dashboards e integraciones"],
         "slogan": "Soluciones inteligentes. Resultados reales.",
         "home": "Inicio",
     },
     "en": {
-        "description": "Websites with search engine optimization (SEO), AI-powered automations, "
-                       "CRM and sales management, and business tools for companies.",
-        "knowsAbout": ["Website development", "Search engine optimization (SEO)", "AI automation",
-                       "CRM and sales management", "Business tools"],
+        "description": "Website development with SEO, business process automation, artificial intelligence "
+                       "(chatbots and assistants), CRM implementation and digital tools for entrepreneurs and small "
+                       "and medium-sized businesses in Barranquilla and across Colombia.",
+        "knowsAbout": ["Website development", "Search engine optimization (SEO)", "Business process automation",
+                       "Artificial intelligence for business", "Chatbots and virtual assistants", "CRM implementation",
+                       "Sales automation", "Digital quoting tools", "Dashboards and integrations"],
         "slogan": "Smart solutions. Real results.",
         "home": "Home",
     },
@@ -97,7 +103,7 @@ def org_graph(site, d, lang):
         "email": "info@wontex-devs.com",
         "knowsAbout": t["knowsAbout"],
         "knowsLanguage": ["es", "en"],
-        "areaServed": {"@type": "Country", "name": "Colombia"},
+        "areaServed": [{"@type": "City", "name": "Barranquilla"}, {"@type": "Country", "name": "Colombia"}],
     }
     if d.get("nombreLegal"):
         org["legalName"] = d["nombreLegal"]
@@ -200,7 +206,7 @@ def build_english(es_html, site, d):
             out.append(html.escape(tr(html.unescape(part), "texto"), quote=False))
     en = "".join(out)
     en = re.sub(r"<title>(.*?)</title>", lambda m: "<title>%s</title>" % html.escape(tr(html.unescape(m.group(1)), "título"), quote=False), en, 1)
-    en = en.replace('<html lang="es-419">', '<html lang="en">', 1)
+    en = en.replace('<html lang="es-419" data-intro>', '<html lang="en" data-intro>', 1)
     en = en.replace('<meta property="og:locale" content="es_LA">', '<meta property="og:locale" content="en_US">', 1)
     en = en.replace('<meta property="og:locale:alternate" content="en_US">', '<meta property="og:locale:alternate" content="es_LA">', 1)
     en = set_block(en, home_lines(site, d, "en"), "en/index.html")
@@ -235,6 +241,14 @@ def main():
     es = set_block(read("index.html"), home_lines(site, data, "es"), "index.html")
     write("index.html", es)
 
+    # Páginas de servicios (contenido en _herramientas/servicios.py)
+    sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+    import servicios
+    svc = servicios.build(site, es)
+    for path, content in svc.items():
+        write(path, content)
+        print("%-17s generada" % path.split("/")[0][:17])
+
     indexable = []
     for page in LEGAL:
         page_html = read(page)
@@ -263,6 +277,8 @@ def main():
                    for u in (site + "/", site + "/en/"))
     urls += "".join("  <url>\n    <loc>%s</loc>\n    <lastmod>%s</lastmod>\n  </url>\n" % (clean_url(site, p), today)
                     for p in indexable)
+    urls += "".join("  <url>\n    <loc>%s/%s</loc>\n    <lastmod>%s</lastmod>\n  </url>\n" % (site, path[:-len("index.html")], today)
+                    for path in svc)
     write("sitemap.xml", '<?xml version="1.0" encoding="UTF-8"?>\n'
           '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">\n'
           + urls + "</urlset>\n")
