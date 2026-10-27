@@ -283,12 +283,12 @@ canónicas correctas, HTTPS y redirecciones 301, HTML estático (el contenido no
 | Gravedad | Problema | Evidencia | Impacto | Estado |
 |---|---|---|---|---|
 | Alta | Dominio nuevo, sin Search Console ni enlaces | WHOIS 26/10/2026; sin resultados en buscadores | Google no conoce el sitio | **Pendiente externo** (§F) |
-| Alta | Copias duplicadas indexables | `wontex-devs-website.pages.dev` y `wontex-devs.github.io/Wontex-devs-website/` sirven el mismo sitio | Contenido duplicado | pages.dev: **Corregido y verificado** (`X-Robots-Tag: noindex`). GitHub Pages: **Pendiente** (desactivarlo en GitHub; ya tiene canónica a wontex-devs.com) |
+| Alta | Copias duplicadas indexables | `wontex-devs-website.pages.dev` y `wontex-devs.github.io/Wontex-devs-website/` sirven el mismo sitio | Contenido duplicado | pages.dev: **Corregido y verificado** (`X-Robots-Tag: noindex`). GitHub Pages: **Corregido y verificado** (desactivado el 27/10/2026; la dirección responde 404) |
 | Media | Una sola página para todos los servicios | Sin URLs para "desarrollo web", "CRM", etc. | Poca relevancia para búsquedas de servicios | **Corregido y verificado** (4 páginas) |
 | Media | Título y H1 abstractos | Título "Sitios web, automatización y CRM…", H1 "…que simplifican tu negocio" | Google entiende peor la actividad | **Corregido y verificado** |
 | Media | Marca confundible ("Wontex" → "Wintex") | Resultados de búsqueda | Búsquedas de marca muestran otras empresas | Datos estructurados reforzados; resto **pendiente externo** (perfiles, Search Console, Perfil de Empresa) |
 | Baja | Desbordes a 320 px en 2 páginas | Medición en navegador | Scroll horizontal en celulares pequeños | **Corregido y verificado** |
-| Baja | Error de consola por Cloudflare Web Analytics bloqueado por la CSP | PageSpeed "Prácticas" 92 | Solo calificación | **Pendiente de tu decisión** |
+| Baja | Error de consola por Cloudflare Web Analytics bloqueado por la CSP | PageSpeed "Prácticas" 92 | Solo calificación | **Corregido y verificado** (Web Analytics desactivado el 27/10/2026; el script ya no se inyecta) |
 
 ## C. Correcciones implementadas
 
@@ -343,12 +343,12 @@ Validar con Search Console (consultas reales, 4-8 semanas después de indexar) y
 1. **Google Search Console** (lo más urgente): verificar el dominio con un registro TXT en Cloudflare, enviar
    `https://wontex-devs.com/sitemap.xml` e inspeccionar y solicitar indexación de `/` y las 4 páginas de servicios (§14).
 2. **Bing Webmaster Tools**: importar desde Search Console.
-3. **Desactivar GitHub Pages** del repositorio (Settings → Pages → Unpublish) para eliminar la copia en github.io.
+3. ~~Desactivar GitHub Pages~~ · hecho el 27/10/2026.
 4. **Señales de marca**: crear perfiles oficiales (LinkedIn, Instagram…) que enlacen a wontex-devs.com y agregarlos a
    `_herramientas/datos-negocio.json` (`redesSociales`) para `sameAs`; Perfil de Empresa de Google como negocio de
    área de servicio (Barranquilla), sin dirección pública si no hay local.
 5. **FormSubmit**: activar con un envío de prueba desde la web.
-6. **Cloudflare Web Analytics**: desactivar o permitir (afecta "Prácticas recomendadas").
+6. ~~Cloudflare Web Analytics~~ · desactivado el 27/10/2026.
 
 ## G. Riesgos residuales
 
@@ -361,7 +361,7 @@ Validar con Search Console (consultas reales, 4-8 semanas después de indexar) y
 ## H. Próximos pasos (por prioridad)
 
 1. Search Console: verificar, enviar el sitemap y solicitar indexación (hoy).
-2. Desactivar GitHub Pages y decidir sobre Cloudflare Web Analytics.
+2. ~~Desactivar GitHub Pages y Cloudflare Web Analytics~~ · hecho.
 3. Crear perfiles oficiales de la marca y el Perfil de Empresa; agregarlos a `sameAs`.
 4. Activar FormSubmit y probar un envío real.
 5. A las 1-2 semanas: revisar en Search Console las páginas indexadas y los errores de cobertura.
