@@ -10,6 +10,8 @@ carpeta de salida: la raíz. La auditoría técnica completa está en `_herramie
 web/
 ├── index.html              Página principal en español (/)
 ├── en/index.html           Página en inglés (/en/) · GENERADA, no se edita a mano
+├── desarrollo-web/ · automatizacion-e-inteligencia-artificial/ · crm/ · herramientas-digitales/
+│                           Páginas de servicios · GENERADAS desde _herramientas/servicios.py
 ├── aviso-legal.html        Aviso legal            ┐ borradores con datos [PENDIENTE]:
 ├── privacidad.html         Política de privacidad ├ quedan en noindex y fuera del sitemap
 ├── cookies.html            Política de cookies    ┘ hasta completarlos
@@ -24,7 +26,8 @@ web/
 ├── js/i18n.js · i18n-en.js Idioma de los mensajes del código y diccionario español → inglés
 ├── assets/                 Imágenes, fuentes, video, favicons e imagen para compartir (og-image.jpg)
 └── _herramientas/          No se publica
-    ├── preparar-dominio.py SEO de todas las páginas + genera en/index.html, sitemap.xml y robots.txt
+    ├── preparar-dominio.py SEO de todas las páginas + genera en/, servicios, sitemap.xml y robots.txt
+    ├── servicios.py        Contenido de las 4 páginas de servicios (editar aquí y volver a generar)
     └── datos-negocio.json  Datos reales del negocio para Google (opcional)
 ```
 

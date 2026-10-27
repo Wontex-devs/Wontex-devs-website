@@ -262,3 +262,108 @@ correo, teléfono y dirección de las páginas legales.
 | Contraste "(opcional)" en el formulario (causa del 97) | Corregido y publicado (5,3:1) |
 | Violaciones de CSP en el sitio publicado | Solo el script de **Cloudflare Web Analytics** (`static.cloudflareinsights.com`), que Cloudflare inyecta en el proyecto y la CSP bloquea: causa el 92 en Prácticas. Pendiente de decisión: desactivarlo en Cloudflare o permitirlo en la CSP y declararlo en privacidad/cookies |
 | Rutas | `/es` → `/` (301); README, `_herramientas/` y `AUDITORIA.md` → 404 |
+
+---
+
+# Auditoría SEO y funcional · 27/10/2026
+
+## A. Diagnóstico y causa raíz
+
+**Problema:** Wontex no aparece en Google ni siquiera buscando la marca. **Confirmado**: en buscadores no hay
+ningún resultado de `wontex-devs.com`, y "Wontex" se interpreta como error de "Wintex" (varias empresas textiles).
+
+**Causa raíz (confirmada):** el dominio es nuevo. `wontex-devs.com` se registró el **26/10/2026** (WHOIS, Hostinger);
+el sitio se publica ahí desde el 25-26/10 y hasta el 25/10 la versión en GitHub Pages tenía `noindex`. Google aún no
+lo ha descubierto: no está verificado en Search Console y no hay enlaces externos hacia él.
+**No había bloqueos técnicos**: robots.txt permite todo, sin `noindex` ni `X-Robots-Tag` en páginas públicas,
+canónicas correctas, HTTPS y redirecciones 301, HTML estático (el contenido no depende de JavaScript).
+
+## B. Errores encontrados
+
+| Gravedad | Problema | Evidencia | Impacto | Estado |
+|---|---|---|---|---|
+| Alta | Dominio nuevo, sin Search Console ni enlaces | WHOIS 26/10/2026; sin resultados en buscadores | Google no conoce el sitio | **Pendiente externo** (§F) |
+| Alta | Copias duplicadas indexables | `wontex-devs-website.pages.dev` y `wontex-devs.github.io/Wontex-devs-website/` sirven el mismo sitio | Contenido duplicado | pages.dev: **Corregido y verificado** (`X-Robots-Tag: noindex`). GitHub Pages: **Pendiente** (desactivarlo en GitHub; ya tiene canónica a wontex-devs.com) |
+| Media | Una sola página para todos los servicios | Sin URLs para "desarrollo web", "CRM", etc. | Poca relevancia para búsquedas de servicios | **Corregido y verificado** (4 páginas) |
+| Media | Título y H1 abstractos | Título "Sitios web, automatización y CRM…", H1 "…que simplifican tu negocio" | Google entiende peor la actividad | **Corregido y verificado** |
+| Media | Marca confundible ("Wontex" → "Wintex") | Resultados de búsqueda | Búsquedas de marca muestran otras empresas | Datos estructurados reforzados; resto **pendiente externo** (perfiles, Search Console, Perfil de Empresa) |
+| Baja | Desbordes a 320 px en 2 páginas | Medición en navegador | Scroll horizontal en celulares pequeños | **Corregido y verificado** |
+| Baja | Error de consola por Cloudflare Web Analytics bloqueado por la CSP | PageSpeed "Prácticas" 92 | Solo calificación | **Pendiente de tu decisión** |
+
+## C. Correcciones implementadas
+
+- `index.html`: título "Wontex | Desarrollo Web y Automatización Empresarial"; H1 "Soluciones digitales y automatización
+  para empresas."; descripción con Barranquilla y toda Colombia; texto de presentación (actividad, público y área);
+  "Automatización e inteligencia artificial"; enlaces visibles a cada servicio; servicios en el pie. Versión en inglés regenerada.
+- `_herramientas/servicios.py` (nuevo) → `/desarrollo-web/`, `/automatizacion-e-inteligencia-artificial/`, `/crm/`,
+  `/herramientas-digitales/`: problemas que resuelve, qué incluye, beneficios sin promesas, ejemplos ilustrativos,
+  proceso, llamada a la acción, otros servicios; metadatos propios, canónica, Open Graph, JSON-LD `Service` + `BreadcrumbList`.
+- `_herramientas/preparar-dominio.py`: genera las páginas de servicios y las añade al sitemap; organización con
+  servicios reales y área Barranquilla + Colombia (sin dirección física, teléfono ni reseñas).
+- `_headers`: `X-Robots-Tag: noindex` para `wontex-devs-website.pages.dev` y sus vistas previas.
+- `js/head.js`: la animación de entrada solo en el inicio. `css/site.css`: estilos de servicios y ajustes a 320 px.
+
+## D. Palabras clave (hipótesis por validar; sin datos de volumen)
+
+No se usaron herramientas con volúmenes de búsqueda: son hipótesis basadas en la oferta real y en una revisión de
+resultados (en Barranquilla dominan directorios y pocas agencias con páginas dedicadas; en CRM pesa mucho WhatsApp).
+
+| Grupo | Intención | Palabras clave priorizadas | Página | Título | H1 |
+|---|---|---|---|---|---|
+| A · Desarrollo web | Comercial | desarrollo de páginas web para empresas · diseño web Barranquilla · páginas web para pequeñas empresas | /desarrollo-web/ | Desarrollo de páginas web para empresas \| Wontex | Desarrollo de páginas web para empresas |
+| B+C · Automatización e IA | Comercial / informativa | automatización de procesos empresariales · automatización de WhatsApp · chatbots para empresas · inteligencia artificial para empresas | /automatizacion-e-inteligencia-artificial/ | Automatización de procesos e IA para empresas \| Wontex | Automatización de procesos e inteligencia artificial para empresas |
+| D · CRM | Comercial | implementación de CRM para empresas · CRM para pequeñas empresas · automatización de ventas · seguimiento de clientes potenciales | /crm/ | Implementación de CRM y automatización comercial \| Wontex | Implementación de CRM y automatización comercial |
+| E · Herramientas | Comercial (nicho) | desarrollo de cotizadores digitales · dashboards empresariales · herramientas digitales para empresas | /herramientas-digitales/ | Herramientas digitales y cotizadores para empresas \| Wontex | Herramientas digitales a la medida para empresas |
+| F · Marca | Navegacional | Wontex · Wontex desarrollo web · Wontex automatización | / | Wontex \| Desarrollo Web y Automatización Empresarial | Soluciones digitales y automatización para empresas |
+
+Validar con Search Console (consultas reales, 4-8 semanas después de indexar) y, si se desea, con Google Keyword Planner.
+
+## E. Pruebas ejecutadas
+
+| Prueba | Cómo | Resultado |
+|---|---|---|
+| Acceso de Googlebot | `curl` con agente de Googlebot a las 6 páginas públicas | 200, sin `X-Robots-Tag` · **Verificado** |
+| robots.txt y sitemap | Lectura y análisis XML | Permite todo; sitemap válido con 6 URLs canónicas · **Verificado** |
+| Dominio | http, www, `/index.html`, `/crm` sin barra | 301/308 a la URL canónica · **Verificado** |
+| Copias duplicadas | Cabeceras de pages.dev | `X-Robots-Tag: noindex` · **Verificado** |
+| HTML | Validador W3C, 9 páginas | 0 errores, 0 avisos · **Verificado** |
+| Datos estructurados | Análisis JSON de cada bloque | Válidos (ProfessionalService, WebSite, Service, BreadcrumbList) · Pendiente Rich Results Test |
+| Enlaces y anclas | Script sobre 9 páginas (30 URLs) | 0 rotos · **Verificado** |
+| Responsive | 9 páginas × 320/375/768/1024/1440 px | 0 desbordes (tras corregir 2) · **Verificado** |
+| Menú móvil, Esc y foco | Navegador, 375 px | Abre, cierra con Esc y devuelve el foco · **Verificado** |
+| Consola y CSP | Navegador con las cabeceras reales (local) | 0 errores en inicio y servicios; en producción solo el script de Cloudflare Web Analytics |
+| Formulario | Envío interceptado (sin enviar datos reales) | Validaciones, 3 casillas y constancia correctas · Envío real **pendiente** (activar FormSubmit) |
+| WhatsApp | Configuración | Sin número: el botón lleva al formulario · **Verificado** |
+| PageSpeed móvil (inicio) | pagespeed.web.dev | Rendimiento 95 · Accesibilidad 100 · Prácticas 92 · SEO 100 · LCP 2,7 s · CLS 0,001 · TBT 0 ms |
+| PageSpeed móvil (/crm/) | pagespeed.web.dev | 98 · 100 · 92 · 100 · LCP 1,8 s · CLS 0,082 · TBT 0 ms |
+| INP | — | Sin datos de usuarios reales todavía (sitio nuevo) |
+
+## F. Pendientes externos (requieren tu acceso)
+
+1. **Google Search Console** (lo más urgente): verificar el dominio con un registro TXT en Cloudflare, enviar
+   `https://wontex-devs.com/sitemap.xml` e inspeccionar y solicitar indexación de `/` y las 4 páginas de servicios (§14).
+2. **Bing Webmaster Tools**: importar desde Search Console.
+3. **Desactivar GitHub Pages** del repositorio (Settings → Pages → Unpublish) para eliminar la copia en github.io.
+4. **Señales de marca**: crear perfiles oficiales (LinkedIn, Instagram…) que enlacen a wontex-devs.com y agregarlos a
+   `_herramientas/datos-negocio.json` (`redesSociales`) para `sameAs`; Perfil de Empresa de Google como negocio de
+   área de servicio (Barranquilla), sin dirección pública si no hay local.
+5. **FormSubmit**: activar con un envío de prueba desde la web.
+6. **Cloudflare Web Analytics**: desactivar o permitir (afecta "Prácticas recomendadas").
+
+## G. Riesgos residuales
+
+- La indexación depende de Google: aunque todo esté técnicamente listo, puede tardar días o semanas.
+- La marca se confunde con "Wintex": sin perfiles y enlaces externos, Google puede seguir corrigiendo la búsqueda.
+- LCP móvil del inicio en 2,7 s (objetivo 2,5 s): lo frenan las hojas de estilo que bloquean el renderizado.
+- Páginas legales en `noindex` hasta completar sus datos.
+- Las páginas de servicios están solo en español.
+
+## H. Próximos pasos (por prioridad)
+
+1. Search Console: verificar, enviar el sitemap y solicitar indexación (hoy).
+2. Desactivar GitHub Pages y decidir sobre Cloudflare Web Analytics.
+3. Crear perfiles oficiales de la marca y el Perfil de Empresa; agregarlos a `sameAs`.
+4. Activar FormSubmit y probar un envío real.
+5. A las 1-2 semanas: revisar en Search Console las páginas indexadas y los errores de cobertura.
+6. A las 4-8 semanas: revisar consultas, impresiones, clics y posiciones por página y ajustar textos.
+7. Optimizar el LCP móvil (CSS crítico en línea o reducir las hojas de estilo) sin cambiar el diseño.
