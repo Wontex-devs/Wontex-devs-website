@@ -384,3 +384,4 @@ body, .xh__sub, .xs__lead, .sol__desc, .steps2 p, .xc__lead, .cx__desc { -webkit
   .xc .form { border-radius: 22px; }
   .xc .form__foot .btn { width: 100%; }
 }
+.xc .field label .opt { color: #A3AFB7; font-weight: 500; }
