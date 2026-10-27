@@ -250,3 +250,15 @@ nueva, envío real de prueba del formulario y activación de FormSubmit.
 ### Perfil de Empresa de Google
 Solo si Wontex tiene dirección física o área de servicio real: https://business.google.com, con el mismo nombre,
 correo, teléfono y dirección de las páginas legales.
+
+## 15. Resultados tras publicar (27/10/2026)
+
+| Verificación | Resultado |
+|---|---|
+| Cabeceras en `https://wontex-devs.com` (`curl -I`) | CSP, HSTS, X-Frame-Options, nosniff, Referrer-Policy, Permissions-Policy y COOP presentes |
+| securityheaders.com | **A+** |
+| Mozilla Observatory | **A+ (130 puntos, 12/12 pruebas)** |
+| PageSpeed móvil (nueva versión) | Rendimiento **94** (antes 83) · Accesibilidad 97 · Prácticas 92 · SEO 100 · LCP 2,7 s (antes 3,2 s) · TBT 0 ms · CLS 0,001 |
+| Contraste "(opcional)" en el formulario (causa del 97) | Corregido y publicado (5,3:1) |
+| Violaciones de CSP en el sitio publicado | Solo el script de **Cloudflare Web Analytics** (`static.cloudflareinsights.com`), que Cloudflare inyecta en el proyecto y la CSP bloquea: causa el 92 en Prácticas. Pendiente de decisión: desactivarlo en Cloudflare o permitirlo en la CSP y declararlo en privacidad/cookies |
+| Rutas | `/es` → `/` (301); README, `_herramientas/` y `AUDITORIA.md` → 404 |
