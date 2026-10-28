@@ -282,7 +282,7 @@ canónicas correctas, HTTPS y redirecciones 301, HTML estático (el contenido no
 
 | Gravedad | Problema | Evidencia | Impacto | Estado |
 |---|---|---|---|---|
-| Alta | Dominio nuevo, sin Search Console ni enlaces | WHOIS 26/10/2026; sin resultados en buscadores | Google no conoce el sitio | **Pendiente externo** (§F) |
+| Alta | Dominio nuevo, sin Search Console ni enlaces | WHOIS 26/10/2026; sin resultados en buscadores | Google no conoce el sitio | Search Console: **Corregido** (dominio verificado con wontex.developer@gmail.com y sitemap enviado el 27/10/2026, 6 URL, estado Correcto). Falta solicitar indexación y conseguir enlaces (§F) |
 | Alta | Copias duplicadas indexables | `wontex-devs-website.pages.dev` y `wontex-devs.github.io/Wontex-devs-website/` sirven el mismo sitio | Contenido duplicado | pages.dev: **Corregido y verificado** (`X-Robots-Tag: noindex`). GitHub Pages: **Corregido y verificado** (desactivado el 27/10/2026; la dirección responde 404) |
 | Media | Una sola página para todos los servicios | Sin URLs para "desarrollo web", "CRM", etc. | Poca relevancia para búsquedas de servicios | **Corregido y verificado** (4 páginas) |
 | Media | Título y H1 abstractos | Título "Sitios web, automatización y CRM…", H1 "…que simplifican tu negocio" | Google entiende peor la actividad | **Corregido y verificado** |
@@ -340,8 +340,9 @@ Validar con Search Console (consultas reales, 4-8 semanas después de indexar) y
 
 ## F. Pendientes externos (requieren tu acceso)
 
-1. **Google Search Console** (lo más urgente): verificar el dominio con un registro TXT en Cloudflare, enviar
-   `https://wontex-devs.com/sitemap.xml` e inspeccionar y solicitar indexación de `/` y las 4 páginas de servicios (§14).
+1. **Google Search Console**: ~~verificar el dominio~~ y ~~enviar el sitemap~~ · hechos el 27/10/2026 (cuenta
+   wontex.developer@gmail.com, registro TXT `google-site-verification` en Cloudflare: no borrarlo). Falta
+   **Inspección de URLs → Solicitar indexación** de `/` y las 4 páginas de servicios (§14).
 2. **Bing Webmaster Tools**: importar desde Search Console.
 3. ~~Desactivar GitHub Pages~~ · hecho el 27/10/2026.
 4. **Señales de marca**: crear perfiles oficiales (LinkedIn, Instagram…) que enlacen a wontex-devs.com y agregarlos a
