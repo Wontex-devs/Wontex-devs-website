@@ -301,7 +301,7 @@ window.FW_EN = {
 "Sitios web · Automatización · IA · CRM": "Websites · Automation · AI · CRM",
 "Automatización e inteligencia artificial": "Automation and artificial intelligence",
 "Procesos conectados, chatbots y asistentes de IA que reducen tareas repetitivas y mejoran la atención a tus clientes.": "Connected processes, chatbots and AI assistants that reduce repetitive tasks and improve customer service.",
-"Impulsamos a emprendedores y pymes, en Colombia y en el exterior, con tecnología que trabaja por ellos: páginas web, automatización de procesos, inteligencia artificial, CRM y herramientas digitales a la medida.": "We empower entrepreneurs and SMEs, in Colombia and abroad, with technology that works for them: websites, process automation, artificial intelligence, CRM and custom digital tools.",
+"Impulsamos a emprendedores y pymes con tecnología que trabaja por ellos: páginas web, automatización de procesos, inteligencia artificial, CRM y herramientas digitales a la medida.": "We empower entrepreneurs and SMEs with technology that works for them: websites, process automation, artificial intelligence, CRM and custom digital tools.",
 "Ver servicio de desarrollo web": "Web development service (in Spanish)",
 "Ver servicio de automatización e IA": "Automation and AI service (in Spanish)",
 "Ver servicio de CRM": "CRM service (in Spanish)",
