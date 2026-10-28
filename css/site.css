@@ -322,6 +322,7 @@ body, .xh__sub, .xs__lead, .sol__desc, .steps2 p, .xc__lead, .cx__desc { -webkit
 .pc__dots i:nth-child(3) { background: #28C840; }
 .pc__url { display: flex; align-items: center; justify-content: center; gap: 6px; min-width: 0; padding: 5px 12px; border-radius: 8px; background: #fff; border: 1px solid #E2E5E0; color: var(--slate); font-family: var(--font-text); font-size: 12px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .pc__url svg { flex: none; width: 12px; height: 12px; fill: none; stroke: var(--slate); stroke-width: 2; stroke-linecap: round; }
+.pc__url:empty::before { content: "\200b"; }
 .pc__screen { position: relative; aspect-ratio: 16 / 10; overflow: hidden; background: #fff; }
 .pc__frame { position: absolute; left: 0; top: 0; width: 1440px; height: 900px; border: 0; transform-origin: 0 0; }
 .cx__open { margin: 14px 0 0; text-align: center !important; }
