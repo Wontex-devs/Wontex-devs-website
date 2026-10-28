@@ -203,7 +203,7 @@ nueva, envío real de prueba del formulario y activación de FormSubmit.
 
 ## 12. Prioridades
 
-1. 🔴 Autorizar la publicación y **activar FormSubmit** (hasta entonces el formulario no entrega mensajes).
+1. ✅ Publicado y **FormSubmit activado** (27/10/2026; envío de prueba aceptado, los mensajes llegan a info@wontex-devs.com).
 2. 🟠 Entregar los datos legales pendientes (§13) y pasar los borradores a revisión jurídica.
 3. 🟠 Registrar el sitio en Google Search Console y Bing (§14).
 4. 🟡 Decidir el botón de pausa del video (§9).
