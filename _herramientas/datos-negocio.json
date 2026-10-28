@@ -3,12 +3,21 @@
   "nombreLegal": "",
   "telefono": "",
   "direccion": "",
-  "ciudad": "",
-  "departamento": "",
+  "ciudad": "Barranquilla",
+  "departamento": "Atlántico",
   "codigoPostal": "",
   "pais": "CO",
-  "horario": [],
-  "_horario_ejemplo": ["Mo-Fr 08:00-18:00"],
-  "redesSociales": [],
-  "_redesSociales_ejemplo": ["https://www.instagram.com/tu-cuenta"]
+  "horario": [
+    "Mo-Fr 09:00-18:00",
+    "Sa 09:00-13:00"
+  ],
+  "_horario_ejemplo": [
+    "Mo-Fr 08:00-18:00"
+  ],
+  "redesSociales": [
+    "https://www.instagram.com/wontexdevs"
+  ],
+  "_redesSociales_ejemplo": [
+    "https://www.instagram.com/tu-cuenta"
+  ]
 }

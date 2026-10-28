@@ -346,9 +346,10 @@ Validar con Search Console (consultas reales, 4-8 semanas después de indexar) y
 2. ~~**Bing Webmaster Tools**: importar desde Search Console~~ · hecho el 27/10/2026 (importado con wontex.developer@gmail.com,
    sitemap enviado y las 6 URL enviadas con URL Submission).
 3. ~~Desactivar GitHub Pages~~ · hecho el 27/10/2026.
-4. **Señales de marca**: crear perfiles oficiales (LinkedIn, Instagram…) que enlacen a wontex-devs.com y agregarlos a
-   `_herramientas/datos-negocio.json` (`redesSociales`) para `sameAs`; Perfil de Empresa de Google como negocio de
-   área de servicio (Barranquilla), sin dirección pública si no hay local.
+4. **Señales de marca**: Perfil de Empresa de Google **creado** el 27/10/2026 (wontex.developer@gmail.com; área de
+   servicio Barranquilla + Colombia, sin dirección pública; categorías Diseñador web, Compañía de software, Consultor
+   informático; horario L-V 9-18 y S 9-13; Instagram @wontexdevs). **Falta la verificación por video** (la hace el
+   titular). Instagram ya está en `sameAs` y el horario en `openingHours`. Pendiente: teléfono y LinkedIn cuando existan.
 5. **FormSubmit**: activar con un envío de prueba desde la web.
 6. ~~Cloudflare Web Analytics~~ · desactivado el 27/10/2026.
 
