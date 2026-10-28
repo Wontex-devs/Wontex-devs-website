@@ -343,7 +343,8 @@ Validar con Search Console (consultas reales, 4-8 semanas después de indexar) y
 1. **Google Search Console**: ~~verificar el dominio~~ y ~~enviar el sitemap~~ · hechos el 27/10/2026 (cuenta
    wontex.developer@gmail.com, registro TXT `google-site-verification` en Cloudflare: no borrarlo). Falta
    **Inspección de URLs → Solicitar indexación** de `/` y las 4 páginas de servicios (§14).
-2. **Bing Webmaster Tools**: importar desde Search Console.
+2. ~~**Bing Webmaster Tools**: importar desde Search Console~~ · hecho el 27/10/2026 (importado con wontex.developer@gmail.com,
+   sitemap enviado y las 6 URL enviadas con URL Submission).
 3. ~~Desactivar GitHub Pages~~ · hecho el 27/10/2026.
 4. **Señales de marca**: crear perfiles oficiales (LinkedIn, Instagram…) que enlacen a wontex-devs.com y agregarlos a
    `_herramientas/datos-negocio.json` (`redesSociales`) para `sameAs`; Perfil de Empresa de Google como negocio de
