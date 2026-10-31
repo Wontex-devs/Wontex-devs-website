@@ -122,7 +122,7 @@ body { background: var(--cloud); color: var(--mid); font-family: var(--font-text
 .mk-link { position: relative; flex: 1; height: 2px; margin: 0 6px; background: rgba(247, 248, 244, .14); overflow: hidden; }
 .mk-link i { position: absolute; top: 0; left: -30%; width: 30%; height: 100%; background: var(--lime); animation: mk-flow 2.6s linear infinite; }
 .mk-link + .mk-node + .mk-link i { animation-delay: 1.3s; }
-@keyframes mk-flow { to { left: 100%; } }
+@keyframes mk-flow { to { transform: translateX(433.33%); } }   /* = left: 100% (transform: sin recalcular la página) */
 /* CRM */
 .mk--crm { display: grid; grid-template-columns: repeat(3, 1fr); gap: 4%; }
 .mk-col { position: relative; display: flex; flex-direction: column; gap: 10px; padding: 12px; border-radius: 14px; background: rgba(247, 248, 244, .05); }
@@ -229,7 +229,7 @@ body { background: var(--cloud); color: var(--mid); font-family: var(--font-text
 .mk-node { flex: none; width: 100%; }
 .mk-link { flex: none; width: 2px; height: 26px; margin: 4px 0; }
 .mk-link i { left: 0; top: -30%; width: 100%; height: 30%; animation-name: mk-flow-v; }
-@keyframes mk-flow-v { to { top: 100%; } }
+@keyframes mk-flow-v { to { transform: translateY(433.33%); } }   /* = top: 100% */
 .mk--tool { grid-template-columns: 1fr; aspect-ratio: auto; }
 .mk-tool__chart { height: 120px; }
 }
@@ -544,3 +544,6 @@ body, .xh__sub, .xs__lead, .sol__desc, .steps2 p, .xc__lead, .cx__desc { -webkit
 .xc__steps li { position: relative; display: flex; align-items: center; gap: 16px; padding: 10px 0; font-size: 16px; line-height: 1.45; color: #D3DBE0; }
 .xc__steps li:not(:last-child)::after { content: ""; position: absolute; left: 16px; top: calc(50% + 16px); width: 1px; height: calc(100% - 32px); background: rgba(247, 248, 244, .16); }
 .xc__n { flex: none; display: grid; place-items: center; width: 32px; height: 32px; border-radius: 999px; border: 1px solid rgba(199, 244, 100, .55); color: var(--lime); font: 600 14px/1 var(--font-display); }
+
+/* Celulares: la frase de enfoque se rellena al hacer scroll; sin la sombra con filtro no hay que redibujarla con efecto en cada cuadro */
+@media (max-width: 900px) { .xs__statement { filter: none; } }
