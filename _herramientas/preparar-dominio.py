@@ -126,8 +126,20 @@ def org_graph(site, d, lang):
     return {"@context": "https://schema.org", "@graph": [org, site_node]}
 
 
-def home_lines(site, d, lang):
+FAQ_ITEM = re.compile(r'<details class="faq__item"[^>]*>\s*<summary[^>]*>(.*?)</summary>\s*<div class="faq__a">(.*?)</div>', re.S)
+
+
+def faq_graph(page_html):
+    # Preguntas frecuentes: se leen de la sección #preguntas para que Google vea exactamente el texto visible
+    text = lambda h: html.unescape(re.sub(r"\s+", " ", re.sub(r"<[^>]+>", " ", h))).strip()
+    items = [{"@type": "Question", "name": text(q), "acceptedAnswer": {"@type": "Answer", "text": text(a)}}
+             for q, a in FAQ_ITEM.findall(page_html)]
+    return {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": items} if items else None
+
+
+def home_lines(site, d, lang, page_html=""):
     url = site + ("/en/" if lang == "en" else "/")
+    faq = faq_graph(page_html)
     return [
         '  <meta name="robots" content="%s">' % ROBOTS_ON,
         '  <link rel="canonical" href="%s">' % url,
@@ -140,7 +152,7 @@ def home_lines(site, d, lang):
         '  <meta property="og:image:height" content="630">',
         '  <meta name="twitter:image" content="%s/assets/og-image.jpg">' % site,
         ld(org_graph(site, d, lang)),
-    ]
+    ] + ([ld(faq)] if faq else [])
 
 
 def set_block(page_html, lines, page):
@@ -209,7 +221,7 @@ def build_english(es_html, site, d):
     en = en.replace('<html lang="es-419" data-intro>', '<html lang="en" data-intro>', 1)
     en = en.replace('<meta property="og:locale" content="es_LA">', '<meta property="og:locale" content="en_US">', 1)
     en = en.replace('<meta property="og:locale:alternate" content="en_US">', '<meta property="og:locale:alternate" content="es_LA">', 1)
-    en = set_block(en, home_lines(site, d, "en"), "en/index.html")
+    en = set_block(en, home_lines(site, d, "en", en), "en/index.html")
     # Selector de idioma: en esta página el actual es EN
     en, n = re.subn(r'<a href="/en/" hreflang="en" lang="en">EN</a>\s*<a href="/" hreflang="es" aria-current="page">ES</a>',
                     '<a href="/en/" hreflang="en" aria-current="page">EN</a>\n      <a href="/" hreflang="es" lang="es">ES</a>', en)
@@ -238,7 +250,8 @@ def main():
     data = business_data()
     today = datetime.date.today().isoformat()
 
-    es = set_block(read("index.html"), home_lines(site, data, "es"), "index.html")
+    es = read("index.html")
+    es = set_block(es, home_lines(site, data, "es", es), "index.html")
     write("index.html", es)
 
     # Páginas de servicios (contenido en _herramientas/servicios.py)

@@ -308,5 +308,19 @@ window.FW_EN = {
 "Ver servicio de herramientas digitales": "Digital tools service (in Spanish)",
 "Desarrollo web": "Web development",
 "Automatización e IA": "Automation and AI",
-"Herramientas digitales": "Digital tools"
+"Herramientas digitales": "Digital tools",
+"Preguntas frecuentes": "Frequently asked questions",
+"Resolvemos tus dudas.": "Your questions, answered.",
+"¿Trabajan con empresas fuera de Colombia?": "Do you work with companies outside Colombia?",
+"¿Cuánto cuesta un proyecto?": "How much does a project cost?",
+"¿Cuánto tiempo toma?": "How long does it take?",
+"¿Necesito saber de tecnología?": "Do I need to know about technology?",
+"¿Se puede conectar con las herramientas que ya uso?": "Can it connect to the tools I already use?",
+"¿Qué pasa después de la entrega?": "What happens after delivery?",
+"Sí. Trabajamos de forma remota, así que podemos acompañar a negocios en Colombia y en cualquier otro país.": "Yes. We work remotely, so we can support businesses in Colombia and in any other country.",
+"Depende de lo que necesites. Primero entendemos tu negocio y tus objetivos, y después te enviamos una cotización clara con el alcance de la solución.": "It depends on what you need. First we get to know your business and your goals, then we send you a clear quote with the scope of the solution.",
+"Cada proyecto es distinto. En la propuesta te indicamos las etapas y los tiempos estimados, para que sepas qué esperar desde el inicio.": "Every project is different. Our proposal outlines the stages and estimated timelines, so you know what to expect from the start.",
+"No. Nosotros nos encargamos de la parte técnica y te explicamos cada paso en un lenguaje claro.": "No. We take care of the technical side and explain every step in plain language.",
+"En la mayoría de los casos, sí. Revisamos lo que ya tienes para integrar la solución a tu operación en lugar de empezar de cero.": "In most cases, yes. We review what you already have so the solution fits into your operation instead of starting from scratch.",
+"Te acompañamos mientras tu equipo empieza a usar la solución y la ajustamos a medida que tu negocio crece.": "We support your team as they start using the solution and adjust it as your business grows."
 };

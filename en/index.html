@@ -31,6 +31,7 @@
   <meta property="og:image:height" content="630">
   <meta name="twitter:image" content="https://wontex-devs.com/assets/og-image.jpg">
   <script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "ProfessionalService", "@id": "https://wontex-devs.com/#organizacion", "name": "Wontex", "url": "https://wontex-devs.com/", "logo": "https://wontex-devs.com/assets/icon-512.png", "image": "https://wontex-devs.com/assets/og-image.jpg", "description": "Website development with SEO, business process automation, artificial intelligence (chatbots and assistants), CRM implementation and digital tools for entrepreneurs and small and medium-sized businesses in Barranquilla and across Colombia.", "slogan": "Smart solutions. Real results.", "email": "info@wontex-devs.com", "knowsAbout": ["Website development", "Search engine optimization (SEO)", "Business process automation", "Artificial intelligence for business", "Chatbots and virtual assistants", "CRM implementation", "Sales automation", "Digital quoting tools", "Dashboards and integrations"], "knowsLanguage": ["es", "en"], "areaServed": [{"@type": "City", "name": "Barranquilla"}, {"@type": "Country", "name": "Colombia"}], "address": {"addressLocality": "Barranquilla", "addressRegion": "Atlántico", "@type": "PostalAddress", "addressCountry": "CO"}, "openingHours": ["Mo-Fr 09:00-18:00", "Sa 09:00-13:00"], "sameAs": ["https://www.instagram.com/wontexdevs"]}, {"@type": "WebSite", "@id": "https://wontex-devs.com/#sitio", "url": "https://wontex-devs.com/", "name": "Wontex", "inLanguage": ["es", "en"], "publisher": {"@id": "https://wontex-devs.com/#organizacion"}}]}</script>
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Do you work with companies outside Colombia?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. We work remotely, so we can support businesses in Colombia and in any other country."}}, {"@type": "Question", "name": "How much does a project cost?", "acceptedAnswer": {"@type": "Answer", "text": "It depends on what you need. First we get to know your business and your goals, then we send you a clear quote with the scope of the solution."}}, {"@type": "Question", "name": "How long does it take?", "acceptedAnswer": {"@type": "Answer", "text": "Every project is different. Our proposal outlines the stages and estimated timelines, so you know what to expect from the start."}}, {"@type": "Question", "name": "Do I need to know about technology?", "acceptedAnswer": {"@type": "Answer", "text": "No. We take care of the technical side and explain every step in plain language."}}, {"@type": "Question", "name": "Can it connect to the tools I already use?", "acceptedAnswer": {"@type": "Answer", "text": "In most cases, yes. We review what you already have so the solution fits into your operation instead of starting from scratch."}}, {"@type": "Question", "name": "What happens after delivery?", "acceptedAnswer": {"@type": "Answer", "text": "We support your team as they start using the solution and adjust it as your business grows."}}]}</script>
   <!-- DOMINIO:FIN -->
   <link rel="icon" href="/favicon.ico" sizes="32x32">
   <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
@@ -40,7 +41,7 @@
   <link rel="preload" href="/assets/video/wontex-hero-poster.jpg?v=3" as="image" fetchpriority="high">
   <link rel="stylesheet" href="/css/fonts.css?v=20261025a">
   <link rel="stylesheet" href="/css/styles.css?v=20261025b">
-  <link rel="stylesheet" href="/css/site.css?v=20261028e">
+  <link rel="stylesheet" href="/css/site.css?v=20261031a">
   <script src="/js/head.js?v=20261028a"></script>
 </head>
 <body>
@@ -397,6 +398,24 @@
   </div>
 </section>
 
+<!-- 5b · PREGUNTAS FRECUENTES (el FAQPage de los datos estructurados se genera desde aquí con preparar-dominio.py) -->
+<section class="xs xs--faq" id="preguntas">
+  <div class="container faq">
+    <header class="xs__head faq__head">
+      <p class="xs__label" data-reveal>Frequently asked questions</p>
+      <h2 class="xs__title" data-reveal>Your questions, answered.</h2>
+    </header>
+    <div class="faq__list" data-reveal>
+      <details class="faq__item" name="faq"><summary class="faq__q">Do you work with companies outside Colombia?</summary><div class="faq__a"><p>Yes. We work remotely, so we can support businesses in Colombia and in any other country.</p></div></details>
+      <details class="faq__item" name="faq"><summary class="faq__q">How much does a project cost?</summary><div class="faq__a"><p>It depends on what you need. First we get to know your business and your goals, then we send you a clear quote with the scope of the solution.</p></div></details>
+      <details class="faq__item" name="faq"><summary class="faq__q">How long does it take?</summary><div class="faq__a"><p>Every project is different. Our proposal outlines the stages and estimated timelines, so you know what to expect from the start.</p></div></details>
+      <details class="faq__item" name="faq"><summary class="faq__q">Do I need to know about technology?</summary><div class="faq__a"><p>No. We take care of the technical side and explain every step in plain language.</p></div></details>
+      <details class="faq__item" name="faq"><summary class="faq__q">Can it connect to the tools I already use?</summary><div class="faq__a"><p>In most cases, yes. We review what you already have so the solution fits into your operation instead of starting from scratch.</p></div></details>
+      <details class="faq__item" name="faq"><summary class="faq__q">What happens after delivery?</summary><div class="faq__a"><p>We support your team as they start using the solution and adjust it as your business grows.</p></div></details>
+    </div>
+  </div>
+</section>
+
 <!-- 6 · CIERRE Y CONTACTO -->
 <section class="xs xs--contact contact" id="contacto">
   <div class="container xc">
@@ -479,7 +498,7 @@
 <div class="legal-bar"><div class="container"><p>Copyright <span id="year">2026</span> - Wontex - All rights reserved - Designed by <a href="#top">Wontex</a></p></div></div>
 
 <script src="/js/config.js?v=20261025a" defer></script>
-<script src="/js/i18n-en.js?v=d5fe43a745" defer></script>
+<script src="/js/i18n-en.js?v=9b8c24ee5b" defer></script>
 <script src="/js/i18n.js?v=20261025a" defer></script>
 <script src="/js/hero-live.js?v=20261027a" defer></script>
 <script src="/js/main.js?v=20261027b" defer></script>
