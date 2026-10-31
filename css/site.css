@@ -573,3 +573,114 @@ body, .xh__sub, .xs__lead, .sol__desc, .steps2 p, .xc__lead, .cx__desc { -webkit
   .steps2 li::before { display: none; }   /* la ficha numerada ya marca el avance */
 }
 @media (prefers-reduced-motion: reduce) { .steps2__n { transition: none; } }
+
+/* ---------- Tecnología aplicada · CRM: formulario web → lead en el CRM → WhatsApp → cita agendada ----------
+   Escenas .sc de la línea de tiempo de main.js (FLOWS.crm). Medidas en cqw (ancho de la pantalla del celular). */
+.ui--cr { font-family: var(--font-text); background: #fff; }
+.cr-defs { position: absolute; width: 0; height: 0; overflow: hidden; }
+.cr-av { flex: none; width: 10cqw; height: 10cqw; border-radius: 50%; overflow: hidden; }
+.cr-pill { flex: none; display: inline-grid; padding: .9cqw 2.6cqw; border-radius: 99cqw; background: #E8F7C8; color: #3F5A0E; font-size: 2.7cqw; font-weight: 700; font-style: normal; white-space: nowrap; }
+.cr-kv { display: flex; justify-content: space-between; gap: 2cqw; padding: 2cqw 0 0; margin-top: 2cqw; border-top: 1px solid #EEF1F4; font-size: 3cqw; }
+.cr-kv small { color: #6B7680; font-size: 2.9cqw; }
+.cr-kv span { font-weight: 600; text-align: right; }
+.cr-apph { padding: 2cqw 5.5cqw 3cqw; }
+.cr-apph small { display: block; font-size: 2.8cqw; font-weight: 700; letter-spacing: .06em; color: #6B7680; }
+.cr-apph b { display: block; font-family: var(--font-display); font-size: 6.2cqw; letter-spacing: -.02em; }
+
+/* 1 · Página web con formulario */
+.cr-web { background: #F4F6F8; }
+.cr-url { display: flex; align-items: center; justify-content: center; gap: 1.4cqw; margin: 1cqw 5cqw 3cqw; padding: 2cqw; border-radius: 99cqw; background: #E6EAEE; font-size: 3cqw; color: #4A555E; }
+.cr-url svg { width: 3cqw; height: 3cqw; fill: none; stroke: currentColor; stroke-width: 2.4; }
+.cr-site { flex: 1; margin: 0 4cqw; padding: 5cqw 5cqw 0; border-radius: 4cqw 4cqw 0 0; background: #fff; box-shadow: 0 0 0 1px #E3E8EC; }
+.cr-brand { display: flex; align-items: center; gap: 1.8cqw; font-size: 3.4cqw; color: #0F5E7A; }
+.cr-brand i { width: 4.4cqw; height: 4.4cqw; border-radius: 1.4cqw; background: linear-gradient(135deg, #2BB3C9, #0F5E7A); }
+.cr-hero { margin: 4cqw 0 1cqw; font-family: var(--font-display); font-size: 6cqw; font-weight: 600; line-height: 1.12; letter-spacing: -.02em; color: #12303C; }
+.cr-sub { margin: 0 0 4cqw; font-size: 3.1cqw; line-height: 1.4; color: #5B6770; }
+.cr-form { display: flex; flex-direction: column; gap: 2.4cqw; }
+.cr-in { display: block; padding: 1.8cqw 3cqw 2.2cqw; border-radius: 2.4cqw; box-shadow: inset 0 0 0 1px #D5DCE2; transition: box-shadow .3s; }
+.cr-in small { display: block; font-size: 2.5cqw; color: #6B7680; }
+.cr-typ { display: inline-block; min-height: 4.4cqw; font-size: 3.5cqw; font-weight: 600; color: #12303C; white-space: nowrap; clip-path: inset(0 100% 0 0); transition: clip-path .9s steps(16, end); }
+.cr-typ.on { clip-path: inset(0 0 0 0); }
+.cr-in:has(.cr-typ.on) { box-shadow: inset 0 0 0 1.5px #2BB3C9; }
+.cr-btn { position: relative; overflow: hidden; display: block; margin-top: 1cqw; padding: 3cqw; border-radius: 2.4cqw; background: #0F5E7A; color: #fff; text-align: center; font-size: 3.5cqw; font-weight: 700; }
+.cr-btn.tap { animation: fl-press .5s ease; }
+.cr-btn.tap .tap-dot { animation: fl-tap .8s ease-out; }
+.cr-ok { display: flex; align-items: center; gap: 2cqw; font-size: 3cqw; font-weight: 600; color: #1F7A45; }
+
+/* 2 · El CRM recibe el lead y dispara la automatización */
+.cr-crm { background: #EEF1F5; }
+.cr-push { position: absolute; z-index: 4; left: 3cqw; right: 3cqw; top: 1cqw; display: flex; align-items: center; gap: 2.6cqw; padding: 3cqw 3.4cqw; border-radius: 4.4cqw; background: rgba(255, 255, 255, .96); box-shadow: 0 2cqw 6cqw -2cqw rgba(15, 30, 45, .35); transform: translateY(-200%); }
+.cr-push.on { transform: none; }
+.cr-push__ic { flex: none; display: grid; place-items: center; width: 8.4cqw; height: 8.4cqw; border-radius: 2.2cqw; background: var(--mid); color: var(--lime); font-family: var(--font-display); font-size: 2.3cqw; font-weight: 700; }
+.cr-push b { display: block; font-size: 3.3cqw; } .cr-push small { display: block; font-size: 2.9cqw; color: #4A555E; }
+.cr-push em { margin-left: auto; align-self: flex-start; font-style: normal; font-size: 2.5cqw; color: #8A939B; }
+.cr-crm .cr-apph { margin-top: 16cqw; }
+.cr-lead, .cr-card { margin: 0 4.5cqw; padding: 3.6cqw 4cqw; border-radius: 4cqw; background: #fff; box-shadow: 0 1cqw 3cqw -1.5cqw rgba(20, 43, 59, .2); }
+.cr-lead { box-shadow: 0 0 0 .5cqw var(--lime), 0 2cqw 5cqw -2cqw rgba(120, 170, 40, .45); }
+.cr-lead__top { display: flex; align-items: center; gap: 2.6cqw; }
+.cr-lead__top > span { flex: 1; min-width: 0; }
+.cr-lead__top b { display: block; font-size: 3.6cqw; } .cr-lead__top small { display: block; font-size: 2.8cqw; color: #6B7680; }
+.cr-auto { display: flex; align-items: center; gap: 2.6cqw; margin: 3.4cqw 4.5cqw 0; padding: 3cqw 3.4cqw; border-radius: 3.6cqw; background: var(--mid); color: #fff; }
+.cr-auto__ic { flex: none; display: grid; place-items: center; width: 7.4cqw; height: 7.4cqw; border-radius: 50%; background: var(--lime); }
+.cr-auto__ic svg { width: 3.8cqw; height: 3.8cqw; fill: var(--mid); }
+.cr-auto b { display: block; font-size: 3.2cqw; } .cr-auto small { display: block; font-size: 2.7cqw; opacity: .78; }
+.cr-auto__st { display: grid; margin-left: auto; font-style: normal; font-size: 2.6cqw; font-weight: 700; white-space: nowrap; }
+.cr-auto__st i, .cr-pill--sw i { grid-area: 1 / 1; font-style: normal; transition: opacity .35s; }
+.cr-auto__st i:last-child { opacity: 0; color: var(--lime); }
+.cr-auto.run .cr-auto__st i:first-child { opacity: 0; } .cr-auto.run .cr-auto__st i:last-child { opacity: 1; }
+
+/* 3 · Conversación de WhatsApp con la persona del formulario */
+.cr-chat { background: #EFEAE2; }
+.cr-wah { display: flex; align-items: center; gap: 2.4cqw; padding: 1.4cqw 4cqw 2.6cqw 2cqw; background: #F6F6F6; border-bottom: 1px solid #DEDEDE; }
+.cr-back { flex: none; width: 5.4cqw; height: 5.4cqw; fill: none; stroke: #0A7CFF; stroke-width: 2.6; stroke-linecap: round; stroke-linejoin: round; }
+.cr-wah .cr-av { width: 9cqw; height: 9cqw; }
+.cr-wah b { display: block; font-size: 3.6cqw; } .cr-wah small { display: block; font-size: 2.7cqw; color: #667781; }
+.cr-wab { position: relative; flex: 1; min-height: 0; overflow: hidden; display: flex; flex-direction: column; justify-content: flex-end; gap: 0; padding: 2cqw 3.4cqw 2cqw; }
+.cr-day { align-self: center; margin-bottom: auto; padding: .9cqw 2.6cqw; border-radius: 1.8cqw; background: #fff; font-size: 2.5cqw; color: #54656F; box-shadow: 0 .3cqw .6cqw rgba(0, 0, 0, .06); }
+.cr-msg { position: relative; max-width: 80%; max-height: 0; margin-top: 0; padding: 0 3cqw; overflow: hidden; border-radius: 2.6cqw; font-size: 3.15cqw; line-height: 1.36; color: #111B21; box-shadow: 0 .3cqw .5cqw rgba(0, 0, 0, .1); opacity: 0; transform: translateY(3cqw) scale(.96); transition: max-height .45s var(--ease), margin-top .45s var(--ease), padding .45s var(--ease), opacity .35s .1s, transform .45s var(--ease); }
+.cr-msg.on { max-height: 46cqw; margin-top: 1.8cqw; padding: 1.8cqw 3cqw 1.4cqw; opacity: 1; transform: none; }
+.cr-msg i { display: block; margin-top: .4cqw; text-align: right; font-style: normal; font-size: 2.3cqw; color: #667781; }
+.cr-msg--in { align-self: flex-start; background: #fff; border-top-left-radius: .6cqw; }
+.cr-msg--out { align-self: flex-end; background: #D9FDD3; border-top-right-radius: .6cqw; }
+.cr-tick { font-weight: 400; color: #53BDEB; letter-spacing: -.3em; margin-left: .4cqw; padding-right: .3em; }
+.cr-tag { display: block; width: max-content; margin-bottom: 1cqw; padding: .4cqw 1.8cqw; border-radius: 99cqw; background: var(--mid); color: var(--lime); font-size: 2.2cqw; font-weight: 700; }
+.cr-typing { align-self: flex-start; display: flex; gap: .9cqw; max-height: 0; margin-top: 0; padding: 0 3.4cqw; overflow: hidden; border-radius: 2.6cqw; background: #fff; opacity: 0; transition: max-height .3s, margin-top .3s, padding .3s, opacity .25s; }
+.cr-typing.on { max-height: 10cqw; margin-top: 1.8cqw; padding: 2.8cqw 3.4cqw; opacity: 1; }
+.cr-typing i { width: 1.5cqw; height: 1.5cqw; border-radius: 50%; background: #8696A0; animation: wa-dot 1s infinite; }
+.cr-typing i:nth-child(2) { animation-delay: .15s; } .cr-typing i:nth-child(3) { animation-delay: .3s; }
+.cr-wai { display: flex; align-items: center; gap: 2.2cqw; padding: 2cqw 3cqw 5.6cqw; background: #F6F6F6; }
+.cr-wai span { flex: 1; padding: 2.4cqw 3.6cqw; border-radius: 99cqw; background: #fff; box-shadow: inset 0 0 0 1px #E2E2E2; font-size: 3cqw; color: #8696A0; }
+.cr-wai b { flex: none; display: grid; place-items: center; width: 8.6cqw; height: 8.6cqw; border-radius: 50%; background: #25D366; }
+.cr-wai svg { width: 4.2cqw; height: 4.2cqw; fill: #fff; }
+
+/* 4 · El lead avanza solo en el embudo */
+.cr-pipe { background: #EEF1F5; }
+.cr-stages { display: flex; gap: 1.8cqw; padding: 0 4.5cqw 4cqw; }
+.cr-st { padding: 1.7cqw 2.8cqw; border-radius: 99cqw; background: #fff; font-size: 2.9cqw; font-weight: 600; color: #56656F; white-space: nowrap; transition: background-color .4s, color .4s; }
+.cr-st--a { background: var(--mid); color: #fff; }
+.cr-pipe.run .cr-st--a { background: #fff; color: #56656F; }
+.cr-pipe.run .cr-st--b { background: var(--mid); color: #fff; }
+.cr-pill--sw i:last-child { opacity: 0; }
+.cr-pipe.run .cr-pill--sw i:first-child { opacity: 0; } .cr-pipe.run .cr-pill--sw i:last-child { opacity: 1; }
+.cr-pipe.run .cr-pill--sw { background: var(--mid); color: var(--lime); }
+.cr-card { transition: box-shadow .5s, transform .5s var(--ease), opacity .45s; }
+.cr-pipe.run .cr-card { box-shadow: 0 0 0 .5cqw var(--lime), 0 2cqw 5cqw -2cqw rgba(120, 170, 40, .45); }
+@media (prefers-reduced-motion: reduce) { .cr-typ, .cr-msg, .cr-typing, .cr-push { transition: none !important; } }
+
+.cr-menu { display: grid; gap: .7cqw; margin-left: auto; } .cr-menu i { width: 4cqw; height: .5cqw; border-radius: 1cqw; background: #12303C; }
+.cr-cover { position: relative; height: 24cqw; margin-top: 3.4cqw; border-radius: 3cqw; overflow: hidden; background: radial-gradient(60% 90% at 78% 30%, rgba(255, 255, 255, .55), transparent 60%), linear-gradient(135deg, #BFE7EE 0%, #7CCAD7 45%, #2B8FA6 100%); }
+.cr-cover::after { content: ""; position: absolute; right: 7cqw; bottom: -4cqw; width: 22cqw; height: 22cqw; border-radius: 50%; background: rgba(255, 255, 255, .28); box-shadow: -16cqw 6cqw 0 -3cqw rgba(255, 255, 255, .18); }
+.cr-cover__badge { position: absolute; z-index: 1; left: 2.6cqw; bottom: 2.6cqw; padding: 1cqw 2.4cqw; border-radius: 99cqw; background: rgba(255, 255, 255, .92); font-size: 2.5cqw; font-weight: 700; color: #12303C; }
+.cr-svcs { display: flex; flex-wrap: wrap; gap: 1.6cqw; margin-top: 4.4cqw; }
+.cr-svcs span { padding: 1.2cqw 2.6cqw; border-radius: 99cqw; background: #EAF6F8; color: #0F5E7A; font-size: 2.6cqw; font-weight: 600; }
+
+.cr-list-h { margin: 4.4cqw 5.5cqw 1.6cqw; font-size: 2.7cqw; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: #6B7680; }
+.cr-row { display: flex; align-items: center; gap: 2.6cqw; margin: 0 4.5cqw; padding: 2.6cqw 1cqw; border-bottom: 1px solid #DDE3EA; }
+.cr-row > span:not(.cr-ini) { flex: 1; min-width: 0; }
+.cr-row b { display: block; font-size: 3.2cqw; } .cr-row small { display: block; font-size: 2.7cqw; color: #6B7680; }
+.cr-row em { flex: none; font-style: normal; font-size: 2.5cqw; font-weight: 700; color: #56656F; }
+.cr-row--card { margin-top: 2.4cqw; padding: 3cqw 3.4cqw; border: 0; border-radius: 3.6cqw; background: #fff; opacity: .75; }
+.cr-row--card.on { opacity: .75; }
+.cr-ini { flex: none; display: grid; place-items: center; width: 8.4cqw; height: 8.4cqw; border-radius: 50%; color: #fff; font-size: 2.7cqw; font-weight: 700; }
+.cr-ini--a { background: #6C8EAD; } .cr-ini--b { background: #B07A9E; }
+.cr-card { margin-bottom: .6cqw; }

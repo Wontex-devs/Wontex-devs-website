@@ -262,11 +262,14 @@
 
     // [ms, selector, clase, quitar?]  ·  steps: ms en que empieza cada paso
     var FLOWS = {
-      crm: { dur: 12500, steps: [0, 2900, 6300, 9000], ev: [
-        [0, '.sc-chat', 'on'], [300, '.t1', 'on'], [1400, '.t1', 'on', 1], [1400, '.m1', 'on'],
-        [2900, '.sc-chat', 'gone'], [2900, '.sc-new', 'on'], [3200, '.f0', 'on'], [3500, '.f1', 'on'], [3800, '.f2', 'on'], [4100, '.f3', 'on'], [4400, '.f4', 'on'], [5000, '.f5', 'on'],
-        [6300, '.sc-new', 'gone'], [6300, '.sc-chat', 'gone', 1], [6900, '.m2', 'on'],
-        [9000, '.sc-chat', 'gone'], [9000, '.sc-pipe', 'on'], [9400, '.p1', 'on'], [10200, '.p2', 'on']] },
+      // CRM: formulario web → nuevo lead en el CRM → WhatsApp automático → conversación → cita en el embudo
+      crm: { dur: 23500, steps: [0, 4700, 8800, 18200], ev: [
+        [0, '.cr-web', 'on'], [500, '.w1', 'on'], [1500, '.w2', 'on'], [2500, '.w3', 'on'], [3500, '.w4', 'tap'], [3900, '.w5', 'on'],
+        [4700, '.cr-web', 'gone'], [4700, '.cr-crm', 'on'], [5100, '.c1', 'on'], [5800, '.c2', 'on'], [6600, '.c3', 'on'], [7700, '.c3', 'run'],
+        [8800, '.cr-crm', 'gone'], [8800, '.cr-chat', 'on'], [9300, '.m1', 'on'],
+        [10800, '.t1', 'on'], [12000, '.t1', 'on', 1], [12000, '.m2', 'on'], [13300, '.m3', 'on'],
+        [14500, '.t1', 'on'], [15500, '.t1', 'on', 1], [15500, '.m4', 'on'], [16700, '.m5', 'on'],
+        [18200, '.cr-chat', 'gone'], [18200, '.cr-pipe', 'on'], [18600, '.p1', 'on'], [19600, '.cr-pipe', 'run'], [20600, '.p3', 'on']] },
       reel: { dur: 12500, steps: [0, 3000, 6500, 8600], ev: [
         [0, '.sc-plan', 'on'], [500, '.k1', 'on'], [900, '.k2', 'on'], [1300, '.k3', 'on'],
         [3000, '.sc-plan', 'gone'], [3000, '.sc-make', 'on'], [3300, '.sc-make', 'run'], [5600, '.g2', 'on'],
@@ -284,7 +287,7 @@
         [9000, '.sc-q3', 'gone'], [9000, '.sc-q4', 'on'], [9800, '.o1', 'on']] }
     };
     var FLOW_STEPS = {
-      crm: ['Llega un mensaje por WhatsApp', 'El CRM registra el contacto', 'Responde en automático', 'Queda asignado con su seguimiento'],
+      crm: ['Un cliente llena el formulario de tu web', 'El CRM registra el lead', 'Le escribe por WhatsApp al instante', 'El lead avanza solo en tu embudo'],
       reel: ['Planeamos el contenido', 'Creamos la pieza con IA', 'Se publica en tus redes', 'Llegan reacciones y mensajes'],
       web: ['Un cliente te encuentra en internet', 'Recorre tu sitio desde el celular', 'Te deja sus datos', 'La solicitud te llega al instante', 'Sitio web creado por Wontex'],
       quote: ['Registras el cliente', 'Agregas ítems y el total se calcula', 'Eliges las condiciones', 'La propuesta sale en PDF']
