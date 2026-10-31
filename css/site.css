@@ -536,3 +536,11 @@ body, .xh__sub, .xs__lead, .sol__desc, .steps2 p, .xc__lead, .cx__desc { -webkit
 @media (prefers-reduced-motion: reduce) {
   .faq__q::after, .faq__item::details-content { transition: none; }
 }
+
+/* ---------- Contacto: qué pasa después de escribirnos ---------- */
+.xc__next { margin-top: 36px; max-width: 380px; }
+.xc__next .xs__label { margin: 0 0 14px; }
+.xc__steps { list-style: none; margin: 0; padding: 0; }
+.xc__steps li { position: relative; display: flex; align-items: center; gap: 16px; padding: 10px 0; font-size: 16px; line-height: 1.45; color: #D3DBE0; }
+.xc__steps li:not(:last-child)::after { content: ""; position: absolute; left: 16px; top: calc(50% + 16px); width: 1px; height: calc(100% - 32px); background: rgba(247, 248, 244, .16); }
+.xc__n { flex: none; display: grid; place-items: center; width: 32px; height: 32px; border-radius: 999px; border: 1px solid rgba(199, 244, 100, .55); color: var(--lime); font: 600 14px/1 var(--font-display); }

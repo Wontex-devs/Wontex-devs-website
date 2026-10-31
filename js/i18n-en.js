@@ -322,5 +322,9 @@ window.FW_EN = {
 "Cada proyecto es distinto. En la propuesta te indicamos las etapas y los tiempos estimados, para que sepas qué esperar desde el inicio.": "Every project is different. Our proposal outlines the stages and estimated timelines, so you know what to expect from the start.",
 "No. Nosotros nos encargamos de la parte técnica y te explicamos cada paso en un lenguaje claro.": "No. We take care of the technical side and explain every step in plain language.",
 "En la mayoría de los casos, sí. Revisamos lo que ya tienes para integrar la solución a tu operación en lugar de empezar de cero.": "In most cases, yes. We review what you already have so the solution fits into your operation instead of starting from scratch.",
-"Te acompañamos mientras tu equipo empieza a usar la solución y la ajustamos a medida que tu negocio crece.": "We support your team as they start using the solution and adjust it as your business grows."
+"Te acompañamos mientras tu equipo empieza a usar la solución y la ajustamos a medida que tu negocio crece.": "We support your team as they start using the solution and adjust it as your business grows.",
+"Qué pasa después": "What happens next",
+"Leemos tu mensaje y te respondemos.": "We read your message and get back to you.",
+"Conversamos sobre tu negocio.": "We talk about your business.",
+"Te enviamos una propuesta.": "We send you a proposal."
 };
