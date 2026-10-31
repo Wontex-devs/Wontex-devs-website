@@ -325,7 +325,6 @@ body, .xh__sub, .xs__lead, .sol__desc, .steps2 p, .xc__lead, .cx__desc { -webkit
 .pc__url svg { flex: none; width: 12px; height: 12px; fill: none; stroke: var(--slate); stroke-width: 2; stroke-linecap: round; }
 .pc__url:empty::before { content: "\200b"; }
 .pc__screen { position: relative; aspect-ratio: 16 / 10; overflow: hidden; background: #fff; }
-.pc__frame { position: absolute; left: 0; top: 0; width: 1440px; height: 900px; border: 0; transform-origin: 0 0; }
 .cx__open { margin: 14px 0 0; text-align: center !important; }
 .cx__open a { font-family: var(--font-text); font-weight: 600; font-size: 15px; color: var(--mid); text-decoration: underline; text-underline-offset: 4px; }
 .cx__open a:hover { color: var(--slate); }
@@ -549,16 +548,8 @@ body, .xh__sub, .xs__lead, .sol__desc, .steps2 p, .xc__lead, .cx__desc { -webkit
 /* Celulares: la frase de enfoque se rellena al hacer scroll; sin la sombra con filtro no hay que redibujarla con efecto en cada cuadro */
 @media (max-width: 900px) { .xs__statement { filter: none; } }
 
-/* Tecnología aplicada · página web: en celular, imagen fija en lugar del sitio completo (más liviano) */
-.pc__shot { display: block; width: 100%; height: 100%; object-fit: cover; object-position: top center; }
-.pc__frame { display: none; }
-.pc__screen.has-frame .pc__frame { display: block; }
-.pc__screen.has-frame .pc__shot { display: none; }
-.cx__view { display: none; }
-@media (max-width: 640px) {
-  .cx__open, .cx__wide { display: none; }
-  .cx__view { display: inline-flex; align-self: center; }
-}
+/* Tecnología aplicada · página web: imagen fija de la propuesta (se ve, pero no se puede recorrer ni abrir) */
+.pc__shot { display: block; width: 100%; height: 100%; object-fit: cover; object-position: top center; pointer-events: none; user-select: none; -webkit-user-select: none; }
 
 /* ---------- Cómo trabajamos: textos más grandes y legibles ---------- */
 .steps2 h3 { margin-bottom: 12px; font-size: clamp(19px, 1.7vw, 25px); }

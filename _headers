@@ -1,12 +1,11 @@
 # Wontex · cabeceras HTTP para Cloudflare Pages (este archivo se publica en la raíz y Cloudflare lo aplica).
-# CSP estricta: el sitio no tiene scripts ni estilos en línea; solo usa recursos propios, FormSubmit y, dentro del
-# PC de la sección Tecnología aplicada, la propuesta de sitio web publicada en wontex-devs.github.io (frame-src).
+# CSP estricta: el sitio no tiene scripts ni estilos en línea; solo usa recursos propios y FormSubmit (no carga iframes).
 # Si se activa Google Analytics (js/config.js → ga4Id), agrega https://www.googletagmanager.com a script-src
 # y https://*.google-analytics.com https://*.analytics.google.com https://www.googletagmanager.com a connect-src e img-src.
 # HSTS sin "preload": agrégalo solo cuando se decida inscribir el dominio en la lista de precarga de los navegadores.
 
 /*
-  Content-Security-Policy: default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self'; font-src 'self'; media-src 'self'; connect-src 'self' https://formsubmit.co; frame-src https://wontex-devs.github.io; form-action 'self' https://formsubmit.co; manifest-src 'self'; frame-ancestors 'none'; base-uri 'self'; object-src 'none'; upgrade-insecure-requests
+  Content-Security-Policy: default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self'; font-src 'self'; media-src 'self'; connect-src 'self' https://formsubmit.co; frame-src 'none'; form-action 'self' https://formsubmit.co; manifest-src 'self'; frame-ancestors 'none'; base-uri 'self'; object-src 'none'; upgrade-insecure-requests
   Strict-Transport-Security: max-age=31536000; includeSubDomains
   X-Content-Type-Options: nosniff
   X-Frame-Options: DENY
