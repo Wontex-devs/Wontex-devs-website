@@ -80,11 +80,21 @@
     }
   }
 
+  // Halo lima del W_ dibujado una sola vez (shadowBlur en cada cuadro es muy costoso)
+  var halo = document.createElement('canvas');
+  halo.width = halo.height = 344;
+  (function (h) {
+    h.shadowColor = 'rgba(' + LIME + ',.5)'; h.shadowBlur = 60;
+    h.beginPath(); if (h.roundRect) h.roundRect(100, 100, 144, 144, 30); else h.rect(100, 100, 144, 144);
+    h.fillStyle = '#142B3B'; h.fill();
+  })(halo.getContext('2d'));
+
   // ---------- Lienzo ajustado como el video (cubre la pantalla, centrado) ----------
-  var S = 1, OX = 0, OY = 0, dpr = 1;
+  var S = 1, OX = 0, OY = 0, dpr = 1, quality = 1;
   function resize() {
     var cw = C.clientWidth || window.innerWidth, ch = C.clientHeight || window.innerHeight;
-    dpr = Math.min(window.devicePixelRatio || 1, 2, 2600 / cw);
+    // Fondo suave: se dibuja a ~1 px por píxel CSS y como máximo 1600 px de ancho (antes hasta 2600 × 1625 por cuadro)
+    dpr = Math.min(window.devicePixelRatio || 1, 1.25, 1600 / cw) * quality;
     C.width = Math.round(cw * dpr); C.height = Math.round(ch * dpr);
     S = Math.max(C.width / W, C.height / H);
     OX = (C.width - W * S) / 2; OY = (C.height - H * S) / 2;
@@ -110,7 +120,6 @@
     var mx = cur.x / 150, my = cur.y / 110;        // -1…1 para el paralaje de los paneles
 
     X.setTransform(1, 0, 0, 1, 0, 0);
-    X.filter = 'none';
     X.fillStyle = '#0D1F2C'; X.fillRect(0, 0, C.width, C.height);
     X.setTransform(S, 0, 0, S, OX, OY);
     var hx = baseX + cur.x, hy = baseY + cur.y;
@@ -148,19 +157,18 @@
     // fragmentos de interfaz (lejanos primero, con desenfoque de profundidad)
     pos.slice().sort(function (a, b) { return a.p.z - b.p.z; }).forEach(function (o) {
       var p = o.p, s = 0.82 + 0.22 * p.z, w = p.w * s, h = p.h * s, x = o.px - w / 2, y = o.py - h / 2;
-      X.filter = p.z < 0.9 ? 'blur(' + ((0.9 - p.z) * 7 * S).toFixed(1) + 'px)' : 'none';
-      X.save(); X.globalAlpha = 0.55 + 0.4 * Math.min(1, p.z);
+      // La profundidad se marca con transparencia (el filtro blur por cuadro era lo más costoso del dibujo)
+      X.save(); X.globalAlpha = p.z < 0.9 ? 0.32 + 0.4 * p.z : 0.55 + 0.4 * Math.min(1, p.z);
       rr(x, y, w, h, 14); X.fillStyle = 'rgba(' + CLOUD + ',' + (0.045 + 0.02 * p.z) + ')'; X.fill();
       X.strokeStyle = o.done > 0.05 ? 'rgba(' + LIME + ',' + (0.2 + 0.45 * o.done) + ')' : 'rgba(' + STEEL + ',.2)'; X.lineWidth = 1.2; X.stroke();
       content(p, x, y, w, h, o.done);
       X.restore();
     });
-    X.filter = 'none';
     // sistema central W_ (brilla más mientras se mueve con el cursor)
     var move = Math.min(1, Math.hypot(target.x - cur.x, target.y - cur.y) / 60);
     var glow = Math.max(flash, 0.35 * move);
-    X.save(); X.shadowColor = 'rgba(' + LIME + ',' + (0.15 + 0.35 * glow) + ')'; X.shadowBlur = (30 + 30 * glow) * S;
-    rr(hx - 72, hy - 72, 144, 144, 30); X.fillStyle = '#142B3B'; X.fill(); X.restore();
+    X.save(); X.globalAlpha = 0.3 + 0.7 * glow; X.drawImage(halo, hx - 172, hy - 172, 344, 344); X.restore();
+    rr(hx - 72, hy - 72, 144, 144, 30); X.fillStyle = '#142B3B'; X.fill();
     rr(hx - 72, hy - 72, 144, 144, 30); X.strokeStyle = 'rgba(' + LIME + ',' + (0.3 + 0.5 * glow) + ')'; X.lineWidth = 1.5; X.stroke();
     X.font = '700 56px Unbounded'; X.fillStyle = 'rgba(247,248,244,.95)'; X.textBaseline = 'alphabetic';
     var mw = X.measureText('W').width, total = mw + 0.62 * 56, tx = hx - total / 2, base = hy + 20;
@@ -173,9 +181,12 @@
   }
 
   // ---------- Bucle: solo mientras el hero está en pantalla y la pestaña visible ----------
-  var SECONDS = 12, raf = 0, visible = true, last = 0;
+  var SECONDS = 12, raf = 0, visible = true, last = 0, avg = 16.7, tuned = 0;
   function frame(now) {
     var dt = last ? Math.min(64, now - last) : 16.7; last = now;
+    // Equipos lentos: si el promedio pasa de ~22 ms por cuadro, se dibuja a menor resolución (hasta 2 veces)
+    avg = avg * 0.95 + dt * 0.05;
+    if (avg > 22 && quality > 0.6 && now - tuned > 1500) { quality -= 0.2; tuned = now; avg = 16.7; resize(); }
     var f = 1 - Math.pow(0.9, dt / 16.7);         // seguimiento suave del cursor
     cur.x += (target.x - cur.x) * f; cur.y += (target.y - cur.y) * f;
     scene(frac(now / 1000 / SECONDS));
