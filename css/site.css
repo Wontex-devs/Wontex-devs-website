@@ -577,8 +577,7 @@ body, .xh__sub, .xs__lead, .sol__desc, .steps2 p, .xc__lead, .cx__desc { -webkit
 /* ---------- Tecnología aplicada · CRM: formulario web → lead en el CRM → WhatsApp → cita agendada ----------
    Escenas .sc de la línea de tiempo de main.js (FLOWS.crm). Medidas en cqw (ancho de la pantalla del celular). */
 .ui--cr { font-family: var(--font-text); background: #fff; }
-.cr-defs { position: absolute; width: 0; height: 0; overflow: hidden; }
-.cr-av { flex: none; width: 10cqw; height: 10cqw; border-radius: 50%; overflow: hidden; }
+.cr-av { flex: none; width: 10cqw; height: 10cqw; border-radius: 50%; object-fit: cover; background: #D9DEE3; }
 .cr-pill { flex: none; display: inline-grid; padding: .9cqw 2.6cqw; border-radius: 99cqw; background: #E8F7C8; color: #3F5A0E; font-size: 2.7cqw; font-weight: 700; font-style: normal; white-space: nowrap; }
 .cr-kv { display: flex; justify-content: space-between; gap: 2cqw; padding: 2cqw 0 0; margin-top: 2cqw; border-top: 1px solid #EEF1F4; font-size: 3cqw; }
 .cr-kv small { color: #6B7680; font-size: 2.9cqw; }
