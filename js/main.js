@@ -565,10 +565,19 @@
     else run(true);
   });
 
-  /* Tecnología aplicada: el sitio dentro del PC se dibuja a 1440 px de ancho y se escala al tamaño de la pantalla */
+  /* Tecnología aplicada: el sitio dentro del PC se dibuja a 1440 px de ancho y se escala al tamaño de la pantalla.
+     En celulares no se carga (es una página completa de escritorio): se muestra la imagen fija .pc__shot */
+  var pcWide = window.matchMedia('(min-width: 641px)');
   document.querySelectorAll('.pc__screen').forEach(function (screen) {
     var frame = screen.querySelector('.pc__frame');
     if (!frame) return;
+    var load = function () {
+      if (!pcWide.matches || frame.src) return;
+      frame.src = frame.getAttribute('data-src');
+      screen.classList.add('has-frame');
+    };
+    load();
+    if (pcWide.addEventListener) pcWide.addEventListener('change', load);
     var fit = function () {
       var s = screen.clientWidth / 1440;
       frame.style.transform = 'scale(' + s + ')';

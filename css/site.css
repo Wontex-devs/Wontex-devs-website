@@ -160,6 +160,7 @@ body { background: var(--cloud); color: var(--mid); font-family: var(--font-text
 .cx__intro .xs__label { margin: 0; }
 .cx__note { margin: 0; font-size: 13.5px; color: var(--slate); }
 .cx__body { grid-template-columns: 1fr !important; grid-template-areas: none !important; justify-items: center; }
+.cx__stage { grid-area: auto; }   /* sin áreas nombradas: el escenario queda centrado en su columna */
 .cx__head { text-align: center; }
 .cx__desc { margin: 14px auto 0; max-width: 40ch; font-size: 16.5px; line-height: 1.5; color: var(--slate); }
 .cx__eyebrow { font-family: var(--font-display); font-weight: 300; letter-spacing: .22em; }
@@ -547,3 +548,14 @@ body, .xh__sub, .xs__lead, .sol__desc, .steps2 p, .xc__lead, .cx__desc { -webkit
 
 /* Celulares: la frase de enfoque se rellena al hacer scroll; sin la sombra con filtro no hay que redibujarla con efecto en cada cuadro */
 @media (max-width: 900px) { .xs__statement { filter: none; } }
+
+/* Tecnología aplicada · página web: en celular, imagen fija en lugar del sitio completo (más liviano) */
+.pc__shot { display: block; width: 100%; height: 100%; object-fit: cover; object-position: top center; }
+.pc__frame { display: none; }
+.pc__screen.has-frame .pc__frame { display: block; }
+.pc__screen.has-frame .pc__shot { display: none; }
+.cx__view { display: none; }
+@media (max-width: 640px) {
+  .cx__open, .cx__wide { display: none; }
+  .cx__view { display: inline-flex; align-self: center; }
+}

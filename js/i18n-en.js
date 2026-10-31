@@ -326,5 +326,9 @@ window.FW_EN = {
 "Qué pasa después": "What happens next",
 "Leemos tu mensaje y te respondemos.": "We read your message and get back to you.",
 "Conversamos sobre tu negocio.": "We talk about your business.",
-"Te enviamos una propuesta.": "We send you a proposal."
+"Te enviamos una propuesta.": "We send you a proposal.",
+"Ver propuesta": "View proposal",
+"Vista de la propuesta de sitio web para un hotel en Barranquilla": "Preview of the website proposal for a hotel in Barranquilla",
+"Propuesta de sitio web para un hotel en Barranquilla, diseñada por Wontex.": "Website proposal for a hotel in Barranquilla, designed by Wontex.",
+"Recórrela aquí mismo.": "Explore it right here."
 };
