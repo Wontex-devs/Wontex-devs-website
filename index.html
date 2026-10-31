@@ -471,18 +471,22 @@
         <label for="f-email">Correo electrónico</label>
         <input id="f-email" name="email" type="email" autocomplete="email" maxlength="150" required>
       </div>
-      <div class="field field--full">
-        <label for="f-company">Empresa <span class="opt">(opcional)</span></span>
+      <div class="field">
+        <label for="f-phone">Teléfono o WhatsApp</label>
+        <input id="f-phone" name="telefono" type="tel" inputmode="tel" autocomplete="tel" maxlength="25" placeholder="Ej.: +57 300 123 4567" required>
+      </div>
+      <div class="field">
+        <label for="f-company">Empresa <span class="opt">(opcional)</span></label>
         <input id="f-company" name="empresa" type="text" autocomplete="organization" maxlength="120">
       </div>
       <fieldset class="field field--full interest">
         <legend>¿Qué te interesa?</legend>
         <div class="interest__opts">
-          <label><input type="checkbox" name="interes" value="Sitios web"><span>Sitios web</span></span>
-          <label><input type="checkbox" name="interes" value="Automatización"><span>Automatización</span></span>
-          <label><input type="checkbox" name="interes" value="CRM y gestión comercial"><span>CRM y gestión comercial</span></span>
-          <label><input type="checkbox" name="interes" value="Herramientas de negocio"><span>Herramientas de negocio</span></span>
-          <label><input type="checkbox" name="interes" value="Aún no lo sé"><span>Aún no lo sé</span></span>
+          <label><input type="checkbox" name="interes" value="Sitios web"><span>Sitios web</span></label>
+          <label><input type="checkbox" name="interes" value="Automatización"><span>Automatización</span></label>
+          <label><input type="checkbox" name="interes" value="CRM y gestión comercial"><span>CRM y gestión comercial</span></label>
+          <label><input type="checkbox" name="interes" value="Herramientas de negocio"><span>Herramientas de negocio</span></label>
+          <label><input type="checkbox" name="interes" value="Aún no lo sé"><span>Aún no lo sé</span></label>
         </div>
       </fieldset>
       <div class="field field--full">
@@ -491,13 +495,13 @@
       </div>
       <div class="xc__consents">
         <div class="field field--full field--consent">
-          <label class="consent-check" for="f-consent"><input id="f-consent" name="autorizacion" type="checkbox" value="Sí" required><span>Autorizo el tratamiento de mis datos personales para responder esta solicitud, según la <a href="/privacidad">Política de privacidad</a>.</span></span>
+          <label class="consent-check" for="f-consent"><input id="f-consent" name="autorizacion" type="checkbox" value="Sí" required><span>Autorizo el tratamiento de mis datos personales para responder esta solicitud, según la <a href="/privacidad">Política de privacidad</a>.</span></label>
         </div>
         <div class="field field--full field--consent">
-          <label class="consent-check" for="f-terms"><input id="f-terms" name="acepta_aviso_legal" type="checkbox" value="Sí" required><span>Acepto los Términos y Condiciones del <a href="/aviso-legal">Aviso legal</a>.</span></span>
+          <label class="consent-check" for="f-terms"><input id="f-terms" name="acepta_aviso_legal" type="checkbox" value="Sí" required><span>Acepto los Términos y Condiciones del <a href="/aviso-legal">Aviso legal</a>.</span></label>
         </div>
         <div class="field field--full field--consent">
-          <label class="consent-check" for="f-privacy"><input id="f-privacy" name="leyo_privacidad" type="checkbox" value="Sí" required><span>He leído la <a href="/privacidad">Política de privacidad</a>.</span></span>
+          <label class="consent-check" for="f-privacy"><input id="f-privacy" name="leyo_privacidad" type="checkbox" value="Sí" required><span>He leído la <a href="/privacidad">Política de privacidad</a>.</span></label>
         </div>
       </div>
       <input type="hidden" name="constancia" value="">
@@ -533,7 +537,7 @@
 <script src="js/config.js?v=20261025a" defer></script>
 <script src="js/i18n.js?v=20261025a" defer></script>
 <script src="js/hero-live.js?v=20261031a" defer></script>
-<script src="js/main.js?v=20261031d" defer></script>
+<script src="js/main.js?v=20261031e" defer></script>
 <script src="js/consent.js?v=20261025a" defer></script>
 </body>
 </html>

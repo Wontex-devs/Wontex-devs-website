@@ -640,6 +640,11 @@
       var emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value.trim());
       fieldError(email, emailOk ? '' : T('Revisa el correo: parece incompleto.'));
       if (!emailOk) ok = false;
+      // Teléfono: entre 7 y 15 dígitos; se permiten +, espacios, guiones, puntos y paréntesis
+      var phone = form.elements.telefono, pv = phone.value.trim(), digits = pv.replace(/\D/g, '').length;
+      var phoneOk = /^[+\d\s().-]+$/.test(pv) && digits >= 7 && digits <= 15;
+      fieldError(phone, !pv ? T('Escribe tu número de teléfono.') : (phoneOk ? '' : T('Revisa el número: parece incompleto.')));
+      if (!phoneOk) ok = false;
       fieldError(msg, msg.value.trim() ? '' : T('Cuéntanos brevemente qué te gustaría mejorar.'));
       if (!msg.value.trim()) ok = false;
       // Más de dos enlaces en el mensaje suele ser spam
@@ -706,7 +711,7 @@
       var data = new FormData(form);
 
       if (!endpoint) {
-        var body = 'Idioma: ' + (window.FW_LANG ? window.FW_LANG() : 'es') + '\nNombre: ' + data.get('nombre') + '\nCorreo: ' + data.get('email') +
+        var body = 'Idioma: ' + (window.FW_LANG ? window.FW_LANG() : 'es') + '\nNombre: ' + data.get('nombre') + '\nCorreo: ' + data.get('email') + '\nTeléfono: ' + data.get('telefono') +
           '\nEmpresa: ' + (data.get('empresa') || '-') +
           '\nMe interesa: ' + (data.getAll('interes').join(', ') || '-') + '\n\n' + data.get('mensaje') +
           '\n\n' + data.get('constancia');

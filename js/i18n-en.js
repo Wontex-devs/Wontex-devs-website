@@ -369,5 +369,9 @@ window.FW_EN = {
 "Un cliente llena el formulario de tu web": "A customer fills in your website form",
 "El CRM registra el lead": "The CRM records the lead",
 "Le escribe por WhatsApp al instante": "It messages them on WhatsApp instantly",
-"El lead avanza solo en tu embudo": "The lead moves through your pipeline on its own"
+"El lead avanza solo en tu embudo": "The lead moves through your pipeline on its own",
+"Teléfono o WhatsApp": "Phone or WhatsApp",
+"Ej.: +57 300 123 4567": "E.g. +1 555 123 4567",
+"Escribe tu número de teléfono.": "Please enter your phone number.",
+"Revisa el número: parece incompleto.": "Check the number: it looks incomplete."
 };
