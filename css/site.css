@@ -559,3 +559,17 @@ body, .xh__sub, .xs__lead, .sol__desc, .steps2 p, .xc__lead, .cx__desc { -webkit
   .cx__open, .cx__wide { display: none; }
   .cx__view { display: inline-flex; align-self: center; }
 }
+
+/* ---------- Cómo trabajamos: pasos numerados y texto más legible ----------
+   El número va en Midnight sobre una ficha que se vuelve lima cuando la línea de progreso llega al paso
+   (regla de marca: el lima nunca es texto sobre fondo claro). */
+.steps2__n { display: inline-grid; place-items: center; min-width: 58px; height: 46px; padding: 0 14px; margin-bottom: 22px; border-radius: 14px; background: var(--niebla); box-shadow: inset 0 0 0 1px var(--line); font-family: var(--font-display); font-weight: 600; font-size: 22px; letter-spacing: -.02em; color: var(--mid); transition: background-color .45s var(--ease), box-shadow .45s var(--ease); }
+.steps2 li.is-on .steps2__n { background: var(--lime); box-shadow: none; }
+.steps2 h3 { margin-bottom: 12px; font-size: clamp(19px, 1.7vw, 25px); }
+.steps2 p { font-size: clamp(16px, 1.2vw, 17.5px); line-height: 1.6; max-width: 32ch; }
+@media (max-width: 640px) {
+  .steps2__n { min-width: 50px; height: 40px; margin-bottom: 14px; font-size: 19px; }
+  .steps2 { padding-left: 0; }
+  .steps2 li::before { display: none; }   /* la ficha numerada ya marca el avance */
+}
+@media (prefers-reduced-motion: reduce) { .steps2__n { transition: none; } }
