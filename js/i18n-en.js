@@ -373,5 +373,17 @@ window.FW_EN = {
 "Teléfono o WhatsApp": "Phone or WhatsApp",
 "Ej.: +57 300 123 4567": "E.g. +1 555 123 4567",
 "Escribe tu número de teléfono.": "Please enter your phone number.",
-"Revisa el número: parece incompleto.": "Check the number: it looks incomplete."
+"Revisa el número: parece incompleto.": "Check the number: it looks incomplete.",
+"Cafeterías en tu ciudad": "Coffee shops in your city",
+"Café de especialidad": "Specialty coffee",
+"Nuevo pedido desde tu web": "New order from your website",
+"Origen · Café de especialidad tostado cada semana": "Origen · Specialty coffee roasted every week",
+"Pide en línea, recoge en tienda o recibe en casa. Abierto hoy hasta las 8:00 p. m.": "Order online, pick up in store or get it delivered. Open today until 8:00 p.m.",
+"Tostado cada semana, servido con calma.": "Roasted every week, served slowly.",
+"café de especialidad cerca de mí": "specialty coffee near me",
+"Tienda": "Shop",
+"Pedir": "Order",
+"Pedir por WhatsApp": "Order on WhatsApp",
+"Kit V60": "V60 kit",
+"2 × Origen Huila · por WhatsApp": "2 × Origen Huila · via WhatsApp"
 };

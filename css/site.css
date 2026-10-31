@@ -721,3 +721,89 @@ body, .xh__sub, .xs__lead, .sol__desc, .steps2 p, .xc__lead, .cx__desc { -webkit
   .sol__ic :where(svg *) { animation: none !important; }
   .si-cursor { transform: translate(23px, 42px); }
 }
+
+/* ---------- Soluciones · Sitios web: alguien busca en Google, encuentra el negocio, recorre el sitio y hace un pedido ----------
+   Una sola línea de tiempo de 14 s en CSS; medidas en cqw del recuadro (.mk--site). Se anima solo en pantalla (.is-live). */
+.mk--site { container-type: inline-size; padding: 0; }
+.mk--site * { animation-duration: 14s; animation-iteration-count: infinite; animation-timing-function: cubic-bezier(.4, 0, .2, 1); animation-play-state: paused; }
+.mk--site.is-live * { animation-play-state: running; }
+.ws-bar { position: absolute; left: 3cqw; right: 3cqw; top: 2.4cqw; height: 5cqw; display: flex; align-items: center; gap: 1cqw; }
+.ws-bar > i { width: 1.4cqw; height: 1.4cqw; border-radius: 50%; background: rgba(247, 248, 244, .22); }
+.ws-url { position: relative; flex: 1; max-width: 52cqw; height: 4cqw; margin-left: 2cqw; display: flex; align-items: center; gap: .8cqw; padding: 0 2cqw; border-radius: 2cqw; background: rgba(247, 248, 244, .1); font: 500 1.9cqw/1 var(--font-text); color: rgba(247, 248, 244, .8); }
+.ws-url svg { flex: none; width: 1.8cqw; height: 1.8cqw; fill: none; stroke: currentColor; stroke-width: 2.4; }
+.ws-url em { position: absolute; left: 4.6cqw; font-style: normal; }
+.ws-url__a { animation-name: ws-show-a; } .ws-url__b { animation-name: ws-show-b; }
+@keyframes ws-show-a { 0%, 24% { opacity: 1; } 25%, 100% { opacity: 0; } }
+@keyframes ws-show-b { 0%, 24% { opacity: 0; } 25%, 100% { opacity: 1; } }
+.ws-screen { position: absolute; left: 3cqw; right: 3cqw; top: 9.6cqw; bottom: 3cqw; overflow: hidden; border-radius: 1.8cqw; background: #fff; font-family: var(--font-text); color: #1E2A2F; }
+
+/* 1 · Búsqueda en Google */
+.ws-search { position: absolute; inset: 0; padding: 4cqw 10cqw 0; animation-name: ws-scene1; }
+@keyframes ws-scene1 { 0%, 23% { opacity: 1; transform: none; } 26%, 97% { opacity: 0; transform: translateX(-4cqw); } 100% { opacity: 1; transform: none; } }
+.ws-glogo { margin: 0 0 2.4cqw; text-align: center; font: 700 4.4cqw/1 var(--font-text); letter-spacing: -.04em; }
+.ws-glogo b:nth-child(1), .ws-glogo b:nth-child(4) { color: #4285F4; } .ws-glogo b:nth-child(2), .ws-glogo b:nth-child(6) { color: #EA4335; } .ws-glogo b:nth-child(3) { color: #FBBC05; } .ws-glogo b:nth-child(5) { color: #34A853; }
+.ws-q { display: flex; align-items: center; gap: 1.4cqw; height: 5.4cqw; padding: 0 2.4cqw; border-radius: 99cqw; box-shadow: 0 0 0 1px #DADCE0, 0 .6cqw 1.6cqw -.6cqw rgba(32, 33, 36, .3); font-size: 2.2cqw; }
+.ws-q svg { flex: none; width: 2.2cqw; height: 2.2cqw; fill: none; stroke: #5F6368; stroke-width: 2.4; stroke-linecap: round; }
+.ws-q__t { white-space: nowrap; clip-path: inset(0 100% 0 0); animation-name: ws-type; animation-timing-function: linear; }
+@keyframes ws-type { 0%, 3% { clip-path: inset(0 100% 0 0); } 13%, 100% { clip-path: inset(0 0 0 0); } }
+.ws-res { margin-top: 2.6cqw; padding: 1.6cqw 2cqw; border-radius: 1.4cqw; opacity: 0; }
+.ws-res small { display: block; font-size: 1.6cqw; color: #4D5156; }
+.ws-res b { display: block; margin: .4cqw 0 .5cqw; font-size: 2.3cqw; font-weight: 500; color: #1A0DAB; }
+.ws-res span { display: block; font-size: 1.7cqw; line-height: 1.4; color: #4D5156; }
+.ws-ph { width: 70%; height: 1.4cqw; border-radius: 1cqw; background: #ECEEF0; }
+.ws-res--top { animation-name: ws-res1; } .ws-res--2 { animation-name: ws-res2; }
+@keyframes ws-res1 { 0%, 14% { opacity: 0; transform: translateY(1.4cqw); background: transparent; } 16%, 20% { opacity: 1; transform: none; background: transparent; } 21.5%, 100% { opacity: 1; transform: none; background: #F1F5FE; } }
+@keyframes ws-res2 { 0%, 15.5% { opacity: 0; transform: translateY(1.4cqw); } 17.5%, 100% { opacity: 1; transform: none; } }
+
+/* 2 · El sitio del negocio (computador y celular) */
+.ws-site { position: absolute; inset: 0; opacity: 0; animation-name: ws-scene2; }
+@keyframes ws-scene2 { 0%, 24% { opacity: 0; transform: translateX(4cqw); } 27%, 93% { opacity: 1; transform: none; } 97%, 100% { opacity: 0; transform: none; } }
+.ws-page { animation-name: ws-scroll; }
+@keyframes ws-scroll { 0%, 36% { transform: none; } 43%, 48% { transform: translateY(-17cqw); } 54%, 100% { transform: none; } }
+.ws-nav { display: flex; align-items: center; gap: 3cqw; height: 7cqw; padding: 0 5cqw; border-bottom: 1px solid #EFE7DD; font-size: 1.8cqw; color: #6B5A4C; }
+.ws-nav b { margin-right: auto; font: 700 2.8cqw/1 var(--font-display); letter-spacing: -.03em; color: #3B2A20; }
+.ws-nav em { padding: 1cqw 2.2cqw; border-radius: 99cqw; background: #3B2A20; color: #F6EEE4; font-style: normal; font-weight: 600; }
+.ws-hero { display: grid; grid-template-columns: 1fr 1fr; gap: 4cqw; align-items: center; padding: 4cqw 5cqw 3cqw; background: #FBF6F0; }
+.ws-hero small { display: block; font-size: 1.7cqw; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: #A0673B; }
+.ws-hero b { display: block; margin: 1.2cqw 0 2.6cqw; font: 600 3.9cqw/1.1 var(--font-display); letter-spacing: -.03em; color: #3B2A20; }
+.ws-cta { display: inline-block; padding: 1.5cqw 2.8cqw; border-radius: 99cqw; background: #25D366; color: #fff; font-size: 1.9cqw; font-weight: 700; animation-name: ws-press; }
+@keyframes ws-press { 0%, 72% { transform: none; } 73.5% { transform: scale(.9); } 75%, 100% { transform: none; } }
+.ws-photo { position: relative; margin: 0; aspect-ratio: 4 / 3; border-radius: 2cqw; overflow: hidden; background: radial-gradient(70% 60% at 30% 30%, #E9C9A4, transparent 70%), linear-gradient(140deg, #C98F5D 0%, #8A5532 55%, #4E2E1C 100%); }
+.ws-photo i { position: absolute; border-radius: 50%; }
+.ws-photo i:first-child { left: 22%; top: 30%; width: 46%; aspect-ratio: 1; background: radial-gradient(circle at 50% 50%, #3A2014 0 42%, #F4E9DD 43% 56%, transparent 57%); box-shadow: 0 1.2cqw 2.4cqw -1cqw rgba(0, 0, 0, .45); }
+.ws-photo i:last-child { right: 14%; top: 18%; width: 16%; aspect-ratio: 1; background: rgba(255, 244, 228, .55); filter: blur(1px); }
+.ws-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2.4cqw; padding: 3cqw 5cqw 5cqw; }
+.ws-cards div { padding: 1.2cqw; border-radius: 1.6cqw; background: #FBF6F0; }
+.ws-cards figure { margin: 0 0 1.2cqw; aspect-ratio: 4 / 3; border-radius: 1.2cqw; background: linear-gradient(150deg, #D9B38C, #8A5532); }
+.ws-cards div:nth-child(2) figure { background: linear-gradient(150deg, #6E4A33, #23140D); } .ws-cards div:nth-child(3) figure { background: linear-gradient(150deg, #E8E1D8, #A99E92); }
+.ws-cards b { display: block; font-size: 1.9cqw; color: #3B2A20; } .ws-cards small { font-size: 1.7cqw; color: #A0673B; font-weight: 600; }
+.ws-phone { position: absolute; right: 5cqw; bottom: -1cqw; width: 19cqw; aspect-ratio: 9 / 17; padding: .9cqw; border-radius: 3.2cqw; background: #14222B; box-shadow: 0 2cqw 5cqw -2cqw rgba(0, 0, 0, .5); transform: translateY(110%); animation-name: ws-phone; }
+@keyframes ws-phone { 0%, 54% { transform: translateY(110%); } 58%, 66% { transform: none; } 70%, 100% { transform: translateY(110%); } }
+.ws-phone__s { height: 100%; padding: 2.4cqw 1.6cqw; border-radius: 2.4cqw; background: #FBF6F0; font-size: 1.5cqw; color: #3B2A20; }
+.ws-phone__s b { display: block; margin-bottom: 1.2cqw; font: 700 2cqw/1 var(--font-display); }
+.ws-phone__s .ws-photo { border-radius: 1.2cqw; }
+.ws-phone__s span { display: block; margin: 1.2cqw 0; font-weight: 600; line-height: 1.25; }
+.ws-phone__s em { display: block; padding: .9cqw; border-radius: 99cqw; background: #25D366; color: #fff; font-style: normal; font-weight: 700; text-align: center; font-size: 1.4cqw; }
+
+/* 3 · Llega el pedido */
+.ws-toast { position: absolute; z-index: 3; top: 2.4cqw; right: 2.4cqw; display: flex; align-items: center; gap: 1.6cqw; padding: 1.8cqw 2.4cqw; border-radius: 2cqw; background: var(--mid); color: #fff; box-shadow: 0 2cqw 5cqw -2cqw rgba(0, 0, 0, .5); opacity: 0; animation-name: ws-toast; }
+@keyframes ws-toast { 0%, 76% { opacity: 0; transform: translateY(-3cqw); } 79%, 92% { opacity: 1; transform: none; } 95%, 100% { opacity: 0; transform: none; } }
+.ws-toast__ic { flex: none; display: grid; place-items: center; width: 4.2cqw; height: 4.2cqw; border-radius: 50%; background: var(--lime); }
+.ws-toast__ic svg { width: 2.4cqw; height: 2.4cqw; fill: none; stroke: var(--mid); stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; }
+.ws-toast b { display: block; font-size: 2cqw; } .ws-toast small { display: block; font-size: 1.7cqw; opacity: .75; }
+
+/* Cursor: clic en el resultado de Google y luego en "Pedir por WhatsApp" */
+.ws-cursor { position: absolute; z-index: 4; left: 0; top: 0; width: 2.6cqw; fill: #fff; stroke: #1E2A2F; stroke-width: 1; opacity: 0; animation-name: ws-cursor; }
+@keyframes ws-cursor {
+  0%, 15% { opacity: 0; transform: translate(70cqw, 44cqw); }
+  17% { opacity: 1; transform: translate(70cqw, 44cqw); }
+  20% { transform: translate(34cqw, 24.5cqw); } 21.5% { transform: translate(34cqw, 24.5cqw) scale(.85); } 23% { opacity: 1; transform: translate(34cqw, 24.5cqw); }
+  25%, 60% { opacity: 0; transform: translate(34cqw, 24.5cqw); }
+  63% { opacity: 1; transform: translate(60cqw, 40cqw); }
+  72% { transform: translate(15cqw, 34.6cqw); } 73.5% { transform: translate(15cqw, 34.6cqw) scale(.85); } 75%, 82% { opacity: 1; transform: translate(15cqw, 34.6cqw); }
+  86%, 100% { opacity: 0; transform: translate(15cqw, 34.6cqw); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .mk--site * { animation: none !important; }
+  .ws-search, .ws-phone, .ws-cursor, .ws-url__a { opacity: 0; } .ws-site, .ws-url__b, .ws-toast { opacity: 1; } .ws-phone { transform: none; opacity: 1; }
+}

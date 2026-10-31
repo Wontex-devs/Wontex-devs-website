@@ -568,8 +568,8 @@
     else run(true);
   });
 
-  /* Soluciones: la escena junto a cada título solo se anima mientras está en pantalla */
-  var solIcons = document.querySelectorAll('.sol__ic');
+  /* Soluciones: las escenas animadas (junto a cada título y la del sitio web) solo se animan mientras están en pantalla */
+  var solIcons = document.querySelectorAll('.sol__ic, .mk--site');
   if ('IntersectionObserver' in window) {
     var solIO = new IntersectionObserver(function (entries) {
       entries.forEach(function (en) { en.target.classList.toggle('is-live', en.isIntersecting); });
