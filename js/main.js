@@ -569,7 +569,7 @@
   });
 
   /* Soluciones: las escenas animadas (junto a cada título y la del sitio web) solo se animan mientras están en pantalla */
-  var solIcons = document.querySelectorAll('.sol__ic, .mk--site');
+  var solIcons = document.querySelectorAll('.sol__ic, .mk--scene');
   if ('IntersectionObserver' in window) {
     var solIO = new IntersectionObserver(function (entries) {
       entries.forEach(function (en) { en.target.classList.toggle('is-live', en.isIntersecting); });
