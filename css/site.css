@@ -664,3 +664,60 @@ body, .xh__sub, .xs__lead, .sol__desc, .steps2 p, .xc__lead, .cx__desc { -webkit
 .cr-ini { flex: none; display: grid; place-items: center; width: 8.4cqw; height: 8.4cqw; border-radius: 50%; color: #fff; font-size: 2.7cqw; font-weight: 700; }
 .cr-ini--a { background: #6C8EAD; } .cr-ini--b { background: #B07A9E; }
 .cr-card { margin-bottom: .6cqw; }
+
+/* ---------- Soluciones: pequeña escena animada junto a cada título ----------
+   Cada una cuenta el servicio en ~5 s y se repite. Solo se anima mientras está en pantalla (.is-live, main.js). */
+.sol__head { display: flex; align-items: center; gap: clamp(14px, 1.6vw, 20px); }
+.sol__ic { flex: none; width: clamp(54px, 5vw, 68px); aspect-ratio: 1; border-radius: 18px; background: var(--mid); box-shadow: inset 0 0 0 1px rgba(247, 248, 244, .08), 0 14px 26px -18px rgba(20, 43, 59, .7); }
+.sol__ic svg { display: block; width: 100%; height: 100%; }
+.sol__ic :where(svg *) { transform-box: fill-box; transform-origin: center; animation-duration: 5s; animation-iteration-count: infinite; animation-timing-function: cubic-bezier(.4, 0, .2, 1); animation-play-state: paused; }
+.sol__ic.is-live :where(svg *) { animation-play-state: running; }
+
+/* Sitios web: la página se arma y el cursor hace clic en el botón */
+.si-frame { fill: #1C3A4F; stroke: rgba(247, 248, 244, .14); stroke-width: 1; }
+.si-dot { fill: rgba(247, 248, 244, .35); }
+.si-a { fill: rgba(247, 248, 244, .92); transform-origin: left center; } .si-b { fill: rgba(247, 248, 244, .45); transform-origin: left center; }
+.si-img { fill: rgba(199, 244, 100, .28); } .si-btn { fill: var(--lime); }
+.si-w1 { animation-name: si-build1; } .si-w2 { animation-name: si-build2; } .si-w3 { animation-name: si-build3; }
+@keyframes si-build1 { 0%, 4% { opacity: 0; transform: scaleX(.2); } 14%, 90% { opacity: 1; transform: none; } 100% { opacity: 0; } }
+@keyframes si-build2 { 0%, 14% { opacity: 0; transform: scale(.6); } 24%, 90% { opacity: 1; transform: none; } 100% { opacity: 0; } }
+@keyframes si-build3 { 0%, 24% { opacity: 0; transform: scale(.6); } 34%, 56% { opacity: 1; transform: none; } 60% { transform: scale(.86); } 64%, 90% { opacity: 1; transform: none; } 100% { opacity: 0; } }
+.si-cursor { fill: #fff; stroke: var(--mid); stroke-width: .9; transform-origin: 0 0; transform-box: view-box; animation-name: si-cursor; }
+@keyframes si-cursor { 0%, 30% { opacity: 0; transform: translate(50px, 56px); } 36% { opacity: 1; transform: translate(47px, 53px); } 56% { transform: translate(23px, 42px); } 60% { transform: translate(23px, 42px) scale(.85); } 64%, 84% { opacity: 1; transform: translate(23px, 42px); } 92%, 100% { opacity: 0; transform: translate(23px, 42px); } }
+
+/* Automatización e IA: llega un mensaje, la automatización actúa y la respuesta sale sola */
+.sa-in { fill: rgba(247, 248, 244, .92); transform-origin: left bottom; animation-name: sa-in; }
+.sa-in-l { fill: rgba(20, 43, 59, .35); animation-name: sa-in; transform-origin: left bottom; }
+.sa-bolt { fill: var(--lime); animation-name: sa-bolt; }
+.sa-out { fill: var(--lime); transform-origin: right top; animation-name: sa-out; }
+.sa-out-l { fill: rgba(20, 43, 59, .45); transform-origin: right top; animation-name: sa-out; }
+@keyframes sa-in { 0%, 4% { opacity: 0; transform: translateY(4px) scale(.7); } 14%, 88% { opacity: 1; transform: none; } 100% { opacity: 0; } }
+@keyframes sa-bolt { 0%, 24% { opacity: 0; transform: scale(.3) rotate(-20deg); } 32% { opacity: 1; transform: scale(1.25); } 40%, 50% { opacity: 1; transform: none; } 58%, 100% { opacity: .22; transform: none; } }
+@keyframes sa-out { 0%, 46% { opacity: 0; transform: translateY(-4px) scale(.7); } 56%, 88% { opacity: 1; transform: none; } 100% { opacity: 0; } }
+
+/* CRM: el contacto avanza solo por el embudo hasta cerrarse */
+.sc-col { fill: #1C3A4F; } .sc-col--end { animation-name: sc-end; }
+.sc-h { fill: rgba(247, 248, 244, .3); } .sc-ghost { fill: rgba(247, 248, 244, .1); }
+.sc-card { transform-box: view-box; transform-origin: 0 0; animation-name: sc-move; }
+.sc-card__b { fill: var(--lime); } .sc-card__w { fill: rgba(247, 248, 244, .95); animation-name: sc-white; }
+.sc-card__ok { fill: none; stroke: var(--mid); stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 9; stroke-dashoffset: 9; animation-name: sc-ok; }
+@keyframes sc-move { 0%, 6% { opacity: 0; transform: translateY(-6px); } 14%, 26% { opacity: 1; transform: none; } 40%, 52% { transform: translateX(17px); } 66%, 90% { opacity: 1; transform: translateX(34px); } 100% { opacity: 0; transform: translateX(34px); } }
+@keyframes sc-white { 0%, 62% { opacity: 1; } 70%, 100% { opacity: 0; } }
+@keyframes sc-ok { 0%, 68% { stroke-dashoffset: 9; } 78%, 100% { stroke-dashoffset: 0; } }
+@keyframes sc-end { 0%, 64% { fill: #1C3A4F; } 72%, 90% { fill: #2C4B2A; } 100% { fill: #1C3A4F; } }
+
+/* Herramientas: los ítems de la cotización aparecen y el total se suma */
+.st-paper { fill: #1C3A4F; stroke: rgba(247, 248, 244, .14); stroke-width: 1; }
+.st-r { fill: rgba(247, 248, 244, .5); transform-origin: left center; } .st-v { fill: rgba(247, 248, 244, .85); transform-origin: right center; }
+.st-line { fill: rgba(247, 248, 244, .2); }
+.st-r1 { animation-name: st-row1; } .st-r2 { animation-name: st-row2; } .st-r3 { animation-name: st-row3; }
+@keyframes st-row1 { 0%, 4% { opacity: 0; transform: scaleX(.3); } 14%, 90% { opacity: 1; transform: none; } 100% { opacity: 0; } }
+@keyframes st-row2 { 0%, 16% { opacity: 0; transform: scaleX(.3); } 26%, 90% { opacity: 1; transform: none; } 100% { opacity: 0; } }
+@keyframes st-row3 { 0%, 28% { opacity: 0; transform: scaleX(.3); } 38%, 90% { opacity: 1; transform: none; } 100% { opacity: 0; } }
+.st-total { fill: var(--lime); transform-origin: left center; animation-name: st-total; }
+@keyframes st-total { 0%, 44% { opacity: 0; transform: scaleX(.05); } 48% { opacity: 1; } 64% { transform: scaleX(1.04); } 70%, 90% { opacity: 1; transform: none; } 100% { opacity: 0; } }
+
+@media (prefers-reduced-motion: reduce) {
+  .sol__ic :where(svg *) { animation: none !important; }
+  .si-cursor { transform: translate(23px, 42px); }
+}

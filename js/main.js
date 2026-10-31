@@ -568,6 +568,15 @@
     else run(true);
   });
 
+  /* Soluciones: la escena junto a cada título solo se anima mientras está en pantalla */
+  var solIcons = document.querySelectorAll('.sol__ic');
+  if ('IntersectionObserver' in window) {
+    var solIO = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) { en.target.classList.toggle('is-live', en.isIntersecting); });
+    });
+    solIcons.forEach(function (ic) { solIO.observe(ic); });
+  } else solIcons.forEach(function (ic) { ic.classList.add('is-live'); });
+
   /* Soluciones: "Conocer más" despliega el detalle del servicio */
   document.querySelectorAll('.sol__more').forEach(function (btn) {
     btn.addEventListener('click', function () {
