@@ -42,6 +42,9 @@ TEXT = {
                        "Automatización comercial", "Cotizadores digitales", "Dashboards e integraciones"],
         "slogan": "Soluciones inteligentes. Resultados reales.",
         "home": "Inicio",
+        "catalogo": "Servicios de Wontex",
+        "servicios": [("Diseño y desarrollo de páginas web", "desarrollo-web"), ("Automatización de procesos e inteligencia artificial", "automatizacion-e-inteligencia-artificial"),
+                      ("Implementación de CRM y automatización comercial", "crm"), ("Herramientas digitales y cotizadores", "herramientas-digitales")],
     },
     "en": {
         "description": "Website development with SEO, business process automation, artificial intelligence "
@@ -52,6 +55,9 @@ TEXT = {
                        "Sales automation", "Digital quoting tools", "Dashboards and integrations"],
         "slogan": "Smart solutions. Real results.",
         "home": "Home",
+        "catalogo": "Wontex services",
+        "servicios": [("Website design and development", "desarrollo-web"), ("Process automation and artificial intelligence", "automatizacion-e-inteligencia-artificial"),
+                      ("CRM implementation and sales automation", "crm"), ("Digital tools and quoting software", "herramientas-digitales")],
     },
 }
 
@@ -121,6 +127,9 @@ def org_graph(site, d, lang):
         org["openingHours"] = d["horario"]
     if d.get("redesSociales"):
         org["sameAs"] = d["redesSociales"]   # solo redes oficiales que existan
+    # Catálogo de servicios: cada uno enlaza a su página (las páginas de servicios están en español)
+    org["hasOfferCatalog"] = {"@type": "OfferCatalog", "name": t["catalogo"], "itemListElement": [
+        {"@type": "Offer", "itemOffered": {"@type": "Service", "name": n, "url": "%s/%s/" % (site, slug)}} for n, slug in t["servicios"]]}
     site_node = {"@type": "WebSite", "@id": site + "/#sitio", "url": site + "/", "name": "Wontex",
                  "inLanguage": ["es", "en"], "publisher": {"@id": site + "/#organizacion"}}
     return {"@context": "https://schema.org", "@graph": [org, site_node]}

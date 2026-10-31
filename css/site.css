@@ -938,3 +938,7 @@ body, .xh__sub, .xs__lead, .sol__desc, .steps2 p, .xc__lead, .cx__desc { -webkit
 @media (prefers-reduced-motion: reduce) {
   .au-m, .au-time, .qt-r, .qt-t3, .qt-pdf, .bd-new, .bd-auto { opacity: 1 !important; } .au-n__ic svg { opacity: 1; } .au-st2, .qt-t0, .bd-toast { opacity: 0 !important; } .qt-typ { clip-path: none; }
 }
+
+/* Páginas de servicios: preguntas frecuentes (mismo estilo que en la portada, sin la línea superior) */
+.svc-faq { padding-top: clamp(80px, 10vw, 150px); }
+.svc-faq .faq { padding-top: 0; border-top: 0; }

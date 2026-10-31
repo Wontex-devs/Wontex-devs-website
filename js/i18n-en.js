@@ -425,5 +425,8 @@ window.FW_EN = {
 "¡Listo! Pedido registrado: 2 × Origen Huila · $ 76.000.": "Done! Order placed: 2 × Origen Huila · $ 76,000.",
 "¡Venta cerrada!": "Deal closed!",
 "Total": "Total",
-"Laura Pérez · $ 2.800.000": "Laura Pérez · $ 2,800,000"
+"Laura Pérez · $ 2.800.000": "Laura Pérez · $ 2,800,000",
+"Páginas web, automatización e IA para empresas | Wontex": "Websites, automation and AI for businesses | Wontex",
+"Diseñamos páginas web, automatizamos procesos y WhatsApp con inteligencia artificial e implementamos CRM para empresas en Barranquilla, Colombia y el exterior.": "We design websites, automate processes and WhatsApp with artificial intelligence and implement CRM for businesses in Colombia and abroad.",
+"Lo que suelen preguntarnos.": "What people usually ask us."
 };

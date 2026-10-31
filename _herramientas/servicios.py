@@ -21,9 +21,9 @@ SERVICIOS = [
     {
         "slug": "desarrollo-web",
         "nav": "Desarrollo web",
-        "title": "Desarrollo de páginas web para empresas | Wontex",
-        "desc": "Diseñamos y desarrollamos páginas web profesionales, rápidas y adaptadas a celulares, con SEO desde el inicio, para empresas de Barranquilla y toda Colombia.",
-        "h1": "Desarrollo de páginas web para empresas",
+        "title": "Diseño de páginas web para empresas | Wontex",
+        "desc": "Diseñamos y desarrollamos páginas web profesionales para empresas: rápidas, adaptadas a celulares y con SEO desde el inicio. En Barranquilla, toda Colombia y el exterior.",
+        "h1": "Diseño y desarrollo de páginas web para empresas",
         "tipo": "Desarrollo de páginas web",
         "lead": "Creamos sitios web profesionales, rápidos y adaptados a cualquier pantalla, pensados para que tus clientes te encuentren, entiendan lo que ofreces y te contacten.",
         "problemas": [
@@ -54,12 +54,13 @@ SERVICIOS = [
         ],
         "cta": "¿Necesitas una página web para tu empresa?",
         "interes": "Sitios web",
+        "faq": [('¿Cuánto cuesta una página web para mi empresa?', 'Depende del tipo de sitio (una landing page, un sitio corporativo o un catálogo), de la cantidad de secciones y de las funciones que necesites. Primero conocemos tu negocio y después te enviamos una cotización con el alcance definido.'), ('¿Cuánto tiempo toma tener mi página lista?', 'Depende del alcance y de qué tan listos estén los textos y las fotos. En la propuesta te indicamos las etapas y los tiempos estimados para que sepas qué esperar desde el inicio.'), ('¿La página web incluye SEO?', 'Sí. Cada sitio se entrega con la configuración para buscadores: estructura de títulos, textos y descripciones, velocidad de carga, versión para celulares y mapa del sitio para Google.'), ('¿Mi página se verá bien en el celular?', 'Sí. Diseñamos cada sitio para celulares, tabletas y computadores, porque la mayoría de tus clientes te va a visitar desde el teléfono.'), ('¿Pueden rediseñar la página web que ya tengo?', 'Sí. Revisamos tu sitio actual y lo actualizamos para que sea más claro, más rápido y más fácil de usar, sin perder lo que ya funciona.'), ('¿Cómo me llegan los mensajes de los clientes?', 'Los formularios y botones de contacto pueden llegar a tu correo, a tu WhatsApp o a tu CRM, según cómo prefieras atender a tus clientes.')],
     },
     {
         "slug": "automatizacion-e-inteligencia-artificial",
         "nav": "Automatización e IA",
-        "title": "Automatización de procesos e IA para empresas | Wontex",
-        "desc": "Automatizamos tareas repetitivas y procesos administrativos y comerciales, e integramos chatbots y asistentes de inteligencia artificial en tu empresa.",
+        "title": "Automatización de procesos y WhatsApp con IA | Wontex",
+        "desc": "Automatizamos procesos, WhatsApp y tareas repetitivas de tu empresa, e integramos chatbots y asistentes de inteligencia artificial que atienden a tus clientes.",
         "h1": "Automatización de procesos e inteligencia artificial para empresas",
         "tipo": "Automatización de procesos empresariales e inteligencia artificial",
         "lead": "Conectamos tus herramientas y automatizamos las tareas repetitivas para que tu equipo dedique su tiempo a lo que importa. Integramos inteligencia artificial donde aporta valor: atención, organización y respuesta.",
@@ -91,11 +92,12 @@ SERVICIOS = [
         ],
         "cta": "¿Qué tarea te gustaría dejar de hacer a mano?",
         "interes": "Automatización",
+        "faq": [('¿Qué procesos de mi empresa se pueden automatizar?', 'Las tareas que siguen siempre los mismos pasos: registrar datos de formularios, responder preguntas frecuentes, enviar recordatorios, documentos o reportes, y pasar información entre herramientas.'), ('¿Se puede automatizar WhatsApp para mi negocio?', 'Sí. Configuramos respuestas automáticas, captura de datos de tus clientes y asignación de conversaciones a tu equipo, para que ningún mensaje se quede sin respuesta.'), ('¿Un chatbot reemplaza a mi equipo de atención?', 'No. El chatbot atiende al instante las dudas más comunes y pasa la conversación a una persona cuando hace falta. Tu equipo se dedica a los casos que de verdad lo necesitan.'), ('¿Qué es un asistente de inteligencia artificial para empresas?', 'Es una herramienta que ayuda a tu equipo a redactar, clasificar solicitudes, resumir información o consultar documentos internos, adaptada a la forma de trabajar de tu empresa.'), ('¿La automatización funciona con las herramientas que ya uso?', 'En la mayoría de los casos, sí. Revisamos las plataformas que ya tienes y las conectamos para que la información pase de una a otra sin doble digitación.')],
     },
     {
         "slug": "crm",
         "nav": "CRM",
-        "title": "Implementación de CRM y automatización comercial | Wontex",
+        "title": "Implementación de CRM para empresas y pymes | Wontex",
         "desc": "Implementamos y configuramos tu CRM con automatización comercial: seguimiento de clientes potenciales, WhatsApp, agenda, recordatorios y reportes.",
         "h1": "Implementación de CRM y automatización comercial",
         "tipo": "Implementación de CRM y automatización comercial",
@@ -128,11 +130,12 @@ SERVICIOS = [
         ],
         "cta": "¿Quieres ordenar tus ventas y tus seguimientos?",
         "interes": "CRM y gestión comercial",
+        "faq": [('¿Qué es un CRM y para qué sirve?', 'Un CRM es un sistema que reúne en un solo lugar a tus clientes, sus conversaciones y tus oportunidades de venta. Sirve para hacer seguimiento ordenado y que ninguna venta se quede en el camino.'), ('¿Mi negocio necesita un CRM?', 'Si recibes clientes por varios canales, haces cotizaciones o seguimientos, o agendas citas, un CRM te ayuda a tenerlo todo organizado. Si no estás seguro, revisamos tu caso contigo.'), ('¿El CRM se conecta con WhatsApp e Instagram?', 'Sí. La bandeja única reúne WhatsApp, Instagram, Facebook, correo y SMS, con el historial completo de cada cliente.'), ('¿Ustedes configuran el CRM y capacitan a mi equipo?', 'Sí. Configuramos el CRM según cómo vende tu equipo, lo capacitamos para usarlo y hacemos ajustes a medida que lo van usando.'), ('¿Puedo pasar al CRM los contactos que ya tengo?', 'Por lo general, sí: los contactos que tienes en hojas de cálculo o en otras herramientas se pueden importar. Lo revisamos contigo al inicio del proyecto.')],
     },
     {
         "slug": "herramientas-digitales",
         "nav": "Herramientas digitales",
-        "title": "Herramientas digitales y cotizadores para empresas | Wontex",
+        "title": "Cotizadores digitales y herramientas para empresas | Wontex",
         "desc": "Creamos cotizadores digitales, formularios inteligentes, dashboards, herramientas internas e integraciones adaptadas a cómo funciona tu empresa.",
         "h1": "Herramientas digitales a la medida para empresas",
         "tipo": "Herramientas digitales empresariales",
@@ -163,6 +166,7 @@ SERVICIOS = [
         ],
         "cta": "¿Qué herramienta haría más fácil tu trabajo?",
         "interes": "Herramientas de negocio",
+        "faq": [('¿Qué es un cotizador digital?', 'Es una herramienta que calcula automáticamente precios, cantidades e impuestos y genera la propuesta en PDF con tu marca, en lugar de armar cada cotización a mano.'), ('¿Las herramientas se adaptan a cómo trabaja mi empresa?', 'Sí. Las diseñamos a la medida, a partir de tus procesos reales, para que la herramienta se ajuste a tu forma de trabajar y no al revés.'), ('¿Puedo ver los indicadores de mi negocio en un solo lugar?', 'Sí. Creamos dashboards y reportes con los números clave de tu operación en una sola pantalla, para tomar decisiones con información actualizada.'), ('¿Se pueden conectar con las plataformas que ya uso?', 'En la mayoría de los casos, sí. Integramos tus herramientas para evitar la doble digitación y que la información esté siempre al día.')],
     },
 ]
 
@@ -210,6 +214,8 @@ def build(site, index_html):
         beneficios = '\n'.join('        <li>%s</li>' % e(p) for p in sv['beneficios'])
         ejemplos = '\n'.join('        <li>%s</li>' % e(p) for p in sv['ejemplos'])
         pasos = '\n'.join('      <li data-reveal><h3>%s</h3><p>%s</p></li>' % (e(t), e(p)) for t, p in PASOS)
+        faq = '\n'.join('      <details class="faq__item" name="faq"><summary class="faq__q">%s</summary><div class="faq__a"><p>%s</p></div></details>' % (e(q), e(a)) for q, a in sv['faq'])
+        ld["@graph"].append({"@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": a}} for q, a in sv['faq']]})
         rel = '\n'.join('        <li><a href="/%s/">%s <span aria-hidden="true">→</span></a></li>' % (o['slug'], e(o['h1'])) for o in otros)
         pages['%s/index.html' % sv['slug']] = f'''<!doctype html>
 <html lang="es-419">
@@ -255,7 +261,7 @@ def build(site, index_html):
     <nav class="svc-crumbs" aria-label="Ruta de navegación"><a href="/">Inicio</a><span aria-hidden="true">/</span><a href="/#soluciones">Servicios</a><span aria-hidden="true">/</span><span aria-current="page">{e(sv['nav'])}</span></nav>
     <h1 class="svc-hero__title">{e(sv['h1'])}</h1>
     <p class="svc-hero__lead">{e(sv['lead'])}</p>
-    <p class="svc-hero__area">Atendemos empresas en Barranquilla y en toda Colombia.</p>
+    <p class="svc-hero__area">Trabajamos con empresas en Barranquilla, en toda Colombia y en el exterior.</p>
     <div class="svc-hero__ctas">
       <a class="btn btn--pill" href="/#contacto"><span>Solicita tu cotización</span><span class="arr" aria-hidden="true">→</span></a>
       <a class="xh__link" href="#incluye">Qué incluye</a>
@@ -303,6 +309,15 @@ def build(site, index_html):
     <ol class="steps2" id="steps2">
 {pasos}
     </ol>
+  </div>
+</section>
+
+<section class="xs xs--faq svc-faq" id="preguntas">
+  <div class="container faq">
+    <header class="xs__head faq__head"><p class="xs__label">Preguntas frecuentes</p><h2 class="xs__title">Lo que suelen preguntarnos.</h2></header>
+    <div class="faq__list">
+{faq}
+    </div>
   </div>
 </section>
 
