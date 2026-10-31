@@ -5,10 +5,7 @@ if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
 if (location.hash) history.replaceState(null, '', location.pathname + location.search);
 (function (d) {
   d.classList.add('js');
-  // La animación de entrada se muestra una vez por visita (pestaña): al recargar o volver al inicio, la página abre directo
+  // La animación de entrada se muestra en cada carga de la página (también al recargar)
   // Solo en la página de inicio (marcada con data-intro); las páginas de servicios abren directo
-  if (!d.hasAttribute('data-intro') || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-  var seen = false;
-  try { seen = sessionStorage.getItem('fw-intro') === '1'; sessionStorage.setItem('fw-intro', '1'); } catch (e) { /* sin almacenamiento: se muestra */ }
-  if (!seen) d.classList.add('intro-playing');
+  if (d.hasAttribute('data-intro') && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) d.classList.add('intro-playing');
 })(document.documentElement);
